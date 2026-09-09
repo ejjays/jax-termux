@@ -1,5 +1,3 @@
-# Jax — Modular Dev Environment
-
 <p align="center">
   <img src="https://raw.githubusercontent.com/ejjays/jax-termux/main/assets/images/logo.svg" alt="Jax Logo" width="600">
 </p>
