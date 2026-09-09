@@ -17,7 +17,7 @@
     <img src="https://img.shields.io/badge/platform-Termux%20%7C%20Android-0078D4?style=for-the-badge&logo=android" alt="Platform">
   </a>
   <a href="https://github.com/ejjays/jax-termux/actions/workflows/ci.yml">
-    <img src="https://img.shields.io/github/actions/workflow/status/ejjays/jax-termux/ci.yml?style=for-the-badge&logo=github" alt="CI">
+    <img src="https://img.shields.io/github/actions/workflow/status/ejjays/jax-termux/ci.yml?style=for-the-badge&logo=github&label=CI" alt="CI">
   </a>
 </p>
 
