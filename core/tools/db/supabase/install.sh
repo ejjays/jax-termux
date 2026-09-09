@@ -126,6 +126,13 @@ install_supabase() {
 	fi
 	log_info "Installing Supabase CLI..."
 
+	local arch
+	arch="$(uname -m)"
+	if [[ "$arch" != "aarch64" ]]; then
+		log_error "Supabase CLI needs 64-bit ARM (detected: $arch)"
+		return 1
+	fi
+
 	mkdir -p "$(dirname "$LOG_FILE")"
 
 	_supabase_install_deps || return 1

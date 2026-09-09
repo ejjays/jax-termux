@@ -18,6 +18,12 @@
   <a href="https://termux.dev/">
     <img src="https://img.shields.io/badge/platform-Termux%20%7C%20Android-0078D4?style=for-the-badge&logo=android" alt="Platform">
   </a>
+  <a href="https://github.com/ejjays/core-termux/actions/workflows/lint.yml">
+    <img src="https://github.com/ejjays/core-termux/actions/workflows/lint.yml/badge.svg" alt="lint">
+  </a>
+  <a href="https://github.com/ejjays/core-termux/actions/workflows/supabase.yml">
+    <img src="https://github.com/ejjays/core-termux/actions/workflows/supabase.yml/badge.svg" alt="supabase">
+  </a>
 </p>
 
 <p align="center">

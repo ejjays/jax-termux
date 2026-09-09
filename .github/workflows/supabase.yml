@@ -1,0 +1,31 @@
+name: supabase
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'core/tools/db/supabase/**'
+  pull_request:
+    paths:
+      - 'core/tools/db/supabase/**'
+  schedule:
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: resolve latest linux-arm64 asset
+        run: |
+          url=$(curl -fsSL https://api.github.com/repos/supabase/cli/releases/latest | grep '"browser_download_url":' | grep 'linux.*arm64.*\.tar\.gz' | grep -v -e '\.apk' -e '\.deb' -e '\.rpm' | head -1 | sed -E 's/.*"([^"]+)".*/\1/')
+          [ -n "$url" ] || { echo "no linux-arm64 asset found"; exit 1; }
+          echo "SUPABASE_URL=$url" >> "$GITHUB_ENV"
+
+      - name: download, extract and run
+        run: |
+          curl -fsSL "$SUPABASE_URL" -o supabase.tar.gz
+          tar -xzf supabase.tar.gz
+          [ -f supabase ] || { echo "supabase binary missing from tarball"; exit 1; }
+          chmod +x supabase
+          ./supabase --version
