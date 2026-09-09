@@ -102,6 +102,7 @@ _list_db() {
   table_row "SQLite" "--sqlite" "$(_check_pkg "sqlite")"
   table_row "MongoDB" "--mongodb" "$(_check_pkg "mongodb")"
   table_row "Redis" "--redis" "$(_check_pkg "redis")"
+  table_row "Supabase CLI" "--supabase" "$(_check_cmd "supabase")"
   table_end
 
   echo

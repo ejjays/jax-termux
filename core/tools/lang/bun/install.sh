@@ -650,11 +650,11 @@ _uninstall_pkg_fallback() {
   local pkg="$1"
 
   # Try bun first
-  bun uninstall -g "$pkg" &>>"$LOG_FILE" 2>/dev/null
+  bun uninstall -g "$pkg" &>>"$LOG_FILE"
 
   # Also try npm (may have been installed via fallback)
   if command -v npm &>/dev/null; then
-    npm uninstall -g "$pkg" &>>"$LOG_FILE" 2>/dev/null
+    npm uninstall -g "$pkg" &>>"$LOG_FILE"
   fi
 
   # Never fail uninstall — package may already be gone

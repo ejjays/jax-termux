@@ -322,6 +322,10 @@ _update_specific_tools() {
         update_redis
         case $? in 0) ((updated_count++));; 1) ((failed_count++));; esac
         ;;
+      supabase)
+        update_supabase
+        case $? in 0) ((updated_count++));; 1) ((failed_count++));; esac
+        ;;
       *)
         log_warn "Unknown database: --$tool"
         ;;

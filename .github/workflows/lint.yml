@@ -1,0 +1,26 @@
+name: lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  shell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: bash syntax check
+        run: |
+          fail=0
+          while IFS= read -r f; do
+            bash -n "$f" || fail=1
+          done < <(find core install.sh -name '*.sh')
+          exit $fail
+
+      - name: shellcheck
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: ./
+          severity: error

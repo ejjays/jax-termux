@@ -320,6 +320,10 @@ _uninstall_specific_tools() {
         uninstall_redis
         case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
         ;;
+      supabase)
+        uninstall_supabase
+        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        ;;
       *)
         log_warn "Unknown database: --$tool"
         ;;

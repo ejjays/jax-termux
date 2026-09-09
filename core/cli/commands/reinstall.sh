@@ -314,6 +314,10 @@ _reinstall_specific_tools() {
         reinstall_redis
         case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
         ;;
+      supabase)
+        reinstall_supabase
+        case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
+        ;;
       *)
         log_warn "Unknown database: --$tool"
         ;;

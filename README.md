@@ -1,7 +1,7 @@
 # Core-Termux — Modular Dev Environment
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/DevCoreXOfficial/core-termux/main/assets/images/logo.svg" alt="Core-Termux Logo" width="600">
+  <img src="https://raw.githubusercontent.com/ejjays/core-termux/main/assets/images/logo.svg" alt="Core-Termux Logo" width="600">
 </p>
 
 <p align="center">
@@ -9,29 +9,14 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/DevCoreXOfficial/core-termux">
+  <a href="https://github.com/ejjays/core-termux">
     <img src="https://img.shields.io/badge/version-4.27.2-0078D4?style=for-the-badge&logo=appveyor" alt="Version">
   </a>
-  <a href="https://github.com/DevCoreXOfficial/core-termux/blob/main/LICENSE">
+  <a href="https://github.com/ejjays/core-termux/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-0078D4?style=for-the-badge&logo=bookstack" alt="License">
   </a>
   <a href="https://termux.dev/">
     <img src="https://img.shields.io/badge/platform-Termux%20%7C%20Android-0078D4?style=for-the-badge&logo=android" alt="Platform">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/DevCoreXOfficial/core-termux/stargazers">
-    <img src="https://img.shields.io/github/stars/DevCoreXOfficial/core-termux?style=for-the-badge&logo=github&color=f5c542" alt="Stars">
-  </a>
-  <a href="https://github.com/DevCoreXOfficial/core-termux/network/members">
-    <img src="https://img.shields.io/github/forks/DevCoreXOfficial/core-termux?style=for-the-badge&logo=github&color=94a3b8" alt="Forks">
-  </a>
-  <a href="https://github.com/DevCoreXOfficial/core-termux/issues">
-    <img src="https://img.shields.io/github/issues/DevCoreXOfficial/core-termux?style=for-the-badge&logo=github&color=ef4444" alt="Issues">
-  </a>
-  <a href="https://github.com/DevCoreXOfficial/core-termux/pulls">
-    <img src="https://img.shields.io/github/issues-pr/DevCoreXOfficial/core-termux?style=for-the-badge&logo=github&color=22c55e" alt="Pull Requests">
   </a>
 </p>
 
@@ -53,7 +38,7 @@
 ## Quick Installation
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/DevCoreXOfficial/core-termux/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ejjays/core-termux/main/install.sh | bash
 ```
 
 Then run:
@@ -92,7 +77,7 @@ These modules are available across most commands (`core list`, `core install`, `
 | Module | Description |
 |--------|-------------|
 | `lang` | Language packages (Node.js, Python, Perl, PHP, Rust, C/C++, Go, Bun.js) |
-| `db` | Databases (PostgreSQL, MariaDB, SQLite, MongoDB, Redis) |
+| `db` | Databases (PostgreSQL, MariaDB, SQLite, MongoDB, Redis, Supabase CLI) |
 | `ai` | AI agents and coding assistants — see [AI Agents](#ai-agents) |
 | `editor` | Code editor components (Neovim, NvChad) |
 | `dev` | Development tools (gh, wget, curl, fzf, lsd, bat, etc.) |
@@ -1079,7 +1064,8 @@ core-termux/
 │   │   │   ├── mariadb/
 │   │   │   ├── sqlite/
 │   │   │   ├── mongodb/
-│   │   │   └── redis/
+│   │   │   ├── redis/
+│   │   │   └── supabase/
 │   │   ├── editor/
 │   │   ├── dev/
 │   │   ├── shell/
