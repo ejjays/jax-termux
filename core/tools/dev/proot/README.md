@@ -20,19 +20,19 @@ PRoot is a user-space implementation of chroot, mount --bind, and binfmt_misc. I
 ## Install
 
 ```bash
-core install dev --proot
+jax install dev --proot
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall dev --proot
+jax uninstall dev --proot
 ```
 
 ## Update
 
 ```bash
-core update dev --proot
+jax update dev --proot
 ```
 
 ## Notes

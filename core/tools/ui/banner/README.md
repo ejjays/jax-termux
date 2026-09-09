@@ -19,19 +19,19 @@ Configure a custom banner for Termux using Core-Termux. This package allows you 
 ## Install
 
 ```bash
-core install ui --banner
+jax install ui --banner
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall ui --banner
+jax uninstall ui --banner
 ```
 
 ## Update
 
 ```bash
-core update ui --banner
+jax update ui --banner
 ```
 
 ## Notes

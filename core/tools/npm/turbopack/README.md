@@ -5,7 +5,7 @@ Run Next.js with Turbopack on Termux (Android aarch64).
 ## Install
 
 ```bash
-core install npm --turbopack
+jax install npm --turbopack
 ```
 
 Installs:
@@ -34,7 +34,7 @@ uses bionic libc. The toolchain:
 ## Init a new project
 
 ```bash
-core init next
+jax init next
 ```
 
 Adds `pnpm.supportedArchitectures` for multi-platform native bindings, installs
@@ -43,5 +43,5 @@ common dependencies, and sets up a modular folder structure.
 ## Uninstall
 
 ```bash
-core uninstall npm --turbopack
+jax uninstall npm --turbopack
 ```

@@ -25,5 +25,5 @@ if command -v walkie &>/dev/null; then
   exec walkie "$@"
 fi
 
-echo -en "\e[31mE:\e[0m walkie not found. Run 'core reinstall ai --walkie' to reinstall."
+echo -en "\e[31mE:\e[0m walkie not found. Run 'jax reinstall ai --walkie' to reinstall."
 exit 1

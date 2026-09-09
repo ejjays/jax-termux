@@ -20,19 +20,19 @@ Rust is a multi-paradigm, high-level, general-purpose programming language desig
 ## Install
 
 ```bash
-core install lang --rust
+jax install lang --rust
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall lang --rust
+jax uninstall lang --rust
 ```
 
 ## Update
 
 ```bash
-core update lang --rust
+jax update lang --rust
 ```
 
 ## Notes

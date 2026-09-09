@@ -22,7 +22,7 @@ Kilo Code is an AI coding agent that meets you everywhere you work: VS Code, Jet
 ## Install
 
 ```bash
-core install ai --kilocode-cli
+jax install ai --kilocode-cli
 ```
 
 You will be prompted to choose:
@@ -34,13 +34,13 @@ You will be prompted to choose:
 ## Uninstall
 
 ```bash
-core uninstall ai --kilocode-cli
+jax uninstall ai --kilocode-cli
 ```
 
 ## Update
 
 ```bash
-core update ai --kilocode-cli
+jax update ai --kilocode-cli
 ```
 
 ## Notes

@@ -22,19 +22,19 @@ Pi is a minimal terminal coding harness. Adapt Pi to your workflows, not the oth
 ## Install
 
 ```bash
-core install ai --pi
+jax install ai --pi
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall ai --pi
+jax uninstall ai --pi
 ```
 
 ## Update
 
 ```bash
-core update ai --pi
+jax update ai --pi
 ```
 
 ## Notes

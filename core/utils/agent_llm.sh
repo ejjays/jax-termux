@@ -2,7 +2,7 @@
 
 # ============================================================
 # agent_llm.sh — config + OpenAI-compatible chat calls for
-# `core agent`. Pure bash; curl + jq.
+# `jax agent`. Pure bash; curl + jq.
 # ============================================================
 
 import "@/utils/log"
@@ -52,7 +52,7 @@ AGENT_SERVER_CMD="${AGENT_SERVER_CMD:-cactus serve Cactus-Compute/gemma-4-E2B-it
 agent_config_save() {
 	mkdir -p "$AGENT_CONF_DIR"
 	cat >"$AGENT_CONF_FILE" <<EOF
-# core agent — persisted settings
+# jax agent — persisted settings
 AGENT_MODEL="$AGENT_MODEL"
 AGENT_ENDPOINT="$AGENT_ENDPOINT"
 AGENT_TEMPERATURE=$AGENT_TEMPERATURE

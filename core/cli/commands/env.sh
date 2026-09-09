@@ -31,7 +31,7 @@ env_help() {
 	echo
 	box "Environment Variables Manager"
 	echo
-	log_info "Usage: core env [options]"
+	log_info "Usage: jax env [options]"
 	echo
 	separator_section "Available Commands"
 	echo
@@ -41,9 +41,9 @@ env_help() {
 	echo
 	separator_section "Examples"
 	echo
-	printf "    ${D_CYAN}core env set${D_NC}              # Interactive: add/update a variable\n"
-	printf "    ${D_CYAN}core env unset${D_NC}            # Interactive: select and remove a variable\n"
-	printf "    ${D_CYAN}core env ls${D_NC}               # List all export vars in rc file\n"
+	printf "    ${D_CYAN}jax env set${D_NC}              # Interactive: add/update a variable\n"
+	printf "    ${D_CYAN}jax env unset${D_NC}            # Interactive: select and remove a variable\n"
+	printf "    ${D_CYAN}jax env ls${D_NC}               # List all export vars in rc file\n"
 	echo
 }
 
@@ -111,7 +111,7 @@ env_unset() {
 		separator
 		echo
 		log_warn "No environment variables found in $(basename "$rc_file")"
-		list_item "Add one first: ${D_CYAN}core env set${D_NC}"
+		list_item "Add one first: ${D_CYAN}jax env set${D_NC}"
 		separator
 		return 0
 	fi
@@ -189,7 +189,7 @@ env_ls() {
 	if [[ $count -eq 0 ]]; then
 		list_item "No environment variables defined yet"
 		echo
-		list_item "Add one: ${D_CYAN}core env set${D_NC}"
+		list_item "Add one: ${D_CYAN}jax env set${D_NC}"
 	fi
 
 	echo

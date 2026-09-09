@@ -20,19 +20,19 @@ Zsh-history-substring-search allows you to search through your ZSH history by ty
 ## Install
 
 ```bash
-core install shell --history-substring
+jax install shell --history-substring
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall shell --history-substring
+jax uninstall shell --history-substring
 ```
 
 ## Update
 
 ```bash
-core update shell --history-substring
+jax update shell --history-substring
 ```
 
 ## Notes

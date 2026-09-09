@@ -20,19 +20,19 @@ Zsh-defer defers the loading of ZSH plugins to after the first prompt, significa
 ## Install
 
 ```bash
-core install shell --zsh-defer
+jax install shell --zsh-defer
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall shell --zsh-defer
+jax uninstall shell --zsh-defer
 ```
 
 ## Update
 
 ```bash
-core update shell --zsh-defer
+jax update shell --zsh-defer
 ```
 
 ## Notes

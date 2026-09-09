@@ -9,7 +9,7 @@ voice_help() {
 	echo
 	log_info "Capture voice from the microphone, review it in nvim, copy to clipboard, and launch an AI agent."
 	echo
-	log_info "Usage: core voice [agent]"
+	log_info "Usage: jax voice [agent]"
 	echo
 	separator_section "Agents"
 	echo
@@ -30,17 +30,17 @@ voice_help() {
 	echo
 	separator_section "Examples"
 	echo
-	printf "    ${D_CYAN}core voice${D_NC}                   # Show this help\n"
-	printf "    ${D_CYAN}core voice opencode${D_NC}          # Capture → nvim → opencode\n"
-	printf "    ${D_CYAN}core voice qoder${D_NC}             # Capture → nvim → qoder\n"
-	printf "    ${D_CYAN}core voice claude-code${D_NC}       # Capture → nvim → claude -p\n"
-	printf "    ${D_CYAN}core voice text${D_NC}              # Capture → nvim → print to stdout\n"
-	printf "    ${D_CYAN}core voice !${D_NC}                 # Alias for 'text'\n"
+	printf "    ${D_CYAN}jax voice${D_NC}                   # Show this help\n"
+	printf "    ${D_CYAN}jax voice opencode${D_NC}          # Capture → nvim → opencode\n"
+	printf "    ${D_CYAN}jax voice qoder${D_NC}             # Capture → nvim → qoder\n"
+	printf "    ${D_CYAN}jax voice claude-code${D_NC}       # Capture → nvim → claude -p\n"
+	printf "    ${D_CYAN}jax voice text${D_NC}              # Capture → nvim → print to stdout\n"
+	printf "    ${D_CYAN}jax voice !${D_NC}                 # Alias for 'text'\n"
 	echo
 	separator_section "Requirements"
 	echo
 	list_item "Termux:API package: ${D_CYAN}pkg install termux-api${D_NC}"
-	list_item "Neovim for editing: ${D_CYAN}core install editor${D_NC}"
+	list_item "Neovim for editing: ${D_CYAN}jax install editor${D_NC}"
 	list_item "Termux:API app: ${D_BLUE}devcorex-web.vercel.app/termux/api${D_NC}"
 	echo
 }
@@ -64,7 +64,7 @@ voice_main() {
 
 	if ! command -v nvim &>/dev/null; then
 		log_error "Neovim (nvim) is not installed"
-		list_item "Install the editor: ${D_CYAN}core install editor${NC}"
+		list_item "Install the editor: ${D_CYAN}jax install editor${NC}"
 		separator
 		exit 1
 	fi

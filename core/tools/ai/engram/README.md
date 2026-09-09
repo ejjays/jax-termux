@@ -20,19 +20,19 @@ Engram is a persistent memory system designed for AI coding agents. It provides 
 ## Install
 
 ```bash
-core install ai --engram
+jax install ai --engram
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall ai --engram
+jax uninstall ai --engram
 ```
 
 ## Update
 
 ```bash
-core update ai --engram
+jax update ai --engram
 ```
 
 ## Notes

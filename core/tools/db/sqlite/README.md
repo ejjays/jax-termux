@@ -20,19 +20,19 @@ SQLite is a C-language library that implements a small, fast, self-contained, hi
 ## Install
 
 ```bash
-core install db --sqlite
+jax install db --sqlite
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall db --sqlite
+jax uninstall db --sqlite
 ```
 
 ## Update
 
 ```bash
-core update db --sqlite
+jax update db --sqlite
 ```
 
 ## Notes

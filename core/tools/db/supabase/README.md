@@ -20,19 +20,19 @@ The Supabase CLI brings the Supabase platform to your terminal: manage database 
 ## Install
 
 ```bash
-core install db --supabase
+jax install db --supabase
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall db --supabase
+jax uninstall db --supabase
 ```
 
 ## Update
 
 ```bash
-core update db --supabase
+jax update db --supabase
 ```
 
 ## Usage

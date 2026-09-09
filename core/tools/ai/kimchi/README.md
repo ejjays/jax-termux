@@ -22,7 +22,7 @@ A coding agent CLI powered by kimchi. Built on the pi-mono coding agent SDK, kim
 ## Install
 
 ```bash
-core install ai --kimchi
+jax install ai --kimchi
 ```
 
 You will be prompted to choose:
@@ -34,13 +34,13 @@ You will be prompted to choose:
 ## Uninstall
 
 ```bash
-core uninstall ai --kimchi
+jax uninstall ai --kimchi
 ```
 
 ## Update
 
 ```bash
-core update ai --kimchi
+jax update ai --kimchi
 ```
 
 ## Notes

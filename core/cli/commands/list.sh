@@ -9,7 +9,7 @@ list_main() {
     echo
     box "Core List"
     echo
-    log_info "Usage: core list <target>"
+    log_info "Usage: jax list <target>"
     echo
     log_info "Available targets:"
     echo
@@ -57,7 +57,7 @@ list_main() {
       ;;
     *)
       log_warn "Unknown list target: $arg"
-      echo "Run 'core list' to see available targets"
+      echo "Run 'jax list' to see available targets"
       ;;
     esac
   done
@@ -83,8 +83,8 @@ _list_lang() {
   table_end
 
   echo
-  log_info "Install specific: ${D_CYAN}core install lang --nodejs --python${NC}"
-  log_info "Install all: ${D_CYAN}core install lang${NC}"
+  log_info "Install specific: ${D_CYAN}jax install lang --nodejs --python${NC}"
+  log_info "Install all: ${D_CYAN}jax install lang${NC}"
   echo
 }
 
@@ -106,8 +106,8 @@ _list_db() {
   table_end
 
   echo
-  log_info "Install specific: ${D_CYAN}core install db --postgresql --sqlite${NC}"
-  log_info "Install all: ${D_CYAN}core install db${NC}"
+  log_info "Install specific: ${D_CYAN}jax install db --postgresql --sqlite${NC}"
+  log_info "Install all: ${D_CYAN}jax install db${NC}"
   echo
 }
 
@@ -161,8 +161,8 @@ _list_ai() {
   table_end
 
   echo
-  log_info "Install specific: ${D_CYAN}core install ai --opencode --engram${NC}"
-  log_info "Install all: ${D_CYAN}core install ai${NC}"
+  log_info "Install specific: ${D_CYAN}jax install ai --opencode --engram${NC}"
+  log_info "Install all: ${D_CYAN}jax install ai${NC}"
   echo
 }
 
@@ -180,8 +180,8 @@ _list_editor() {
   table_end
 
   echo
-  log_info "Install specific: ${D_CYAN}core install editor --neovim${NC}"
-  log_info "Install all: ${D_CYAN}core install editor${NC}"
+  log_info "Install specific: ${D_CYAN}jax install editor --neovim${NC}"
+  log_info "Install all: ${D_CYAN}jax install editor${NC}"
   echo
 }
 
@@ -219,8 +219,8 @@ _list_dev() {
   table_end
 
   echo
-  log_info "Install specific: ${D_CYAN}core install dev --gh --fzf --jq${NC}"
-  log_info "Install all: ${D_CYAN}core install dev${NC}"
+  log_info "Install specific: ${D_CYAN}jax install dev --gh --fzf --jq${NC}"
+  log_info "Install all: ${D_CYAN}jax install dev${NC}"
   echo
 }
 
@@ -247,8 +247,8 @@ _list_npm() {
   table_end
 
   echo
-  log_info "Install specific: ${D_CYAN}core install npm --typescript --prettier${NC}"
-  log_info "Install all: ${D_CYAN}core install npm${NC}"
+  log_info "Install specific: ${D_CYAN}jax install npm --typescript --prettier${NC}"
+  log_info "Install all: ${D_CYAN}jax install npm${NC}"
   echo
 }
 
@@ -274,8 +274,8 @@ _list_shell() {
   table_end
 
   echo
-  log_info "Install specific: ${D_CYAN}core install shell --powerlevel10k --fzf-tab${NC}"
-  log_info "Install all: ${D_CYAN}core install shell${NC}"
+  log_info "Install specific: ${D_CYAN}jax install shell --powerlevel10k --fzf-tab${NC}"
+  log_info "Install all: ${D_CYAN}jax install shell${NC}"
   echo
 }
 
@@ -295,8 +295,8 @@ _list_ui() {
   table_end
 
   echo
-  log_info "Install specific: ${D_CYAN}core install ui --font --extra-keys${NC}"
-  log_info "Install all: ${D_CYAN}core install ui${NC}"
+  log_info "Install specific: ${D_CYAN}jax install ui --font --extra-keys${NC}"
+  log_info "Install all: ${D_CYAN}jax install ui${NC}"
   echo
 }
 
@@ -313,8 +313,8 @@ _list_auto() {
   table_end
 
   echo
-  log_info "Install specific: ${D_CYAN}core install auto --n8n${NC}"
-  log_info "Install all: ${D_CYAN}core install auto${NC}"
+  log_info "Install specific: ${D_CYAN}jax install auto --n8n${NC}"
+  log_info "Install all: ${D_CYAN}jax install auto${NC}"
   echo
 }
 

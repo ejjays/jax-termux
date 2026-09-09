@@ -20,19 +20,19 @@ Zsh-you-should-use reminds you when there are alternative, more modern commands 
 ## Install
 
 ```bash
-core install shell --you-should-use
+jax install shell --you-should-use
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall shell --you-should-use
+jax uninstall shell --you-should-use
 ```
 
 ## Update
 
 ```bash
-core update shell --you-should-use
+jax update shell --you-should-use
 ```
 
 ## Notes

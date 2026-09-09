@@ -51,7 +51,7 @@ Installs Bun's official Linux glibc binary (`bun-linux-aarch64.zip`) inside an U
 ## Install
 
 ```bash
-core install lang --bun
+jax install lang --bun
 ```
 
 The installer will prompt you to choose between Native and Proot-distro. Both methods always install the latest available version.
@@ -59,13 +59,13 @@ The installer will prompt you to choose between Native and Proot-distro. Both me
 ## Uninstall
 
 ```bash
-core uninstall lang --bun
+jax uninstall lang --bun
 ```
 
 ## Update
 
 ```bash
-core update lang --bun
+jax update lang --bun
 ```
 
 Compares installed version against the latest release on GitHub. If an update is available, prompts for confirmation before proceeding.
@@ -73,7 +73,7 @@ Compares installed version against the latest release on GitHub. If an update is
 ## Reinstall
 
 ```bash
-core reinstall lang --bun
+jax reinstall lang --bun
 ```
 
 ## Dependencies

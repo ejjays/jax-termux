@@ -1,10 +1,10 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # ============================================================
-# core agent — AI assistant (ask) & bash-backed task agent (run)
+# jax agent — AI assistant (ask) & bash-backed task agent (run)
 #
-#   core agent ask "prompt"     assistant, streamed (markdown TUI)
-#   core agent run "prompt"     task agent: the LLM answers in
+#   jax agent ask "prompt"     assistant, streamed (markdown TUI)
+#   jax agent run "prompt"     task agent: the LLM answers in
 #                               markdown; bash parses the answer
 #                               into files & commands and does the
 #                               work (commands need y/N approval)
@@ -28,7 +28,7 @@ agent_help() {
 	echo
 	box "Core Agent — Local AI Assistant & Task Agent"
 	echo
-	log_info "Usage: core agent <ask|run|config> [options]"
+	log_info "Usage: jax agent <ask|run|config> [options]"
 	echo
 	separator_section "Subcommands"
 	echo
@@ -78,10 +78,10 @@ agent_help() {
 	echo
 	separator_section "Examples"
 	echo
-	printf "    ${D_CYAN}core agent ask -p \"Explain rsync\"${D_NC}\n"
-	printf "    ${D_CYAN}core agent run -p \"create a backup script\"${D_NC}\n"
-	printf "    ${D_CYAN}core agent run -p \"...\" -m gemma-4-e2b-it-cq4 -u http://127.0.0.1:8000/v1${D_NC}\n"
-	printf "    ${D_CYAN}core agent ask${D_NC}                    # interactive chat\n"
+	printf "    ${D_CYAN}jax agent ask -p \"Explain rsync\"${D_NC}\n"
+	printf "    ${D_CYAN}jax agent run -p \"create a backup script\"${D_NC}\n"
+	printf "    ${D_CYAN}jax agent run -p \"...\" -m gemma-4-e2b-it-cq4 -u http://127.0.0.1:8000/v1${D_NC}\n"
+	printf "    ${D_CYAN}jax agent ask${D_NC}                    # interactive chat\n"
 	echo
 }
 
@@ -166,7 +166,7 @@ agent_status() {
 # agent_config_help
 # ------------------------------------------------------------
 agent_config_help() {
-	log_info "Usage: core agent config [key] [value]"
+	log_info "Usage: jax agent config [key] [value]"
 	echo
 	separator_section "Settings"
 	echo
@@ -180,7 +180,7 @@ agent_config_help() {
 	printf "    ${D_CYAN}%-14s${D_NC} %s\n" "server_command" "Command that starts the model server in the background"
 	printf "    ${D_CYAN}%-14s${D_NC} %s\n" "workspace" "Default agent working dir"
 	echo
-	log_tip "Run ${D_CYAN}core agent config${D_NC} with no arguments to show current settings."
+	log_tip "Run ${D_CYAN}jax agent config${D_NC} with no arguments to show current settings."
 }
 
 # ------------------------------------------------------------
@@ -412,7 +412,7 @@ agent_repl_handle() {
 	/plan | /build)
 		if [[ "$mode" == "ask" ]]; then
 			echo
-			log_warn "Plan/Build modes only exist in ${D_CYAN}core agent run${D_NC} — ask is a plain chat"
+			log_warn "Plan/Build modes only exist in ${D_CYAN}jax agent run${D_NC} — ask is a plain chat"
 			echo
 			return 0
 		fi
@@ -713,7 +713,7 @@ agent_run_repl() {
 }
 
 # ------------------------------------------------------------
-# agent_run_loop <prompt> [history] — the core agent loop:
+# agent_run_loop <prompt> [history] — the jax agent loop:
 #   LLM answers in markdown → bash parses files & commands →
 #   bash creates the files / runs the approved commands →
 #   results go back to the LLM until it writes a final summary

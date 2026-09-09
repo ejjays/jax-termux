@@ -32,7 +32,7 @@ core_help() {
   echo
   box "◈ CORE-TERMUX v${CORE_VERSION} ◈"
   echo
-  log_info "Usage: core <command> [options]"
+  log_info "Usage: jax <command> [options]"
   echo
   separator_section "Available Commands"
   echo
@@ -53,9 +53,9 @@ core_help() {
   echo
   separator_section "Quick Start"
   echo
-  list_item "Run: ${D_CYAN}core${D_NC} to see available commands"
-  list_item "Run: ${D_CYAN}core open${D_NC} for official documentation"
-  list_item "Run: ${D_CYAN}core install <module>${D_NC} to install modules"
+  list_item "Run: ${D_CYAN}jax${D_NC} to see available commands"
+  list_item "Run: ${D_CYAN}jax open${D_NC} for official documentation"
+  list_item "Run: ${D_CYAN}jax install <module>${D_NC} to install modules"
   echo
   separator_section "Module Targets"
   echo
@@ -74,8 +74,8 @@ core_help() {
   echo
   separator_section "Help"
   echo
-  list_item "Run ${D_CYAN}core <command>${D_NC} for command-specific help"
-  list_item "Example: ${D_CYAN}core pg${D_NC}, ${D_CYAN}core init${D_NC}"
-  list_item "Docs: ${D_CYAN}core open${D_NC} — ${D_BLUE}devcorex-web.vercel.app/"
+  list_item "Run ${D_CYAN}jax <command>${D_NC} for command-specific help"
+  list_item "Example: ${D_CYAN}jax pg${D_NC}, ${D_CYAN}jax init${D_NC}"
+  list_item "Docs: ${D_CYAN}jax open${D_NC} — ${D_BLUE}devcorex-web.vercel.app/"
   echo
 }

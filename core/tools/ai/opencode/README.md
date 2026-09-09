@@ -22,7 +22,7 @@ OpenCode is an AI-powered coding agent developed by anomalyco that operates dire
 ## Install
 
 ```bash
-core install ai --opencode
+jax install ai --opencode
 ```
 
 You will be prompted to choose:
@@ -34,13 +34,13 @@ You will be prompted to choose:
 ## Uninstall
 
 ```bash
-core uninstall ai --opencode
+jax uninstall ai --opencode
 ```
 
 ## Update
 
 ```bash
-core update ai --opencode
+jax update ai --opencode
 ```
 
 ## Notes

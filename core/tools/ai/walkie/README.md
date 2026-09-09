@@ -14,7 +14,7 @@ Walkie builds an encrypted, serverless P2P mesh (HyperDHT) so AI agents can chat
 
 Core-Termux ships a Termux-adapted build that adds:
 
-- **Generic agent runner** — `walkie agent` works with any installed AI agent, not just claude/codex: core, agy, vibe, opencode, gemini, qwen, kilo, mimo, cline, amp, goose, droid, hermes, keelcode, kimchi, omp, qodercli, kimi, openclaude, pi, command-code, cursor, mmx, supercode, freebuff, openclaw, copilot, codebuff and more. Invocation formats are verified against each agent's real `--help`.
+- **Generic agent runner** — `walkie agent` works with any installed AI agent, not just claude/codex: jax, agy, vibe, opencode, gemini, qwen, kilo, mimo, cline, amp, goose, droid, hermes, keelcode, kimchi, omp, qodercli, kimi, openclaude, pi, command-code, cursor, mmx, supercode, freebuff, openclaw, copilot, codebuff and more. Invocation formats are verified against each agent's real `--help`.
 - **SELinux/netlink patch** — udx-native's network interface watcher cannot bind `AF_NETLINK` on Android; the patched file degrades gracefully to `interfaces=[]` (local IP falls back to `127.0.0.1`) while WAN discovery keeps working via UDP.
 - **Strict solo-tag mode** — `--mention-only` (respond only when @mentioned) and `--respond-to <id>` (respond only to a trusted sender), plus an anti-replay guard so a daemon restart never re-triggers old tasks.
 - **Channel member tracking** — opt-in `--track-members` keeps a roster of members and injects it into the agent prompt only when membership changes; persisted to `~/.walkie/roster-<channel>.json`.
@@ -29,7 +29,7 @@ Core-Termux ships a Termux-adapted build that adds:
 ## Install
 
 ```bash
-core install ai --walkie
+jax install ai --walkie
 ```
 
 Installs walkie-sh into `~/.local/share/core-termux-data/walkie` (falls back to a global npm install if the local one fails), applies all Termux patches, generates agent wrappers, and installs the `walkie` launcher in `$PREFIX/bin`.
@@ -37,13 +37,13 @@ Installs walkie-sh into `~/.local/share/core-termux-data/walkie` (falls back to 
 ## Uninstall
 
 ```bash
-core uninstall ai --walkie
+jax uninstall ai --walkie
 ```
 
 ## Update
 
 ```bash
-core update ai --walkie
+jax update ai --walkie
 ```
 
 ## Usage
@@ -61,8 +61,8 @@ walkie agent <channel> --cli gemini --name gemini --mention-only
 # Agent that only responds to a trusted sender
 walkie agent <channel> --cli claude --name claude --respond-to <sender-id>
 
-# Core-Termux's own agent (runs `core agent run -p <prompt> -y`)
-walkie agent <channel> --cli core
+# Core-Termux's own agent (runs `jax agent run -p <prompt> -y`)
+walkie agent <channel> --cli jax
 
 # Agent with member roster tracking
 walkie agent <channel> --cli qwen --name qwen --track-members
@@ -79,6 +79,6 @@ Notes:
 
 - Run agents in separate terminals (or in the background) — each `walkie agent` process is one agent participant.
 - `supercode` and `freebuff` have no headless prompt flag; walkie falls back to a positional prompt, which may open their interactive TUI.
-- `core` runs headless as `core agent run -p <prompt> -y` (commands are auto-approved); agent installers remove the walkie wrapper on uninstall, so `core reinstall <agent>` never mistakes an orphaned wrapper for a still-installed binary.
+- `jax` runs headless as `jax agent run -p <prompt> -y` (commands are auto-approved); agent installers remove the walkie wrapper on uninstall, so `jax reinstall <agent>` never mistakes an orphaned wrapper for a still-installed binary.
 - `mmx` is a generation CLI, not a chat agent: walkie drives it with `mmx text chat --message <prompt>`.
 - Ollama is a local server, not a chat CLI: `--cli ollama` talks to the Ollama HTTP API directly.

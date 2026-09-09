@@ -32,19 +32,19 @@ Key features:
 ## Install
 
 ```bash
-core install ai --supercode
+jax install ai --supercode
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall ai --supercode
+jax uninstall ai --supercode
 ```
 
 ## Update
 
 ```bash
-core update ai --supercode
+jax update ai --supercode
 ```
 
 ## Usage

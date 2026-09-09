@@ -8,20 +8,20 @@ show_main() {
 		echo
 		box "Core Show"
 		echo
-		log_info "Usage: core show <module> --<tool>"
+		log_info "Usage: jax show <module> --<tool>"
 		echo
 		log_info "Display help information for a specific tool."
 		echo
 		log_info "Available targets:"
 		echo
-		list_item "core show ai --opencode"
-		list_item "core show ai --ollama"
-		list_item "core show db --postgresql"
-		list_item "core show dev --gh"
-		list_item "core show npm --typescript"
-		list_item "core show all --<tool>"
+		list_item "jax show ai --opencode"
+		list_item "jax show ai --ollama"
+		list_item "jax show db --postgresql"
+		list_item "jax show dev --gh"
+		list_item "jax show npm --typescript"
+		list_item "jax show all --<tool>"
 		echo
-		log_info "Run ${D_CYAN}core list <module>${D_NC} to see available tools"
+		log_info "Run ${D_CYAN}jax list <module>${D_NC} to see available tools"
 		echo
 		return
 	fi
@@ -38,7 +38,7 @@ show_main() {
 	done
 
 	if [[ -z "$module" ]]; then
-		log_error "Usage: core show <module> --<tool>"
+		log_error "Usage: jax show <module> --<tool>"
 		return 1
 	fi
 
@@ -60,7 +60,7 @@ show_main() {
 			fi
 		done
 		echo
-		log_info "Run ${D_CYAN}core show $module --<tool>${NC} for details"
+		log_info "Run ${D_CYAN}jax show $module --<tool>${NC} for details"
 		echo
 		return
 	fi

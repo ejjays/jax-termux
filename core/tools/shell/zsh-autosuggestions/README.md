@@ -20,19 +20,19 @@ Zsh-autosuggestions suggests commands as you type based on your history and comp
 ## Install
 
 ```bash
-core install shell --zsh-autosuggestions
+jax install shell --zsh-autosuggestions
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall shell --zsh-autosuggestions
+jax uninstall shell --zsh-autosuggestions
 ```
 
 ## Update
 
 ```bash
-core update shell --zsh-autosuggestions
+jax update shell --zsh-autosuggestions
 ```
 
 ## Notes

@@ -9,8 +9,8 @@ reinstall_main() {
     echo
     box "Core Reinstall"
     echo
-    log_info "Usage: core reinstall <target>"
-    log_info "Usage: core reinstall <target> --tool1 --tool2"
+    log_info "Usage: jax reinstall <target>"
+    log_info "Usage: jax reinstall <target> --tool1 --tool2"
     echo
     log_info "Available targets:"
     echo
@@ -26,9 +26,9 @@ reinstall_main() {
     echo
     log_info "Reinstall specific tools with flags:"
     echo
-    list_item "core reinstall ai --qwen-code --ollama"
-    list_item "core reinstall db --postgresql --sqlite"
-    list_item "Run ${D_CYAN}core list <target>${D_NC} to see all available tools"
+    list_item "jax reinstall ai --qwen-code --ollama"
+    list_item "jax reinstall db --postgresql --sqlite"
+    list_item "Run ${D_CYAN}jax list <target>${D_NC} to see all available tools"
     echo
     log_warn "This will uninstall and then install the selected components!"
     echo
@@ -49,7 +49,7 @@ reinstall_main() {
 
   if [[ -z "$module_target" ]]; then
     log_error "No target specified"
-    echo "Run 'core reinstall' to see available targets"
+    echo "Run 'jax reinstall' to see available targets"
     return 1
   fi
 
@@ -102,7 +102,7 @@ _reinstall_full_module() {
     ;;
   *)
     log_warn "Unknown reinstall target: $target"
-    echo "Run 'core reinstall' to see available targets"
+    echo "Run 'jax reinstall' to see available targets"
     ;;
   esac
 }
@@ -721,7 +721,7 @@ _reinstall_specific_tools() {
     ;;
   *)
     log_warn "Unknown reinstall target: $module"
-    echo "Run 'core reinstall' to see available targets"
+    echo "Run 'jax reinstall' to see available targets"
     ;;
   esac
 }

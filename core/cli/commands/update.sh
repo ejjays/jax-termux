@@ -9,12 +9,12 @@ update_main() {
     echo
     box "Core Update"
     echo
-    log_info "Usage: core update <target>"
-    log_info "Usage: core update <target> --tool1 --tool2"
+    log_info "Usage: jax update <target>"
+    log_info "Usage: jax update <target> --tool1 --tool2"
     echo
     log_info "Available targets:"
     echo
-    list_item "core       - Update only Core-Termux framework"
+    list_item "jax       - Update only Core-Termux framework"
     list_item "lang       - Update language packages (pkg upgrade)"
     list_item "db         - Update databases"
     list_item "ai         - Update AI tools (npm/pip/pkg)"
@@ -27,9 +27,9 @@ update_main() {
     echo
     log_info "Update specific tools with flags:"
     echo
-    list_item "core update ai --qwen-code --ollama"
-    list_item "core update db --postgresql --sqlite"
-    list_item "Run ${D_CYAN}core list <target>${D_NC} to see all available tools"
+    list_item "jax update ai --qwen-code --ollama"
+    list_item "jax update db --postgresql --sqlite"
+    list_item "Run ${D_CYAN}jax list <target>${D_NC} to see all available tools"
     echo
     return
   fi
@@ -50,7 +50,7 @@ update_main() {
   # If no module target specified, show error
   if [[ -z "$module_target" ]]; then
     log_error "No target specified"
-    echo "Run 'core update' to see available targets"
+    echo "Run 'jax update' to see available targets"
     return 1
   fi
 
@@ -68,7 +68,7 @@ _update_full_module() {
   local target="$1"
 
   case "$target" in
-  core)
+  jax)
     update_core
     ;;
   lang)
@@ -109,7 +109,7 @@ _update_full_module() {
     ;;
   *)
     log_warn "Unknown update target: $target"
-    echo "Run 'core update' to see available targets"
+    echo "Run 'jax update' to see available targets"
     ;;
   esac
 }
@@ -729,7 +729,7 @@ _update_specific_tools() {
     ;;
   *)
     log_warn "Unknown update target: $module"
-    echo "Run 'core update' to see available targets"
+    echo "Run 'jax update' to see available targets"
     ;;
   esac
 }

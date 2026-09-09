@@ -12,10 +12,10 @@ The official Hugging Face Hub CLI — download, upload, and manage models, datas
 
 `hf` is the official command-line interface for the Hugging Face Hub. It replaces the deprecated `huggingface-cli` command and provides a single tool for everything Hub-related: downloading and uploading models/datasets, managing Spaces and buckets, running Jobs, deploying Inference Endpoints, opening sandboxes, handling discussions and webhooks, browsing papers and collections, managing the local cache, and more.
 
-## Install via core
+## Install via jax
 
 ```bash
-core install ai --hugging-face
+jax install ai --hugging-face
 ```
 
 Under the hood this runs the official installer:
@@ -115,8 +115,8 @@ hf update
 ## Uninstall / Update
 
 ```bash
-core uninstall ai --hugging-face
-core update ai --hugging-face
+jax uninstall ai --hugging-face
+jax update ai --hugging-face
 ```
 
 Uninstalling asks whether to also remove the cache/config directories. Updating re-runs the official installer, which always upgrades to the latest version.

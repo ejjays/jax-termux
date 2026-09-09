@@ -22,7 +22,7 @@ Cursor CLI (cursor-agent) is an AI-powered coding agent from Cursor that operate
 ## Install
 
 ```bash
-core install ai --cursor-cli
+jax install ai --cursor-cli
 ```
 
 You will be prompted to choose:
@@ -34,13 +34,13 @@ You will be prompted to choose:
 ## Uninstall
 
 ```bash
-core uninstall ai --cursor-cli
+jax uninstall ai --cursor-cli
 ```
 
 ## Update
 
 ```bash
-core update ai --cursor-cli
+jax update ai --cursor-cli
 ```
 
 ## Notes

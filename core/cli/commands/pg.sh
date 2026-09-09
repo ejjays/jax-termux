@@ -13,7 +13,7 @@ pg_help() {
 	echo
 	box "Core PostgreSQL Manager"
 	echo
-	log_info "Usage: core pg <command> [options]"
+	log_info "Usage: jax pg <command> [options]"
 	echo
 	separator_section "Available Commands"
 	echo
@@ -29,10 +29,10 @@ pg_help() {
 	echo
 	separator_section "Examples"
 	echo
-	printf "    ${D_CYAN}core pg start${D_NC}              # Start PostgreSQL\n"
-	printf "    ${D_CYAN}core pg stop${D_NC}               # Stop PostgreSQL\n"
-	printf "    ${D_CYAN}core pg create mydb${D_NC}        # Create database 'mydb'\n"
-	printf "    ${D_CYAN}core pg shell${D_NC}              # Open psql shell\n"
+	printf "    ${D_CYAN}jax pg start${D_NC}              # Start PostgreSQL\n"
+	printf "    ${D_CYAN}jax pg stop${D_NC}               # Stop PostgreSQL\n"
+	printf "    ${D_CYAN}jax pg create mydb${D_NC}        # Create database 'mydb'\n"
+	printf "    ${D_CYAN}jax pg shell${D_NC}              # Open psql shell\n"
 	echo
 }
 
@@ -40,7 +40,7 @@ pg_help() {
 check_pg_installed() {
 	if ! command -v pg_ctl &>/dev/null; then
 		log_error "PostgreSQL is not installed"
-		log_info "Run: ${D_CYAN}core install db${NC}"
+		log_info "Run: ${D_CYAN}jax install db${NC}"
 		return 1
 	fi
 	return 0
@@ -86,7 +86,7 @@ pg_init() {
 		log_warn "PostgreSQL is already initialized"
 		echo
 		list_item "Data directory: $PG_DATA"
-		list_item "Run: ${D_CYAN}core pg start${NC}"
+		list_item "Run: ${D_CYAN}jax pg start${NC}"
 		echo
 		return 0
 	fi
@@ -101,7 +101,7 @@ pg_init() {
 		list_item "Data directory: $PG_DATA"
 		list_item "Default user: $PG_USER"
 		echo
-		log_info "Start PostgreSQL with: ${D_CYAN}core pg start${NC}"
+		log_info "Start PostgreSQL with: ${D_CYAN}jax pg start${NC}"
 	else
 		log_error "Failed to initialize PostgreSQL"
 		log_warn "Check log: $PG_LOG"
@@ -153,7 +153,7 @@ pg_start() {
 		echo
 	else
 		log_error "Failed to start PostgreSQL"
-		log_warn "PostgreSQL may not be initialized. Run: core pg init"
+		log_warn "PostgreSQL may not be initialized. Run: jax pg init"
 		return 1
 	fi
 
@@ -275,12 +275,12 @@ pg_status() {
 			log_warn "PostgreSQL is STOPPED"
 			echo
 			list_item "Data directory: $PG_DATA"
-			list_item "Run: ${D_CYAN}core pg start${NC}"
+			list_item "Run: ${D_CYAN}jax pg start${NC}"
 		fi
 	else
 		log_info "PostgreSQL data directory not found"
 		echo
-		list_item "Run: ${D_CYAN}core pg init${NC}"
+		list_item "Run: ${D_CYAN}jax pg init${NC}"
 	fi
 
 	echo
@@ -292,7 +292,7 @@ pg_create() {
 
 	if [[ -z "$db_name" ]]; then
 		log_error "Database name required"
-		log_info "Usage: core pg create <database_name>"
+		log_info "Usage: jax pg create <database_name>"
 		return 1
 	fi
 
@@ -318,7 +318,7 @@ pg_drop() {
 
 	if [[ -z "$db_name" ]]; then
 		log_error "Database name required"
-		log_info "Usage: core pg drop <database_name>"
+		log_info "Usage: jax pg drop <database_name>"
 		return 1
 	fi
 

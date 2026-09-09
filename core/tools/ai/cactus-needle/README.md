@@ -81,10 +81,10 @@ The fine-tuning data format is JSONL: `{"query": ..., "tools": [...], "answers":
 
 ## Termux adaptation (what this installer does)
 
-Cactus Needle is Python/JAX-based, and its core native dependencies — `jaxlib`, `scipy`, `sentencepiece` — publish only glibc (manylinux) wheels. Termux's native Android (bionic) Python rejects manylinux wheels, so a plain native Termux install is impossible (`No matching distribution found for jaxlib`). This installer adapts the **runtime libraries**, not the tool: it installs the official glibc wheels into a glibc-resident Python instead of trying to compile anything.
+Cactus Needle is Python/JAX-based, and its jax native dependencies — `jaxlib`, `scipy`, `sentencepiece` — publish only glibc (manylinux) wheels. Termux's native Android (bionic) Python rejects manylinux wheels, so a plain native Termux install is impossible (`No matching distribution found for jaxlib`). This installer adapts the **runtime libraries**, not the tool: it installs the official glibc wheels into a glibc-resident Python instead of trying to compile anything.
 
 ```bash
-core install ai --cactus-needle
+jax install ai --cactus-needle
 ```
 
 You will be prompted to choose:
@@ -109,8 +109,8 @@ You will be prompted to choose:
 ## Uninstall / Update
 
 ```bash
-core uninstall ai --cactus-needle
-core update ai --cactus-needle
+jax uninstall ai --cactus-needle
+jax update ai --cactus-needle
 ```
 
 ## Notes

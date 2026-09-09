@@ -10,7 +10,7 @@ readonly BRAIN_DIR="$CORE_DATA/brain"
 _brain_ensure() {
 	if [[ ! -d "$BRAIN_DIR" ]]; then
 		log_error "Brain not initialized"
-		list_item "Run: ${D_CYAN}core brain init${D_NC}"
+		list_item "Run: ${D_CYAN}jax brain init${D_NC}"
 		return 1
 	fi
 }
@@ -152,7 +152,7 @@ _brain_editor() {
 
 	if ! command -v nvim &>/dev/null; then
 		log_error "Neovim not found"
-		list_item "Install it: ${D_CYAN}core install editor${D_NC}"
+		list_item "Install it: ${D_CYAN}jax install editor${D_NC}"
 		return 1
 	fi
 
@@ -181,7 +181,7 @@ brain_help() {
 	echo
 	box "Core Brain — Your Second Brain"
 	echo
-	log_info "Usage: core brain <subcommand> [options]"
+	log_info "Usage: jax brain <subcommand> [options]"
 	echo
 	separator_section "Subcommands"
 	echo
@@ -200,30 +200,30 @@ brain_help() {
 	echo
 	separator_section "Examples"
 	echo
-	printf "    ${D_CYAN}core brain init${D_NC}              # Create local brain\n"
-	printf "    ${D_CYAN}core brain save${D_NC}              # Interactive save\n"
-	printf "    ${D_CYAN}core brain search react${D_NC}      # Search all memories\n"
-	printf "    ${D_CYAN}core brain ls${D_NC}                # List all categories\n"
-	printf "    ${D_CYAN}core brain ls react${D_NC}          # List react category\n"
-	printf "    ${D_CYAN}core brain edit${D_NC}              # Interactive edit\n"
-	printf "    ${D_CYAN}core brain edit slug-name${D_NC}    # Edit by slug\n"
-	printf "    ${D_CYAN}core brain delete${D_NC}            # Interactive delete\n"
-	printf "    ${D_CYAN}core brain reset${D_NC}             # Destroy local brain\n"
-	printf "    ${D_CYAN}core brain show slug-name${D_NC}    # View memory + relations\n"
-	printf "    ${D_CYAN}core brain graph${D_NC}             # Show connection map\n"
-	printf "    ${D_CYAN}core brain skill${D_NC}             # Create a skill from memories\n"
-	printf "    ${D_CYAN}core brain sync${D_NC}              # Sync with GitHub\n"
+	printf "    ${D_CYAN}jax brain init${D_NC}              # Create local brain\n"
+	printf "    ${D_CYAN}jax brain save${D_NC}              # Interactive save\n"
+	printf "    ${D_CYAN}jax brain search react${D_NC}      # Search all memories\n"
+	printf "    ${D_CYAN}jax brain ls${D_NC}                # List all categories\n"
+	printf "    ${D_CYAN}jax brain ls react${D_NC}          # List react category\n"
+	printf "    ${D_CYAN}jax brain edit${D_NC}              # Interactive edit\n"
+	printf "    ${D_CYAN}jax brain edit slug-name${D_NC}    # Edit by slug\n"
+	printf "    ${D_CYAN}jax brain delete${D_NC}            # Interactive delete\n"
+	printf "    ${D_CYAN}jax brain reset${D_NC}             # Destroy local brain\n"
+	printf "    ${D_CYAN}jax brain show slug-name${D_NC}    # View memory + relations\n"
+	printf "    ${D_CYAN}jax brain graph${D_NC}             # Show connection map\n"
+	printf "    ${D_CYAN}jax brain skill${D_NC}             # Create a skill from memories\n"
+	printf "    ${D_CYAN}jax brain sync${D_NC}              # Sync with GitHub\n"
 	echo
 	separator_section "Non-interactive flags (AI agent mode)"
 	echo
-	printf "    ${D_CYAN}core brain save --title \"T\" --content \"C\" [--category c] [--tags \"a, b\"]${D_NC}\n"
-	printf "    ${D_CYAN}core brain search \"query\" --full${D_NC}\n"
-	printf "    ${D_CYAN}core brain edit <slug> --content \"new text\"${D_NC}\n"
-	printf "    ${D_CYAN}core brain delete <slug> --yes${D_NC}\n"
-	printf "    ${D_CYAN}core brain graph --json${D_NC}\n"
-	printf "    ${D_CYAN}core brain skill --all --name <name> [--global]${D_NC}\n"
+	printf "    ${D_CYAN}jax brain save --title \"T\" --content \"C\" [--category c] [--tags \"a, b\"]${D_NC}\n"
+	printf "    ${D_CYAN}jax brain search \"query\" --full${D_NC}\n"
+	printf "    ${D_CYAN}jax brain edit <slug> --content \"new text\"${D_NC}\n"
+	printf "    ${D_CYAN}jax brain delete <slug> --yes${D_NC}\n"
+	printf "    ${D_CYAN}jax brain graph --json${D_NC}\n"
+	printf "    ${D_CYAN}jax brain skill --all --name <name> [--global]${D_NC}\n"
 	echo
-	list_item "These skip all prompts — used by ${D_CYAN}core agent${D_NC}, scripts and the REPL shell mode"
+	list_item "These skip all prompts — used by ${D_CYAN}jax agent${D_NC}, scripts and the REPL shell mode"
 	echo
 }
 
@@ -249,7 +249,7 @@ brain_init() {
 	if ! $gh_ok; then
 		mkdir -p "$BRAIN_DIR"
 		log_success "Local brain created: ${D_CYAN}$BRAIN_DIR${D_NC}"
-		list_item "Install gh for GitHub sync: ${D_CYAN}core install dev${D_NC}"
+		list_item "Install gh for GitHub sync: ${D_CYAN}jax install dev${D_NC}"
 		separator
 		return 0
 	fi
@@ -617,7 +617,7 @@ brain_ls() {
 		if [[ -z "$dirs" ]]; then
 			echo -e "    ${D_GRAY}No memories yet${D_NC}"
 			echo
-			list_item "Add one: ${D_CYAN}core brain save${D_NC}"
+			list_item "Add one: ${D_CYAN}jax brain save${D_NC}"
 			return 0
 		fi
 	fi
@@ -862,7 +862,7 @@ brain_sync() {
 
 	if [[ ! -d "$BRAIN_DIR/.git" ]]; then
 		log_warn "Not a git repository"
-		list_item "Run: ${D_CYAN}core brain init${D_NC} to set up Git"
+		list_item "Run: ${D_CYAN}jax brain init${D_NC} to set up Git"
 		separator
 		return 1
 	fi
@@ -871,7 +871,7 @@ brain_sync() {
 
 	if ! git remote -v &>/dev/null; then
 		log_info "No remote configured — local commit only"
-		list_item "Set up GitHub sync with: ${D_CYAN}core brain init${D_NC}"
+		list_item "Set up GitHub sync with: ${D_CYAN}jax brain init${D_NC}"
 		separator
 		return 0
 	fi
@@ -985,7 +985,7 @@ brain_skill() {
 		separator
 		echo
 		list_item "No memories yet"
-		list_item "Create some: ${D_CYAN}core brain save${D_NC}"
+		list_item "Create some: ${D_CYAN}jax brain save${D_NC}"
 		separator
 		return 0
 	fi
@@ -1243,7 +1243,7 @@ brain_edit() {
 
 	if [[ -z "$editor" ]]; then
 		log_error "No editor found"
-		list_item "Install one: ${D_CYAN}core install editor${D_NC}"
+		list_item "Install one: ${D_CYAN}jax install editor${D_NC}"
 		return 1
 	fi
 
@@ -1349,7 +1349,7 @@ brain_reset() {
 	echo
 	loading "Deleting local brain..." rm -rf "$BRAIN_DIR"
 	log_success "Brain destroyed"
-	list_item "Recreate with: ${D_CYAN}core brain init${D_NC}"
+	list_item "Recreate with: ${D_CYAN}jax brain init${D_NC}"
 	separator
 }
 
@@ -1380,15 +1380,15 @@ brain_dashboard() {
 
 	separator_section "Quick Start"
 	echo
-	list_item "Save: ${D_CYAN}core brain save${D_NC}"
-	list_item "Show: ${D_CYAN}core brain show${D_NC}"
-	list_item "Search: ${D_CYAN}core brain search${D_NC}"
-	list_item "Edit: ${D_CYAN}core brain edit${D_NC}"
-	list_item "Delete: ${D_CYAN}core brain delete${D_NC}"
-	list_item "Reset: ${D_CYAN}core brain reset${D_NC}"
-	list_item "Graph: ${D_CYAN}core brain graph${D_NC}"
-	list_item "Skill: ${D_CYAN}core brain skill${D_NC}"
-	list_item "Sync: ${D_CYAN}core brain sync${D_NC}"
+	list_item "Save: ${D_CYAN}jax brain save${D_NC}"
+	list_item "Show: ${D_CYAN}jax brain show${D_NC}"
+	list_item "Search: ${D_CYAN}jax brain search${D_NC}"
+	list_item "Edit: ${D_CYAN}jax brain edit${D_NC}"
+	list_item "Delete: ${D_CYAN}jax brain delete${D_NC}"
+	list_item "Reset: ${D_CYAN}jax brain reset${D_NC}"
+	list_item "Graph: ${D_CYAN}jax brain graph${D_NC}"
+	list_item "Skill: ${D_CYAN}jax brain skill${D_NC}"
+	list_item "Sync: ${D_CYAN}jax brain sync${D_NC}"
 	echo
 }
 

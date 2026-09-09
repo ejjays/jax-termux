@@ -11,34 +11,34 @@ Advanced open-source relational database
 
 ## Description
 
-PostgreSQL is a powerful, open-source object-relational database system with over 30 years of active development. It has a strong reputation for reliability, feature robustness, and performance. Core-Termux includes a dedicated manager (`core pg`) for starting, stopping, and managing PostgreSQL instances.
+PostgreSQL is a powerful, open-source object-relational database system with over 30 years of active development. It has a strong reputation for reliability, feature robustness, and performance. Core-Termux includes a dedicated manager (`jax pg`) for starting, stopping, and managing PostgreSQL instances.
 
 ## Dependencies
 
 - Installed via pkg
-- Data directory managed by `core pg`
+- Data directory managed by `jax pg`
 
 ## Install
 
 ```bash
-core install db --postgresql
+jax install db --postgresql
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall db --postgresql
+jax uninstall db --postgresql
 ```
 
 ## Update
 
 ```bash
-core update db --postgresql
+jax update db --postgresql
 ```
 
 ## Notes
 
-- Managed via `core pg` commands (start, stop, restart, status, init, create, drop, list, shell)
+- Managed via `jax pg` commands (start, stop, restart, status, init, create, drop, list, shell)
 - Logs: `~/.cache/core-termux/postgresql.log`
 - Automatic data directory detection
 - Support for existing installations

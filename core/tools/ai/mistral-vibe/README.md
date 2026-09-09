@@ -22,19 +22,19 @@ Mistral Vibe is a command-line coding assistant powered by Mistral's models. It 
 ## Install
 
 ```bash
-core install ai --mistral-vibe
+jax install ai --mistral-vibe
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall ai --mistral-vibe
+jax uninstall ai --mistral-vibe
 ```
 
 ## Update
 
 ```bash
-core update ai --mistral-vibe
+jax update ai --mistral-vibe
 ```
 
 ## Notes

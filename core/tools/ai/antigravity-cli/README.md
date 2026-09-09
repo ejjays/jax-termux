@@ -20,19 +20,19 @@ Antigravity CLI is the lightweight, fast, terminal-first surface to work with An
 ## Install
 
 ```bash
-core install ai --antigravity-cli
+jax install ai --antigravity-cli
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall ai --antigravity-cli
+jax uninstall ai --antigravity-cli
 ```
 
 ## Update
 
 ```bash
-core update ai --antigravity-cli
+jax update ai --antigravity-cli
 ```
 
 ## Notes

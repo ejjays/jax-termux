@@ -15,7 +15,7 @@ AMP Code is an AI coding agent by Sourcegraph that runs directly in your termina
 ## Installation
 
 ```bash
-core install ai --ampcode
+jax install ai --ampcode
 ```
 
 ## Usage
@@ -31,10 +31,10 @@ amp update               # Update AMP Code CLI
 ## Management
 
 ```bash
-core show ai --ampcode
-core update ai --ampcode
-core reinstall ai --ampcode
-core uninstall ai --ampcode
+jax show ai --ampcode
+jax update ai --ampcode
+jax reinstall ai --ampcode
+jax uninstall ai --ampcode
 ```
 
 > **Note:** On the first launch, you'll be prompted to authenticate with your Amp account before using the CLI.

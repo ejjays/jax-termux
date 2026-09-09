@@ -20,19 +20,19 @@ GitHub CLI brings GitHub to your terminal. Manage issues, pull requests, reposit
 ## Install
 
 ```bash
-core install dev --gh
+jax install dev --gh
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall dev --gh
+jax uninstall dev --gh
 ```
 
 ## Update
 
 ```bash
-core update dev --gh
+jax update dev --gh
 ```
 
 ## Notes

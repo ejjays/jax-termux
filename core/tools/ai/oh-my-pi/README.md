@@ -41,10 +41,10 @@ Installs omp inside an Ubuntu 24.04 container via proot-distro, with a thin wrap
 ## Commands
 
 ```bash
-core install ai --oh-my-pi
-core uninstall ai --oh-my-pi
-core update ai --oh-my-pi
-core reinstall ai --oh-my-pi
+jax install ai --oh-my-pi
+jax uninstall ai --oh-my-pi
+jax update ai --oh-my-pi
+jax reinstall ai --oh-my-pi
 ```
 
 ## Usage

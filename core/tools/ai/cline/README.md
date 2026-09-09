@@ -13,7 +13,7 @@ Autonomous coding agent as an SDK, IDE extension, or CLI assistant. Run Cline in
 ## Installation
 
 ```bash
-core install ai --cline
+jax install ai --cline
 ```
 
 ## Usage
@@ -26,11 +26,11 @@ cline --help
 
 | Command             | Description                              |
 |---------------------|------------------------------------------|
-| `core install ai --cline`   | Install Cline CLI                        |
-| `core uninstall ai --cline` | Uninstall Cline CLI                      |
-| `core update ai --cline`    | Update Cline CLI to latest version       |
-| `core reinstall ai --cline` | Reinstall Cline CLI                      |
-| `core show ai --cline`      | Show this help                           |
+| `jax install ai --cline`   | Install Cline CLI                        |
+| `jax uninstall ai --cline` | Uninstall Cline CLI                      |
+| `jax update ai --cline`    | Update Cline CLI to latest version       |
+| `jax reinstall ai --cline` | Reinstall Cline CLI                      |
+| `jax show ai --cline`      | Show this help                           |
 
 ## Installation Methods
 

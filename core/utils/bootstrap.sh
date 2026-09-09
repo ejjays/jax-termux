@@ -15,7 +15,7 @@ import() {
 	fi
 
 	if [[ ! -f "$path" ]]; then
-		echo "core: import error: $path not found" >&2
+		echo "jax: import error: $path not found" >&2
 		exit 1
 	fi
 

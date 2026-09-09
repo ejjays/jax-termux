@@ -22,19 +22,19 @@ Claude Code is Anthropic's AI-powered coding assistant that runs directly in you
 ## Install
 
 ```bash
-core install ai --claude-code
+jax install ai --claude-code
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall ai --claude-code
+jax uninstall ai --claude-code
 ```
 
 ## Update
 
 ```bash
-core update ai --claude-code
+jax update ai --claude-code
 ```
 
 ## Notes

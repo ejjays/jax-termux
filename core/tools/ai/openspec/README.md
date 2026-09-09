@@ -28,19 +28,19 @@ Key features:
 ## Install
 
 ```bash
-core install ai --openspec
+jax install ai --openspec
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall ai --openspec
+jax uninstall ai --openspec
 ```
 
 ## Update
 
 ```bash
-core update ai --openspec
+jax update ai --openspec
 ```
 
 ## Usage

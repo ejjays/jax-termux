@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # ============================================================
-# agent_tools.sh — The tool system for `core agent run`.
+# agent_tools.sh — The tool system for `jax agent run`.
 #
 # The model does NOT call any native plugin. Instead it emits a
 # fenced JSON block (tool_call) describing which well-defined

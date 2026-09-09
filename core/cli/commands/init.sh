@@ -9,7 +9,7 @@ init_help() {
 	echo
 	box "Core Project Initializer"
 	echo
-	log_info "Usage: core init <template>"
+	log_info "Usage: jax init <template>"
 	echo
 	log_info "Run this inside an existing project to configure it."
 	echo
@@ -22,10 +22,10 @@ init_help() {
 	echo
 	separator_section "Examples"
 	echo
-	printf "    ${D_CYAN}cd my-next-app && core init next${NC}\n"
-	printf "    ${D_CYAN}cd my-react-app && core init react${NC}\n"
-	printf "    ${D_CYAN}cd api && core init express${NC}\n"
-	printf "    ${D_CYAN}cd backend && core init nest${NC}\n"
+	printf "    ${D_CYAN}cd my-next-app && jax init next${NC}\n"
+	printf "    ${D_CYAN}cd my-react-app && jax init react${NC}\n"
+	printf "    ${D_CYAN}cd api && jax init express${NC}\n"
+	printf "    ${D_CYAN}cd backend && jax init nest${NC}\n"
 	echo
 }
 
@@ -156,7 +156,7 @@ configure_next() {
 			DEV_DEPS+=("@next/swc-linux-arm64-gnu" "lightningcss-linux-arm64-gnu" "@tailwindcss/oxide-linux-arm64-gnu" "@unrs/resolver-binding-linux-arm64-gnu")
 		fi
 	else
-		log_info "Turbopack requires the glibc toolchain (core install npm --turbopack)"
+		log_info "Turbopack requires the glibc toolchain (jax install npm --turbopack)"
 		read_confirm_default "Install Turbopack toolchain now?" "n" INSTALL_TURBO
 		if [[ "$INSTALL_TURBO" == "y" ]]; then
 			import "@/tools/npm/turbopack/install"

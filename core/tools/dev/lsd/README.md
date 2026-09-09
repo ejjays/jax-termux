@@ -20,19 +20,19 @@ LSD (LSDeluxe) is a modern replacement for the `ls` command written in Rust. It 
 ## Install
 
 ```bash
-core install dev --lsd
+jax install dev --lsd
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall dev --lsd
+jax uninstall dev --lsd
 ```
 
 ## Update
 
 ```bash
-core update dev --lsd
+jax update dev --lsd
 ```
 
 ## Notes

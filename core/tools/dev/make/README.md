@@ -20,19 +20,19 @@ Make is a build automation tool that automatically determines which pieces of a 
 ## Install
 
 ```bash
-core install dev --make
+jax install dev --make
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall dev --make
+jax uninstall dev --make
 ```
 
 ## Update
 
 ```bash
-core update dev --make
+jax update dev --make
 ```
 
 ## Notes

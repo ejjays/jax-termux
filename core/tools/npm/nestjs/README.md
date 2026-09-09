@@ -20,24 +20,24 @@ NestJS is a framework for building efficient, scalable Node.js server-side appli
 ## Install
 
 ```bash
-core install npm --nestjs
+jax install npm --nestjs
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall npm --nestjs
+jax uninstall npm --nestjs
 ```
 
 ## Update
 
 ```bash
-core update npm --nestjs
+jax update npm --nestjs
 ```
 
 ## Notes
 
 - Command: `nest`
-- Used with `core init nest` template
+- Used with `jax init nest` template
 - Creates and manages NestJS projects
 

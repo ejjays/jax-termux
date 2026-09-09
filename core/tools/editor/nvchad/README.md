@@ -21,19 +21,19 @@ NvChad is a modern Neovim configuration that provides a complete IDE-like experi
 ## Install
 
 ```bash
-core install editor --nvchad
+jax install editor --nvchad
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall editor --nvchad
+jax uninstall editor --nvchad
 ```
 
 ## Update
 
 ```bash
-core update editor --nvchad
+jax update editor --nvchad
 ```
 
 ## Notes

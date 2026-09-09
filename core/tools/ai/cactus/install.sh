@@ -70,7 +70,7 @@ _cactus_cli_install_deps_native_impl() {
 }
 
 _cactus_cli_install_pip_glibc() {
-  log_info "This downloads the Cactus Engine wheel (~24 MB) plus core deps (numpy, huggingface-hub, fastapi) into the glibc Python environment"
+  log_info "This downloads the Cactus Engine wheel (~24 MB) plus jax deps (numpy, huggingface-hub, fastapi) into the glibc Python environment"
   loading "Installing Cactus-compute (pip)" _cactus_cli_install_pip_glibc_impl "$@"
 }
 

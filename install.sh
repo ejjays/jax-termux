@@ -231,13 +231,13 @@ clone_repo() {
 }
 
 create_symlink() {
-  log_step 4 "Creating core command"
+  log_step 4 "Creating jax command"
 
-  rm -f "$PREFIX/bin/core"
-  ln -sf "$CORE_DATA/core/bin/core" "$PREFIX/bin/core"
+  rm -f "$PREFIX/bin/jax"
+  ln -sf "$CORE_DATA/core/bin/jax" "$PREFIX/bin/jax"
 
-  if [[ -L "$PREFIX/bin/core" ]]; then
-    log_ok "Symlink created: core → ${CORE_DATA}/core/bin/core"
+  if [[ -L "$PREFIX/bin/jax" ]]; then
+    log_ok "Symlink created: jax → ${CORE_DATA}/core/bin/jax"
   else
     log_fail "Failed to create symlink"
     return 1
@@ -264,19 +264,19 @@ show_final_message() {
   echo -e "  ${P_OK}◆${P_NC}  ${P_PRIMARY}Installation Complete${P_NC}"
   separator
   echo
-  echo -e "  ${P_DIM}Run${P_NC}  ${P_HL}core${P_NC}  ${P_DIM}to get started${P_NC}"
+  echo -e "  ${P_DIM}Run${P_NC}  ${P_HL}jax${P_NC}  ${P_DIM}to get started${P_NC}"
   echo
   echo -e "  ${P_DIM}Install modules:${P_NC}"
   echo
-  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "core install lang" "Programming languages"
-  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "core install db" "Databases"
-  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "core install ai" "AI tools"
-  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "core install editor" "Code editor"
-  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "core install dev" "Dev tools"
-  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "core install npm" "Node.js tools"
-  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "core install shell" "ZSH shell"
-  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "core install ui" "Termux UI"
-  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "core install auto" "n8n"
+  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "jax install lang" "Programming languages"
+  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "jax install db" "Databases"
+  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "jax install ai" "AI tools"
+  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "jax install editor" "Code editor"
+  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "jax install dev" "Dev tools"
+  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "jax install npm" "Node.js tools"
+  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "jax install shell" "ZSH shell"
+  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "jax install ui" "Termux UI"
+  printf "    ${P_PRIMARY}%-20s${P_NC} ${P_DIM}%s${P_NC}\n" "jax install auto" "n8n"
   echo
 }
 

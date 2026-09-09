@@ -22,7 +22,7 @@ Work with Qoder around your codebase from the terminal.Turn ideas into working s
 ## Install
 
 ```bash
-core install ai --qoder
+jax install ai --qoder
 ```
 
 You will be prompted to choose:
@@ -34,13 +34,13 @@ You will be prompted to choose:
 ## Uninstall
 
 ```bash
-core uninstall ai --qoder
+jax uninstall ai --qoder
 ```
 
 ## Update
 
 ```bash
-core update ai --qoder
+jax update ai --qoder
 ```
 
 ## Notes

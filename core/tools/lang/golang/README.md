@@ -20,19 +20,19 @@ Go is a statically typed, compiled programming language designed at Google. It i
 ## Install
 
 ```bash
-core install lang --golang
+jax install lang --golang
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall lang --golang
+jax uninstall lang --golang
 ```
 
 ## Update
 
 ```bash
-core update lang --golang
+jax update lang --golang
 ```
 
 ## Notes

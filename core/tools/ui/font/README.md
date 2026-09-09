@@ -20,19 +20,19 @@ Meslo Nerd Font is a patched version of Meslo LG that includes Nerd Font icons a
 ## Install
 
 ```bash
-core install ui --font
+jax install ui --font
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall ui --font
+jax uninstall ui --font
 ```
 
 ## Update
 
 ```bash
-core update ui --font
+jax update ui --font
 ```
 
 ## Notes

@@ -20,19 +20,19 @@ Zsh-better-npm-completion provides enhanced tab completion for npm commands. It 
 ## Install
 
 ```bash
-core install shell --better-npm
+jax install shell --better-npm
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall shell --better-npm
+jax uninstall shell --better-npm
 ```
 
 ## Update
 
 ```bash
-core update shell --better-npm
+jax update shell --better-npm
 ```
 
 ## Notes

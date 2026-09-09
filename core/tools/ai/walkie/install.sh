@@ -302,7 +302,7 @@ _walkie_apply_members_patch_impl() {
 # in ~/.local/bin so walkie's generic runner can spawn them. This fixes the
 # broken "#!/usr/bin/env node" shebang of bun-managed agents (gemini, qwen,
 # kimi, mmx, openclaude, pi, supercode, openclaw) on Termux, where /usr/bin/env
-# does not exist. Existing plain wrappers without our marker (e.g. core's own
+# does not exist. Existing plain wrappers without our marker (e.g. jax's own
 # agy/vibe/opencode launchers) are left untouched.
 
 _walkie_generate_wrappers() {
@@ -345,7 +345,7 @@ _walkie_generate_wrappers_impl() {
   agent_bins[qwen-code]="qwen qwen-code"
   agent_bins[supercode]="supercode"
 
-  # Manual (core launcher style) wrapper for these; universal for the rest.
+  # Manual (jax launcher style) wrapper for these; universal for the rest.
   local manual_pkgs="codex claude"
 
   # Agent packages to scan. Non-agent complements (ctx7, engram, gentle-ai,

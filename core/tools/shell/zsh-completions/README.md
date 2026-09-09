@@ -20,19 +20,19 @@ Zsh-completions provides additional completion definitions for a wide range of c
 ## Install
 
 ```bash
-core install shell --zsh-completions
+jax install shell --zsh-completions
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall shell --zsh-completions
+jax uninstall shell --zsh-completions
 ```
 
 ## Update
 
 ```bash
-core update shell --zsh-completions
+jax update shell --zsh-completions
 ```
 
 ## Notes

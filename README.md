@@ -34,7 +34,7 @@
 
 <br>
 
-**CORE-TERMUX** is a _modular dev environment_ that turns Termux into a complete development workstation. Through a single core CLI, it provides a modular system that covers the full developer stack: programming languages, databases, AI agents, code editors, shell configuration, and automation — all manageable with simple, consistent commands like `core install`, `core update`, and `core uninstall`.
+**CORE-TERMUX** is a _modular dev environment_ that turns Termux into a complete development workstation. Through a single jax CLI, it provides a modular system that covers the full developer stack: programming languages, databases, AI agents, code editors, shell configuration, and automation — all manageable with simple, consistent commands like `jax install`, `jax update`, and `jax uninstall`.
 
 > [!IMPORTANT]
 > This project is designed exclusively for **Termux on Android** and is not supported on other platforms.
@@ -50,7 +50,7 @@ curl -fsSL https://raw.githubusercontent.com/ejjays/core-termux/main/install.sh 
 Then run:
 
 ```bash
-core
+jax
 ```
 
 ---
@@ -59,26 +59,26 @@ core
 
 | Command | Description |
 |---------|-------------|
-| [`core --version`](#core---version) | Show current version |
-| [`core agent`](#core-agent) | Local AI assistant & task agent |
-| [`core brain`](#core-brain) | Second brain — save and search memories |
-| [`core env`](#core-env) | Manage environment variables |
-| [`core install`](#core-install) | Install specific modules |
-| [`core show`](#core-show) | Show tool documentation |
-| [`core update`](#core-update) | Update modules or framework |
-| [`core uninstall`](#core-uninstall) | Remove installed modules |
-| [`core reinstall`](#core-reinstall) | Uninstall + reinstall modules |
-| [`core voice`](#core-voice) | Speech-to-agent via microphone |
-| [`core open`](#core-open) | Open documentation in browser |
-| [`core list`](#core-list) | List available tools in modules |
-| [`core pg`](#core-pg) | PostgreSQL database manager |
-| [`core init`](#core-init) | Configure existing projects |
+| [`jax --version`](#core---version) | Show current version |
+| [`jax agent`](#core-agent) | Local AI assistant & task agent |
+| [`jax brain`](#core-brain) | Second brain — save and search memories |
+| [`jax env`](#core-env) | Manage environment variables |
+| [`jax install`](#core-install) | Install specific modules |
+| [`jax show`](#core-show) | Show tool documentation |
+| [`jax update`](#core-update) | Update modules or framework |
+| [`jax uninstall`](#core-uninstall) | Remove installed modules |
+| [`jax reinstall`](#core-reinstall) | Uninstall + reinstall modules |
+| [`jax voice`](#core-voice) | Speech-to-agent via microphone |
+| [`jax open`](#core-open) | Open documentation in browser |
+| [`jax list`](#core-list) | List available tools in modules |
+| [`jax pg`](#core-pg) | PostgreSQL database manager |
+| [`jax init`](#core-init) | Configure existing projects |
 
 ---
 
 ## Common Modules
 
-These modules are available across most commands (`core list`, `core install`, `core update`, `core reinstall`, `core uninstall`, `core show`, and `core open`):
+These modules are available across most commands (`jax list`, `jax install`, `jax update`, `jax reinstall`, `jax uninstall`, `jax show`, and `jax open`):
 
 | Module | Description |
 |--------|-------------|
@@ -99,8 +99,8 @@ These modules are available across most commands (`core list`, `core install`, `
 The `ai` module installs AI-powered coding agents and assistants. Install all agents or pick specific ones with `--flag`:
 
 ```bash
-core install ai                    # Install all agents
-core install ai --opencode --ollama  # Install only OpenCode and Ollama
+jax install ai                    # Install all agents
+jax install ai --opencode --ollama  # Install only OpenCode and Ollama
 ```
 
 | Agent | Flag | Description |
@@ -147,12 +147,12 @@ core install ai --opencode --ollama  # Install only OpenCode and Ollama
 
 ## Detailed Commands
 
-### `core --version`
+### `jax --version`
 
 Display the installed version of Core-Termux.
 
 ```bash
-core --version
+jax --version
 ```
 
 **Output:**
@@ -162,17 +162,17 @@ core --version
 
 ---
 
-### `core agent`
+### `jax agent`
 
 Local AI assistant and task agent backed by an OpenAI-compatible endpoint (default: `gemma-4-e2b-it-cq4` served by Cactus Engine on `http://127.0.0.1:8000/v1`). `ask` answers questions with colored markdown; `run` is a full agent that writes files and runs commands on your machine. If the model server is down, the agent starts `cactus` in the background (logs → `~/.cache/core-termux/core-agent.log`) and stops it when you leave the interactive shell.
 
 ```bash
-core agent ask -p "Explain rsync"                     # One-shot question
-core agent run -p "create a backup script"            # One-shot task (files + commands)
-core agent ask                                        # Interactive chat shell
-core agent run                                        # Interactive agent shell
-core agent status                                     # Endpoint/model status
-core agent config                                     # Show or edit saved settings
+jax agent ask -p "Explain rsync"                     # One-shot question
+jax agent run -p "create a backup script"            # One-shot task (files + commands)
+jax agent ask                                        # Interactive chat shell
+jax agent run                                        # Interactive agent shell
+jax agent status                                     # Endpoint/model status
+jax agent config                                     # Show or edit saved settings
 ```
 
 **Options (ask & run):**
@@ -208,26 +208,26 @@ core agent config                                     # Show or edit saved setti
 **Example session:**
 
 ```bash
-$ core agent ask
+$ jax agent ask
 
     you ▸ explain git rebase vs merge
 
     git rebase rewrites the history of your current branch...
 ```
 
-> **Tip:** `core agent` also runs as a walkie agent — `walkie agent <channel> --cli core`.
+> **Tip:** `jax agent` also runs as a walkie agent — `walkie agent <channel> --cli jax`.
 
 ---
 
-### `core env`
+### `jax env`
 
 Manage environment variables in your shell rc file (`.zshrc` or `.bashrc`). All operations are interactive.
 
 ```bash
-core env                     # Show help
-core env set                 # Add or update a variable (value is hidden while typing)
-core env unset               # Remove a variable (shows list to choose from)
-core env ls                  # List all user-defined variables
+jax env                     # Show help
+jax env set                 # Add or update a variable (value is hidden while typing)
+jax env unset               # Remove a variable (shows list to choose from)
+jax env ls                  # List all user-defined variables
 ```
 
 **Features:**
@@ -240,7 +240,7 @@ core env ls                  # List all user-defined variables
 **Example session:**
 
 ```bash
-$ core env set
+$ jax env set
 
     ┌─────────────────────────────────────────┐
     │         Set Environment Variable        │
@@ -256,7 +256,7 @@ $ core env set
     ✔ Variable OPENAI_API_KEY set in .zshrc
     • Run: source .zshrc to apply
 
-$ core env ls
+$ jax env ls
 
     ─────── Environment Variables ───────
 
@@ -271,25 +271,25 @@ $ core env ls
 
 ---
 
-### `core brain`
+### `jax brain`
 
 Save and search personal learnings and memories — your second brain in markdown files. All operations are local, synced optionally to a private GitHub repo.
 
 ```bash
-core brain                    # Dashboard with stats
-core brain init               # Initialize brain directory and GitHub repo
-core brain save               # Interactive: save a new memory
-core brain search <query>     # Search memories by keywords or tags
-core brain ls [category]      # List memories by category
-core brain edit               # Edit a memory in your $EDITOR
-core brain edit <slug>        # Edit a memory by slug name
-core brain delete             # Delete a memory permanently
-core brain show <slug>        # View a memory with its relations
-core brain reset              # Destroy the entire brain
-core brain graph              # Visual map of all connections
-core brain skill              # Create an AI skill from memories
-core brain relate             # Link two memories interactively
-core brain sync               # Push/pull to GitHub private repo
+jax brain                    # Dashboard with stats
+jax brain init               # Initialize brain directory and GitHub repo
+jax brain save               # Interactive: save a new memory
+jax brain search <query>     # Search memories by keywords or tags
+jax brain ls [category]      # List memories by category
+jax brain edit               # Edit a memory in your $EDITOR
+jax brain edit <slug>        # Edit a memory by slug name
+jax brain delete             # Delete a memory permanently
+jax brain show <slug>        # View a memory with its relations
+jax brain reset              # Destroy the entire brain
+jax brain graph              # Visual map of all connections
+jax brain skill              # Create an AI skill from memories
+jax brain relate             # Link two memories interactively
+jax brain sync               # Push/pull to GitHub private repo
 ```
 
 **Memory format (AI-consumable markdown):**
@@ -319,7 +319,7 @@ After hours of testing, the combination that worked...
 **Example session:**
 
 ```bash
-$ core brain save
+$ jax brain save
 
     ┌─────────────────────────────────────────┐
     │            Save a New Memory            │
@@ -348,23 +348,23 @@ $ core brain save
 
 ---
 
-### `core voice`
+### `jax voice`
 
 Capture voice from the microphone, review it in nvim, and launch an AI agent.
 
 ```bash
-core voice                    # Show help
-core voice <agent>            # Capture → nvim → launch agent
-core voice text               # Capture → nvim → print to stdout
-core voice !                  # Alias for 'text'
+jax voice                    # Show help
+jax voice <agent>            # Capture → nvim → launch agent
+jax voice text               # Capture → nvim → print to stdout
+jax voice !                  # Alias for 'text'
 ```
 
 **Requirements:**
 - Termux:API package: `pkg install termux-api`
-- Neovim for editing: `core install editor`
+- Neovim for editing: `jax install editor`
 - Termux:API app: https://devcorex-web.vercel.app/termux/api
 
-> **Note:** `core voice` automatically runs `termux-api-start` before capturing audio to ensure the Termux:API service is running.
+> **Note:** `jax voice` automatically runs `termux-api-start` before capturing audio to ensure the Termux:API service is running.
 
 **Supported agents:**
 
@@ -388,7 +388,7 @@ core voice !                  # Alias for 'text'
 **Example session:**
 
 ```bash
-$ core voice opencode
+$ jax voice opencode
 
     ➜ Listening through the microphone...
     ➜ Review the prompt in nvim, fix mistakes, then save and quit
@@ -399,49 +399,49 @@ $ core voice opencode
 
 ---
 
-### `core show`
+### `jax show`
 
 Display help documentation for any installed tool. Documentation is loaded from the tool's `README.md` file in its module directory.
 
 ```bash
-core show                    # Show help
-core show <module>           # List all tools in a module
-core show <module> --<tool>  # Show specific tool documentation
+jax show                    # Show help
+jax show <module>           # List all tools in a module
+jax show <module> --<tool>  # Show specific tool documentation
 ```
 
 **Examples:**
 
 ```bash
-core show ai --opencode      # Show OpenCode documentation
-core show db --postgresql    # Show PostgreSQL documentation
-core show npm --typescript   # Show TypeScript documentation
+jax show ai --opencode      # Show OpenCode documentation
+jax show db --postgresql    # Show PostgreSQL documentation
+jax show npm --typescript   # Show TypeScript documentation
 ```
 
 **Colorized output:** If `bat` is installed, documentation is displayed with syntax highlighting. Otherwise, plain text is shown.
 
 ---
 
-### `core list`
+### `jax list`
 
 List available tools in a module and their installation status.
 
 ```bash
-core list                     # Show help
-core list <module>            # List tools in specific module
+jax list                     # Show help
+jax list <module>            # List tools in specific module
 ```
 
 All modules from [Common Modules](#common-modules) are valid targets.
 
 ---
 
-### `core install`
+### `jax install`
 
 Install individual modules or specific tools within modules.
 
 ```bash
-core install                  # Show help
-core install <module>         # Install entire module
-core install <module> --tool1 --tool2  # Install specific tools
+jax install                  # Show help
+jax install <module>         # Install entire module
+jax install <module> --tool1 --tool2  # Install specific tools
 ```
 
 All modules from [Common Modules](#common-modules) are valid targets.
@@ -449,135 +449,135 @@ All modules from [Common Modules](#common-modules) are valid targets.
 **Install entire module:**
 
 ```bash
-core install ai               # Install all AI tools
-core install db               # Install all databases
-core install dev              # Install all development tools
+jax install ai               # Install all AI tools
+jax install db               # Install all databases
+jax install dev              # Install all development tools
 ```
 
 **Install specific tools:**
 
 ```bash
-core install ai --qwen-code --ollama          # Install only Qwen Code and Ollama
-core install db --postgresql --sqlite         # Install only PostgreSQL and SQLite
-core install dev --gh --fzf --jq              # Install only gh, fzf, and jq
-core install npm --typescript --prettier      # Install only TypeScript and Prettier
+jax install ai --qwen-code --ollama          # Install only Qwen Code and Ollama
+jax install db --postgresql --sqlite         # Install only PostgreSQL and SQLite
+jax install dev --gh --fzf --jq              # Install only gh, fzf, and jq
+jax install npm --typescript --prettier      # Install only TypeScript and Prettier
 ```
 
-> **Tip:** Run `core list <module>` to see all available tools and their flags.
+> **Tip:** Run `jax list <module>` to see all available tools and their flags.
 
 ---
 
-### `core update`
+### `jax update`
 
 Update modules or the complete framework.
 
 ```bash
-core update                   # Show help
-core update <target>          # Update specific target
-core update <target> --tool1 --tool2  # Update specific tools
-core update core              # Update framework only
+jax update                   # Show help
+jax update <target>          # Update specific target
+jax update <target> --tool1 --tool2  # Update specific tools
+jax update jax              # Update framework only
 ```
 
-In addition to all [Common Modules](#common-modules), `core update` also supports:
+In addition to all [Common Modules](#common-modules), `jax update` also supports:
 
 | Target | Description |
 |--------|-------------|
-| `core` | Core-Termux framework only |
+| `jax` | Core-Termux framework only |
 
 **Update entire module:**
 
 ```bash
-core update ai               # Update all AI tools
-core update db               # Update all databases
+jax update ai               # Update all AI tools
+jax update db               # Update all databases
 ```
 
 **Update specific tools:**
 
 ```bash
-core update ai --qwen-code --ollama          # Update only Qwen Code and Ollama
-core update db --postgresql --sqlite         # Update only PostgreSQL and SQLite
-core update dev --gh --fzf --jq             # Update only gh, fzf, and jq
+jax update ai --qwen-code --ollama          # Update only Qwen Code and Ollama
+jax update db --postgresql --sqlite         # Update only PostgreSQL and SQLite
+jax update dev --gh --fzf --jq             # Update only gh, fzf, and jq
 ```
 
 ---
 
-### `core uninstall`
+### `jax uninstall`
 
 Remove installed modules or specific tools.
 
 ```bash
-core uninstall                # Show help
-core uninstall <target>       # Uninstall specific target
-core uninstall <target> --tool1 --tool2  # Uninstall specific tools
+jax uninstall                # Show help
+jax uninstall <target>       # Uninstall specific target
+jax uninstall <target> --tool1 --tool2  # Uninstall specific tools
 ```
 
-In addition to all [Common Modules](#common-modules), `core uninstall` supports per-module and per-tool removal. No "uninstall all" — remove only what you need.
+In addition to all [Common Modules](#common-modules), `jax uninstall` supports per-module and per-tool removal. No "uninstall all" — remove only what you need.
 
 **Uninstall specific tools:**
 
 ```bash
-core uninstall ai --qwen-code --ollama        # Uninstall only Qwen Code and Ollama
-core uninstall db --postgresql --sqlite       # Uninstall only PostgreSQL and SQLite
-core uninstall dev --gh --fzf                 # Uninstall only gh and fzf
+jax uninstall ai --qwen-code --ollama        # Uninstall only Qwen Code and Ollama
+jax uninstall db --postgresql --sqlite       # Uninstall only PostgreSQL and SQLite
+jax uninstall dev --gh --fzf                 # Uninstall only gh and fzf
 ```
 
 ---
 
-### `core reinstall`
+### `jax reinstall`
 
 Reinstall modules or specific tools — uninstalls then installs from scratch.
 
 ```bash
-core reinstall                # Show help
-core reinstall <target>       # Reinstall specific target
-core reinstall <target> --tool1 --tool2  # Reinstall specific tools
+jax reinstall                # Show help
+jax reinstall <target>       # Reinstall specific target
+jax reinstall <target> --tool1 --tool2  # Reinstall specific tools
 ```
 
-In addition to all [Common Modules](#common-modules), `core reinstall` supports per-module and per-tool reinstallation. No "reinstall all".
+In addition to all [Common Modules](#common-modules), `jax reinstall` supports per-module and per-tool reinstallation. No "reinstall all".
 
 **Reinstall specific tools:**
 
 ```bash
-core reinstall ai --opencode --ollama       # Reinstall only OpenCode and Ollama
-core reinstall db --postgresql --sqlite     # Reinstall only PostgreSQL and SQLite
-core reinstall dev --gh --fzf               # Reinstall only gh and fzf
+jax reinstall ai --opencode --ollama       # Reinstall only OpenCode and Ollama
+jax reinstall db --postgresql --sqlite     # Reinstall only PostgreSQL and SQLite
+jax reinstall dev --gh --fzf               # Reinstall only gh and fzf
 ```
 
 ---
 
-### `core open`
+### `jax open`
 
 Open official documentation in browser
 
 ```bash
-core open                     # Show help
-core open <target>            # Open official documentation in browser
+jax open                     # Show help
+jax open <target>            # Open official documentation in browser
 ```
 
 All [Common Modules](#common-modules) are valid targets, plus:
 
 | Target | Description |
 |--------|-------------|
-| `core` | Core-Termux documentation |
+| `jax` | Core-Termux documentation |
 | `devcorex` | DevCoreX official website |
 
 ---
 
-### `core pg`
+### `jax pg`
 
 PostgreSQL database manager.
 
 ```bash
-core pg                       # Show help
-core pg start                 # Start server
-core pg stop                  # Stop server
-core pg restart               # Restart server
-core pg status                # Check status
-core pg init                  # Initialize database
-core pg create <name>         # Create database
-core pg drop <name>           # Drop database
-core pg list                  # List databases
-core pg shell                 # Open psql console
+jax pg                       # Show help
+jax pg start                 # Start server
+jax pg stop                  # Stop server
+jax pg restart               # Restart server
+jax pg status                # Check status
+jax pg init                  # Initialize database
+jax pg create <name>         # Create database
+jax pg drop <name>           # Drop database
+jax pg list                  # List databases
+jax pg shell                 # Open psql console
 ```
 
 **Features:**
@@ -587,13 +587,13 @@ core pg shell                 # Open psql console
 
 ---
 
-### `core init`
+### `jax init`
 
 Configure existing projects with predefined dependencies, folder structure, and tooling. Detects your package manager (npm, pnpm, yarn, or bun) and installs dependencies accordingly.
 
 ```bash
-core init                     # Auto-detect project type and configure
-core init <template>          # Configure with specific template
+jax init                     # Auto-detect project type and configure
+jax init <template>          # Configure with specific template
 ```
 
 **What it does:**
@@ -616,16 +616,16 @@ core init <template>          # Configure with specific template
 **Usage:**
 
 ```bash
-cd my-next-app && core init next
-cd my-react-app && core init react
-cd api && core init express
-cd backend && core init nest
+cd my-next-app && jax init next
+cd my-react-app && jax init react
+cd api && jax init express
+cd backend && jax init nest
 ```
 
 **Example:**
 
 ```bash
-$ cd my-next-app && core init next
+$ cd my-next-app && jax init next
 
 ──────────────────────────────────────────────────────────────
 ╭────────────────────────────────╮
@@ -663,11 +663,11 @@ $ cd my-next-app && core init next
 
 ## Template Details
 
-### Next.js (`core init next`)
+### Next.js (`jax init next`)
 
 **Turbopack & LightningCSS Support:**
 
-When running in Termux, `core init next` offers optional Turbopack support (the native Rust-based bundler for Next.js). If the glibc toolchain is installed (`core install npm --turbopack`), you can enable Turbopack for faster dev/build times. The installer also adds platform-specific native bindings for LightningCSS and Tailwind CSS.
+When running in Termux, `jax init next` offers optional Turbopack support (the native Rust-based bundler for Next.js). If the glibc toolchain is installed (`jax install npm --turbopack`), you can enable Turbopack for faster dev/build times. The installer also adds platform-specific native bindings for LightningCSS and Tailwind CSS.
 
 **Installed dependencies:**
 ```json
@@ -700,7 +700,7 @@ When running in Termux, `core init next` offers optional Turbopack support (the 
 
 ---
 
-### React + Vite (`core init react`)
+### React + Vite (`jax init react`)
 
 **Same dependencies as Next.js** (except Next.js-specific configs)
 
@@ -710,7 +710,7 @@ When running in Termux, `core init next` offers optional Turbopack support (the 
 
 ---
 
-### Express.js (`core init express`)
+### Express.js (`jax init express`)
 
 **Dependencies:**
 ```
@@ -776,7 +776,7 @@ src/
 
 ---
 
-### NestJS (`core init nest`)
+### NestJS (`jax init nest`)
 
 **Dependencies:**
 ```
@@ -793,7 +793,7 @@ bcryptjs, helmet, cloudinary
 The `lang` module installs the following programming languages and runtimes via `pkg`:
 
 ```bash
-core install lang
+jax install lang
 ```
 
 | Language/Runtime | Package | Description |
@@ -814,7 +814,7 @@ core install lang
 The `dev` module installs the following development utilities via `pkg` (or compiled from source where noted):
 
 ```bash
-core install dev
+jax install dev
 ```
 
 | Tool | Package | Description |
@@ -849,7 +849,7 @@ core install dev
 The `npm` module installs the following global npm packages:
 
 ```bash
-core install npm
+jax install npm
 ```
 
 | Package | Command | Description |
@@ -868,10 +868,10 @@ core install npm
 
 **Turbopack Installation:**
 ```bash
-core install npm --turbopack
+jax install npm --turbopack
 ```
 
-> **Note:** Turbopack requires the glibc toolchain to run on Termux. When enabled, `core init next` will configure your project with Turbopack for faster development and build times.
+> **Note:** Turbopack requires the glibc toolchain to run on Termux. When enabled, `jax init next` will configure your project with Turbopack for faster development and build times.
 
 ---
 
@@ -881,7 +881,7 @@ The `editor` module installs **Neovim** with a custom configuration based on [Nv
 
 **Installation:**
 ```bash
-core install editor
+jax install editor
 ```
 
 **Features:**
@@ -982,14 +982,14 @@ table_end
 
 ## Banner Tips
 
-Every time you open a new Termux session (or run the banner), Core-Termux shows a random tip to help you discover features you might not know about. Tips cover all modules: installing tools, using `core brain`, managing databases, voice commands, project initialization, and more.
+Every time you open a new Termux session (or run the banner), Core-Termux shows a random tip to help you discover features you might not know about. Tips cover all modules: installing tools, using `jax brain`, managing databases, voice commands, project initialization, and more.
 
 The tip system:
 - Picks a random tip from a pool of 65+ tips on each session
 - Never shows the same tip twice in a row
 - Covers every module and command in the framework
 
-To refresh the tips pool or customize them, edit `core/utils/banner.sh`.
+To refresh the tips pool or customize them, edit `jax/utils/banner.sh`.
 
 ---
 
@@ -1004,9 +1004,9 @@ core-termux/
 │   │   └── font.ttf
 │   └── images
 │       └── logo.svg
-├── core
+├── jax
 │   ├── bin
-│   │   └── core
+│   │   └── jax
 │   ├── cli
 │   │   ├── commands
 │   │   │   ├── --version.sh
@@ -1133,22 +1133,22 @@ The framework checks for updates automatically:
 
 - **Frequency:** Once every 24 hours
 - **Impact:** None (runs in background)
-- **Notification:** Shown when running `core` if new version exists
+- **Notification:** Shown when running `jax` if new version exists
 
 ```bash
-$ core
+$ jax
 
 ── Update Available ─────────────────────────────────
 
 ⚠ New version available: 4.27.1 (current: 4.27.0)
 
-➜ Run: core update core to update
+➜ Run: jax update jax to update
 ```
 
 To update:
 
 ```bash
-core update core
+jax update jax
 ```
 
 ---
@@ -1196,26 +1196,26 @@ $ pwd
 ### Install specific modules
 
 ```bash
-core install db
-core install shell
-core install npm
+jax install db
+jax install shell
+jax install npm
 ```
 
 ### Install specific tools within a module
 
 ```bash
-core list ai                                    # See available AI tools
-core install ai --qwen-code --ollama            # Install only Qwen Code and Ollama
-core install dev --gh --fzf --jq                # Install only gh, fzf, and jq
-core install npm --typescript --prettier        # Install only TypeScript and Prettier
+jax list ai                                    # See available AI tools
+jax install ai --qwen-code --ollama            # Install only Qwen Code and Ollama
+jax install dev --gh --fzf --jq                # Install only gh, fzf, and jq
+jax install npm --typescript --prettier        # Install only TypeScript and Prettier
 ```
 
 ### Reinstall
 
 ```bash
-core reinstall ai             # Reinstall all AI agents
-core reinstall shell          # Reinstall ZSH + plugins
-core reinstall ai --opencode --ollama  # Reinstall specific tools
+jax reinstall ai             # Reinstall all AI agents
+jax reinstall shell          # Reinstall ZSH + plugins
+jax reinstall ai --opencode --ollama  # Reinstall specific tools
 ```
 
 ### Configure Next.js project
@@ -1223,40 +1223,40 @@ core reinstall ai --opencode --ollama  # Reinstall specific tools
 ```bash
 npx create-next-app@latest my-app
 cd my-app
-core init next
+jax init next
 ```
 
 ### Manage PostgreSQL
 
 ```bash
-core pg init              # First time
-core pg start             # Start
-core pg create mydb       # Create database
-core pg shell             # Open psql
-core pg stop              # Stop
+jax pg init              # First time
+jax pg start             # Start
+jax pg create mydb       # Create database
+jax pg shell             # Open psql
+jax pg stop              # Stop
 ```
 
 ### Update
 
 ```bash
-core update core          # Framework only
-core update shell         # ZSH plugins only
-core update ai --qwen     # Specific AI tool only
+jax update jax          # Framework only
+jax update shell         # ZSH plugins only
+jax update ai --qwen     # Specific AI tool only
 ```
 
 ### Uninstall
 
 ```bash
-core uninstall npm        # Remove Node.js modules
-core uninstall ai --ollama   # Remove only Ollama
+jax uninstall npm        # Remove Node.js modules
+jax uninstall ai --ollama   # Remove only Ollama
 ```
 
 ### List available tools
 
 ```bash
-core list ai              # List all AI tools and their status
-core list dev             # List all development tools
-core list db              # List all databases
+jax list ai              # List all AI tools and their status
+jax list dev             # List all development tools
+jax list db              # List all databases
 ```
 
 ---

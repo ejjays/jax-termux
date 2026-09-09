@@ -18,7 +18,7 @@ fi
 
 if [ ! -f "$CACTUS_LAUNCHER" ]; then
   echo "Error: cactus launcher not found at $CACTUS_LAUNCHER" >&2
-  echo "Re-run: core install ai --cactus" >&2
+  echo "Re-run: jax install ai --cactus" >&2
   exit 1
 fi
 

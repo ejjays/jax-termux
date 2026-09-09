@@ -20,19 +20,19 @@ OpenSSH provides both SSH client (`ssh`) and server (`sshd`) for encrypted remot
 ## Install
 
 ```bash
-core install dev --openssh
+jax install dev --openssh
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall dev --openssh
+jax uninstall dev --openssh
 ```
 
 ## Update
 
 ```bash
-core update dev --openssh
+jax update dev --openssh
 ```
 
 ## Notes

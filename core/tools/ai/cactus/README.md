@@ -38,14 +38,14 @@ Cactus Engine is the **engine**, not a specific model. It is distinct from Cactu
 - **Cactus Needle** (`cactus-needle` package) is a ~14 MB function-calling *model* — a single checkpoint with a small CLI.
 - **Cactus Engine** (`cactus-compute` package) is the *runtime* that can run Needle and other models, serve OpenAI-compatible APIs, and do quantization/inference.
 
-They are separate PyPI packages and separate tools. This tool (`core/tools/ai/cactus`) installs the **engine CLI** (`cactus`); the separate `cactus-needle` tool installs the **model CLI** (`needle`). Installing the engine does not replace or install the needle model.
+They are separate PyPI packages and separate tools. This tool (`jax/tools/ai/cactus`) installs the **engine CLI** (`cactus`); the separate `cactus-needle` tool installs the **model CLI** (`needle`). Installing the engine does not replace or install the needle model.
 
 ## Termux adaptation (what this installer does)
 
 Cactus Engine is Python-based and ships only glibc (manylinux) wheels. Termux's native Android (bionic) Python rejects manylinux wheels, so a plain native Termux install is impossible. This installer adapts the **runtime environment**, not the tool: it installs the official wheels into a glibc-resident Python instead of trying to compile anything.
 
 ```bash
-core install ai --cactus
+jax install ai --cactus
 ```
 
 You will be prompted to choose:
@@ -64,7 +64,7 @@ You will be prompted to choose:
 
   huggingface_hub then falls back to classic HTTP. Export it (`export HF_HUB_DISABLE_XET=1`) if HF downloads keep failing. The `cactus` wrappers install by this tool already export it.
 - Native Termux (bionic) is not offered: the wheel is manylinux (glibc) only.
-- Installing downloads the ~24 MB wheel plus core Python deps into the glibc Python environment.
+- Installing downloads the ~24 MB wheel plus jax Python deps into the glibc Python environment.
 - The `cactus` CLI has **no `--version` flag** — updates compare the installed PyPI version against PyPI via `importlib.metadata`.
 - The package is licensed under the **Cactus Compute License** (proprietary, not open source).
 
@@ -87,8 +87,8 @@ cactus transcribe <audio-file>
 ## Uninstall / Update
 
 ```bash
-core uninstall ai --cactus
-core update ai --cactus
+jax uninstall ai --cactus
+jax update ai --cactus
 ```
 
 ## Notes

@@ -20,19 +20,19 @@ npm-check-updates (ncu) upgrades your package.json dependencies to the latest ve
 ## Install
 
 ```bash
-core install npm --ncu
+jax install npm --ncu
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall npm --ncu
+jax uninstall npm --ncu
 ```
 
 ## Update
 
 ```bash
-core update npm --ncu
+jax update npm --ncu
 ```
 
 ## Notes

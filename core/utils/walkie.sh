@@ -4,7 +4,7 @@
 # walkie.sh — shared helpers for the walkie P2P agent
 # integration. Agent installers call _walkie_remove_wrapper so
 # their uninstall also drops the launcher wrapper walkie
-# generates in ~/.local/bin — otherwise `core reinstall <agent>`
+# generates in ~/.local/bin — otherwise `jax reinstall <agent>`
 # keeps detecting the orphaned wrapper as "still installed".
 # ============================================================
 

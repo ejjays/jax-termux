@@ -18,7 +18,7 @@ open_main() {
 	devcorex)
 		url="$OPEN_BASE_URL"
 		;;
-	core | help)
+	jax | help)
 		url="$OPEN_BASE_URL/core-termux"
 		;;
 	lang | db | ai | editor | dev | npm | shell | ui | auto)
@@ -49,13 +49,13 @@ open_help() {
 	echo
 	box "Core Open"
 	echo
-	log_info "Usage: core open <target>"
+	log_info "Usage: jax open <target>"
 	echo
 	log_info "Open official documentation in browser"
 	echo
 	separator_section "Targets"
 	echo
-	printf "    ${D_GREEN}%-14s${D_NC} ${D_DIM}%s${D_NC}\n" "core" "Core-Termux documentation"
+	printf "    ${D_GREEN}%-14s${D_NC} ${D_DIM}%s${D_NC}\n" "jax" "Core-Termux documentation"
 	printf "    ${D_GREEN}%-14s${D_NC} ${D_DIM}%s${D_NC}\n" "devcorex" "DevCoreX website"
 	printf "    ${D_GREEN}%-14s${D_NC} ${D_DIM}%s${D_NC}\n" "lang" "Language modules"
 	printf "    ${D_GREEN}%-14s${D_NC} ${D_DIM}%s${D_NC}\n" "db" "Database modules"

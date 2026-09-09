@@ -28,19 +28,19 @@ Key features:
 ## Install
 
 ```bash
-core install ai --ctx7
+jax install ai --ctx7
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall ai --ctx7
+jax uninstall ai --ctx7
 ```
 
 ## Update
 
 ```bash
-core update ai --ctx7
+jax update ai --ctx7
 ```
 
 ## Usage

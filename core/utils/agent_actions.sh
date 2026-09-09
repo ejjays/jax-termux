@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # ============================================================
-# agent_actions.sh — markdown-driven actions for `core agent run`.
+# agent_actions.sh — markdown-driven actions for `jax agent run`.
 #
 # The model NEVER creates files or runs commands itself. It only
 # answers in markdown. bash reads that markdown and finds:
@@ -648,7 +648,7 @@ agent_at_pick() {
 # ═══════════════════════════════════════════════════════════
 #   EDIT ME — replace the printf lines below with your banner.
 #   Tips:
-#   • Color variables available (see core/utils/colors.sh):
+#   • Color variables available (see jax/utils/colors.sh):
 #     D_CYAN, D_GREEN, D_YELLOW, D_PURPLE, D_RED, D_BLUE,
 #     GRAY, NC.
 #   • If figlet/toilet is installed you can generate one, e.g.:
@@ -694,7 +694,7 @@ AGENT_ESC_MARKER=$'\x01\x02'
 # agent_at_preview_cmd — fzf --preview command that renders a file
 # (or directory) inside a box: a ┌─ header with the path, the
 # contents indented with a │ border, and a └─ footer with the line
-# count. Self-contained (runs under sh inside fzf), no core fns.
+# count. Self-contained (runs under sh inside fzf), no jax fns.
 # ------------------------------------------------------------
 agent_at_preview_cmd() {
 	cat <<'FZF_PREVIEW'
@@ -1163,7 +1163,7 @@ agent_server_ensure() {
 		sleep 1
 	done
 	# wait a few seconds for it to boot — the loading spinner from
-	# @core/utils/log.sh runs while it starts, and the terminal is
+	# @jax/utils/log.sh runs while it starts, and the terminal is
 	# NOT cleared afterwards
 	loading "Waiting for the model server…" agent_server_wait
 	return 0

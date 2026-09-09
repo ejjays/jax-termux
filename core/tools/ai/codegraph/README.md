@@ -20,19 +20,19 @@ CodeGraph analyzes your codebase structure and dependencies to improve navigatio
 ## Install
 
 ```bash
-core install ai --codegraph
+jax install ai --codegraph
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall ai --codegraph
+jax uninstall ai --codegraph
 ```
 
 ## Update
 
 ```bash
-core update ai --codegraph
+jax update ai --codegraph
 ```
 
 ## Notes

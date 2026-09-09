@@ -20,19 +20,19 @@ Ngrok creates secure tunnels from the public internet to your local development 
 ## Install
 
 ```bash
-core install npm --ngrok
+jax install npm --ngrok
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall npm --ngrok
+jax uninstall npm --ngrok
 ```
 
 ## Update
 
 ```bash
-core update npm --ngrok
+jax update npm --ngrok
 ```
 
 ## Notes

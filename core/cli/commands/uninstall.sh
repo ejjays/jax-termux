@@ -9,8 +9,8 @@ uninstall_main() {
     echo
     box "Core Uninstall"
     echo
-    log_info "Usage: core uninstall <target>"
-    log_info "Usage: core uninstall <target> --tool1 --tool2"
+    log_info "Usage: jax uninstall <target>"
+    log_info "Usage: jax uninstall <target> --tool1 --tool2"
     echo
     log_info "Available targets:"
     echo
@@ -26,9 +26,9 @@ uninstall_main() {
     echo
     log_info "Uninstall specific tools with flags:"
     echo
-    list_item "core uninstall ai --qwen-code --ollama"
-    list_item "core uninstall db --postgresql --sqlite"
-    list_item "Run ${D_CYAN}core list <target>${D_NC} to see all available tools"
+    list_item "jax uninstall ai --qwen-code --ollama"
+    list_item "jax uninstall db --postgresql --sqlite"
+    list_item "Run ${D_CYAN}jax list <target>${D_NC} to see all available tools"
     echo
     log_warn "Warning: This will remove installed packages and configurations!"
     echo
@@ -51,7 +51,7 @@ uninstall_main() {
   # If no module target specified, show error
   if [[ -z "$module_target" ]]; then
     log_error "No target specified"
-    echo "Run 'core uninstall' to see available targets"
+    echo "Run 'jax uninstall' to see available targets"
     return 1
   fi
 
@@ -107,7 +107,7 @@ _uninstall_full_module() {
     ;;
   *)
     log_warn "Unknown uninstall target: $target"
-    echo "Run 'core uninstall' to see available targets"
+    echo "Run 'jax uninstall' to see available targets"
     ;;
   esac
 }
@@ -727,7 +727,7 @@ _uninstall_specific_tools() {
     ;;
   *)
     log_warn "Unknown uninstall target: $module"
-    echo "Run 'core uninstall' to see available targets"
+    echo "Run 'jax uninstall' to see available targets"
     ;;
   esac
 }

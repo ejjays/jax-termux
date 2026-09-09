@@ -20,19 +20,19 @@ Translate Shell (trans) is a command-line translator that uses Google Translate 
 ## Install
 
 ```bash
-core install dev --translate
+jax install dev --translate
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall dev --translate
+jax uninstall dev --translate
 ```
 
 ## Update
 
 ```bash
-core update dev --translate
+jax update dev --translate
 ```
 
 ## Notes

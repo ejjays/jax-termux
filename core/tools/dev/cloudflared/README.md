@@ -20,19 +20,19 @@ Cloudflared creates secure tunnels from your local server to Cloudflare's edge n
 ## Install
 
 ```bash
-core install dev --cloudflared
+jax install dev --cloudflared
 ```
 
 ## Uninstall
 
 ```bash
-core uninstall dev --cloudflared
+jax uninstall dev --cloudflared
 ```
 
 ## Update
 
 ```bash
-core update dev --cloudflared
+jax update dev --cloudflared
 ```
 
 ## Notes
