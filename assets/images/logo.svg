@@ -33,8 +33,8 @@
       <stop offset="100%" stop-color="#071a27"/>
     </radialGradient>
 
-    <linearGradient id="core-grad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#00bcd4"/>
+    <linearGradient id="jax-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00e5ff"/>
       <stop offset="100%" stop-color="#0097a7"/>
     </linearGradient>
 
@@ -57,7 +57,7 @@
   </defs>
 
   <!-- ══════════════════════ HEXAGON LOGO ══════════════════════ -->
-  <!-- Hex centered vertically: canvas height=148, hex top=14, bottom=110 → center y=62, offset x=24 to center the whole banner -->
+  <!-- Hex centered vertically: canvas height=148, hex top=14, bottom=110 -->
 
   <polygon points="80,12 126,37 126,87 80,112 34,87 34,37"
     fill="#00bcd4" opacity="0.07"/>
@@ -89,45 +89,44 @@
     <circle cx="110" cy="62" r="2" fill="#00e5ff"/>
   </g>
 
-  <g fill="none" stroke="#39ff14" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"
+  <g fill="none" stroke="#39ff14" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
      filter="url(#green-glow)">
-    <polyline points="64,50 50,62 64,74"/>
-    <line x1="84" y1="49" x2="76" y2="75"/>
-    <polyline points="96,50 110,62 96,74"/>
+    <polyline points="58,52 72,52 72,74"/>
+    <line x1="88" y1="74" x2="88" y2="74"/>
   </g>
 
   <!-- ══════════════════════ DIVIDER ══════════════════════ -->
   <rect x="154" y="18" width="1.5" height="112" fill="url(#divider-grad)"/>
 
   <!-- ══════════════════════ TEXT BLOCK ══════════════════════ -->
-  <text x="178" y="72"
+  <text x="178" y="74"
     font-family="'Trebuchet MS', 'Arial Narrow', Arial, sans-serif"
-    font-size="58" font-weight="900" letter-spacing="5"
-    fill="url(#core-grad)"
-    filter="url(#text-shadow)">CORE</text>
+    font-size="72" font-weight="900" letter-spacing="6"
+    fill="url(#jax-grad)"
+    filter="url(#text-shadow)">JAX</text>
 
-  <text x="362" y="70"
+  <text x="352" y="70"
     font-family="'Trebuchet MS', sans-serif"
     font-size="34" font-weight="300"
     fill="#8baabb" opacity="0.7"> – </text>
 
-  <text x="397" y="72"
+  <text x="387" y="72"
     font-family="'Trebuchet MS', 'Arial Narrow', Arial, sans-serif"
     font-size="58" font-weight="900" letter-spacing="5"
     fill="url(#termux-grad)">TERMUX</text>
 
   <!-- Accent underline -->
-  <rect x="178" y="80" width="566" height="1.5" fill="url(#line-grad)"/>
+  <rect x="178" y="82" width="480" height="1.5" fill="url(#line-grad)"/>
 
   <!-- Tagline -->
-  <text x="180" y="104"
+  <text x="180" y="106"
     font-family="'Courier New', Courier, monospace"
     font-size="11.5" letter-spacing="2.8"
-    fill="url(#tag-grad)">Modular framework · Dev environments · Termux Android</text>
+    fill="url(#tag-grad)">Modular dev toolkit · Termux Android</text>
 
-  <circle cx="173" cy="100" r="2.2" fill="#39ff14" opacity="0.75" filter="url(#green-glow)"/>
+  <circle cx="173" cy="102" r="2.2" fill="#39ff14" opacity="0.75" filter="url(#green-glow)"/>
 
-  <!-- Corner brackets — ahora abrazan el contenido real -->
+  <!-- Corner brackets -->
   <g stroke="#00bcd4" stroke-width="1.2" fill="none" opacity="0.45">
     <!-- top-right -->
     <polyline points="748,6 766,6 766,24"/>
