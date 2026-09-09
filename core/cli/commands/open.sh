@@ -47,7 +47,7 @@ open_main() {
 
 open_help() {
 	echo
-	box "Core Open"
+	box "Jax Open"
 	echo
 	log_info "Usage: jax open <target>"
 	echo

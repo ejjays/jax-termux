@@ -7,7 +7,7 @@ LOG_FILE="$CORE_CACHE/init_project.log"
 
 init_help() {
 	echo
-	box "Core Project Initializer"
+	box "Jax Project Initializer"
 	echo
 	log_info "Usage: jax init <template>"
 	echo

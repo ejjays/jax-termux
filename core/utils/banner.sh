@@ -21,8 +21,7 @@ fi
 
 if [[ -n "$BANNER_VERSION" ]]; then
 	printf "\n"
-	printf " ${GRAY}DevCoreX ${NC}Software Development Community${NC}\n"
-	printf "     ${NC}Welcome to${GRAY} Core-Termux ${DGREEN}v%s${NC}\n" "$BANNER_VERSION"
+	printf "     ${NC}Welcome to${GRAY} Jax ${DGREEN}v%s${NC}\n" "$BANNER_VERSION"
 	printf "        ${NC}Run ${DGREEN}jax${NC} to get started${NC}\n"
 fi
 
@@ -30,12 +29,11 @@ fi
 
 CORE_TIPS=(
 	# ── Framework ─────────────────────────────────────────────
-	"Keep Core-Termux updated: ${D_CYAN}jax update jax${NC}"
+	"Keep Jax updated: ${D_CYAN}jax update jax${NC}"
 	"Check your version: ${D_CYAN}jax --version${NC}"
 	"Enable debug logs: ${D_CYAN}export CORE_DEBUG=1${NC}"
 	"Shell remembers your last directory — open Termux where you left off"
 	"Open framework docs: ${D_CYAN}jax open jax${NC}"
-	"Visit DevCoreX website: ${D_CYAN}jax open devcorex${NC}"
 
 	# ── Install / Update / Uninstall ─────────────────────────
 	"Install everything at once: ${D_CYAN}jax install lang db dev npm${NC}"

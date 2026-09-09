@@ -7,7 +7,7 @@ install_main() {
 
   if [[ $# -eq 0 ]]; then
     echo
-    box "Core Install"
+    box "Jax Install"
     echo
     log_info "Usage: jax install <target>"
     log_info "Usage: jax install <target> --tool1 --tool2"

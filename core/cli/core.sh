@@ -30,7 +30,7 @@ core_main() {
 
 core_help() {
   echo
-  box "◈ CORE-TERMUX v${CORE_VERSION} ◈"
+  box "◈ JAX v${CORE_VERSION} ◈"
   echo
   log_info "Usage: jax <command> [options]"
   echo

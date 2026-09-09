@@ -26,7 +26,7 @@ import "@/utils/agent_markdown"
 # ------------------------------------------------------------
 agent_help() {
 	echo
-	box "Core Agent — Local AI Assistant & Task Agent"
+	box "Jax Agent — Local AI Assistant & Task Agent"
 	echo
 	log_info "Usage: jax agent <ask|run|config> [options]"
 	echo
@@ -137,7 +137,7 @@ agent_status_line() {
 # agent_status — full status with server check
 # ------------------------------------------------------------
 agent_status() {
-	separator_section "Core Agent — Status"
+	separator_section "Jax Agent — Status"
 	echo
 	agent_status_line
 	echo
@@ -550,7 +550,7 @@ agent_ask_repl() {
 	clear
 
 	agent_banner
-	separator_section "Core Agent — Ask"
+	separator_section "Jax Agent — Ask"
 	echo
 	agent_status_line
 	echo
@@ -665,7 +665,7 @@ agent_run_repl() {
 	clear
 
 	agent_banner
-	separator_section "Core Agent — Run ($([[ $AGENT_PLAN_MODE == 1 ]] && echo 'PLAN · read-only' || echo 'BUILD mode'))"
+	separator_section "Jax Agent — Run ($([[ $AGENT_PLAN_MODE == 1 ]] && echo 'PLAN · read-only' || echo 'BUILD mode'))"
 	echo
 	agent_status_line
 	echo

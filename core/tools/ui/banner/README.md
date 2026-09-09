@@ -1,6 +1,6 @@
 # Banner Configuration for Termux
 
-Customize Termux with Core-Termux Banner
+Customize Termux with Jax Banner
 
 **Package:** core-termux (banner config)  
 **Author:** DevCoreX  

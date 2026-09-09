@@ -179,7 +179,7 @@ _brain_editor() {
 
 brain_help() {
 	echo
-	box "Core Brain — Your Second Brain"
+	box "Jax Brain — Your Second Brain"
 	echo
 	log_info "Usage: jax brain <subcommand> [options]"
 	echo
@@ -231,7 +231,7 @@ brain_help() {
 
 brain_init() {
 	separator
-	box "Initialize Core Brain"
+	box "Initialize Jax Brain"
 	separator
 	echo
 
@@ -285,7 +285,7 @@ brain_init() {
 	if gh repo create "$repo_name" --private &>/dev/null; then
 		cd "$BRAIN_DIR" || return 1
 		git init &>/dev/null
-		echo "# Core Brain" >README.md
+		echo "# Jax Brain" >README.md
 		git add -A
 		git commit -m "init brain" &>/dev/null
 		git remote add origin "https://github.com/$gh_user/$repo_name.git"
@@ -1362,7 +1362,7 @@ brain_dashboard() {
 	fi
 
 	echo
-	separator_section "Core Brain Dashboard"
+	separator_section "Jax Brain Dashboard"
 	echo
 
 	local total_files

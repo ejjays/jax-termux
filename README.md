@@ -1,7 +1,7 @@
-# Core-Termux — Modular Dev Environment
+# Jax — Modular Dev Environment
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ejjays/core-termux/main/assets/images/logo.svg" alt="Core-Termux Logo" width="600">
+  <img src="https://raw.githubusercontent.com/ejjays/jax-termux/main/assets/images/logo.svg" alt="Jax Logo" width="600">
 </p>
 
 <p align="center">
@@ -9,32 +9,26 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/ejjays/core-termux">
+  <a href="https://github.com/ejjays/jax-termux">
     <img src="https://img.shields.io/badge/version-4.27.2-0078D4?style=for-the-badge&logo=appveyor" alt="Version">
   </a>
-  <a href="https://github.com/ejjays/core-termux/blob/main/LICENSE">
+  <a href="https://github.com/ejjays/jax-termux/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-0078D4?style=for-the-badge&logo=bookstack" alt="License">
   </a>
   <a href="https://termux.dev/">
     <img src="https://img.shields.io/badge/platform-Termux%20%7C%20Android-0078D4?style=for-the-badge&logo=android" alt="Platform">
   </a>
-  <a href="https://github.com/ejjays/core-termux/actions/workflows/lint.yml">
-    <img src="https://github.com/ejjays/core-termux/actions/workflows/lint.yml/badge.svg" alt="lint">
+  <a href="https://github.com/ejjays/jax-termux/actions/workflows/lint.yml">
+    <img src="https://github.com/ejjays/jax-termux/actions/workflows/lint.yml/badge.svg" alt="lint">
   </a>
-  <a href="https://github.com/ejjays/core-termux/actions/workflows/binaries.yml">
-    <img src="https://github.com/ejjays/core-termux/actions/workflows/binaries.yml/badge.svg" alt="binaries">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://devcorex-web.vercel.app/core-termux">
-    <img src="https://img.shields.io/badge/%F0%9F%9A%80_Get%20Started-0078D4?style=for-the-badge" alt="Get Started">
+  <a href="https://github.com/ejjays/jax-termux/actions/workflows/binaries.yml">
+    <img src="https://github.com/ejjays/jax-termux/actions/workflows/binaries.yml/badge.svg" alt="binaries">
   </a>
 </p>
 
 <br>
 
-**CORE-TERMUX** is a _modular dev environment_ that turns Termux into a complete development workstation. Through a single jax CLI, it provides a modular system that covers the full developer stack: programming languages, databases, AI agents, code editors, shell configuration, and automation — all manageable with simple, consistent commands like `jax install`, `jax update`, and `jax uninstall`.
+**JAX** is a _modular dev environment_ that turns Termux into a complete development workstation. Through a single jax CLI, it provides a modular system that covers the full developer stack: programming languages, databases, AI agents, code editors, shell configuration, and automation — all manageable with simple, consistent commands like `jax install`, `jax update`, and `jax uninstall`.
 
 > [!IMPORTANT]
 > This project is designed exclusively for **Termux on Android** and is not supported on other platforms.
@@ -44,7 +38,7 @@
 ## Quick Installation
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ejjays/core-termux/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ejjays/jax-termux/main/install.sh | bash
 ```
 
 Then run:
@@ -149,7 +143,7 @@ jax install ai --opencode --ollama  # Install only OpenCode and Ollama
 
 ### `jax --version`
 
-Display the installed version of Core-Termux.
+Display the installed version of Jax.
 
 ```bash
 jax --version
@@ -482,7 +476,7 @@ In addition to all [Common Modules](#common-modules), `jax update` also supports
 
 | Target | Description |
 |--------|-------------|
-| `jax` | Core-Termux framework only |
+| `jax` | Jax framework only |
 
 **Update entire module:**
 
@@ -558,7 +552,7 @@ All [Common Modules](#common-modules) are valid targets, plus:
 
 | Target | Description |
 |--------|-------------|
-| `jax` | Core-Termux documentation |
+| `jax` | Jax documentation |
 | `devcorex` | DevCoreX official website |
 
 ---
@@ -982,7 +976,7 @@ table_end
 
 ## Banner Tips
 
-Every time you open a new Termux session (or run the banner), Core-Termux shows a random tip to help you discover features you might not know about. Tips cover all modules: installing tools, using `jax brain`, managing databases, voice commands, project initialization, and more.
+Every time you open a new Termux session (or run the banner), Jax shows a random tip to help you discover features you might not know about. Tips cover all modules: installing tools, using `jax brain`, managing databases, voice commands, project initialization, and more.
 
 The tip system:
 - Picks a random tip from a pool of 65+ tips on each session
@@ -996,7 +990,7 @@ To refresh the tips pool or customize them, edit `jax/utils/banner.sh`.
 ## Project Structure
 
 ```
-core-termux/
+jax-termux/
 ├── LICENSE
 ├── README.md
 ├── assets

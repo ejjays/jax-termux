@@ -6,7 +6,7 @@ import "@/utils/colors"
 show_main() {
 	if [[ $# -eq 0 ]]; then
 		echo
-		box "Core Show"
+		box "Jax Show"
 		echo
 		log_info "Usage: jax show <module> --<tool>"
 		echo

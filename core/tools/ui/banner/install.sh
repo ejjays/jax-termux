@@ -56,7 +56,7 @@ _install_banner_impl() {
 	fi
 
 	if grep -qF "$CORE_BANNER_MARKER" "$shell_config" 2>/dev/null; then
-		log_info "Core-Termux Banner already installed"
+		log_info "Jax Banner already installed"
 		return 0
 	fi
 
@@ -95,7 +95,7 @@ source "$banner_script"
 EOF
 	fi
 
-	log_success "Core-Termux Banner installed"
+	log_success "Jax Banner installed"
 
 	_backup_motd
 
@@ -105,10 +105,10 @@ EOF
 
 install_banner() {
 	if grep -qF "$CORE_BANNER_MARKER" "$(_detect_shell_config)" 2>/dev/null; then
-		log_info "Core-Termux Banner already installed"
+		log_info "Jax Banner already installed"
 		return 0
 	fi
-	log_info "Installing Core-Termux Banner..."
+	log_info "Installing Jax Banner..."
 	mkdir -p "$(dirname "$LOG_FILE")"
 	loading "Installing Banner" _install_banner_impl
 }
@@ -123,7 +123,7 @@ _uninstall_banner_impl() {
 	fi
 
 	if ! grep -qF "$CORE_BANNER_MARKER" "$shell_config" 2>/dev/null; then
-		log_warn "Core-Termux Banner not installed"
+		log_warn "Jax Banner not installed"
 		return 0
 	fi
 
@@ -137,7 +137,7 @@ _uninstall_banner_impl() {
 		else
 			sed -i "$marker_line,$((marker_line + 1))d" "$shell_config"
 		fi
-		log_success "Core-Termux Banner uninstalled"
+		log_success "Jax Banner uninstalled"
 	else
 		log_warn "Could not locate banner marker for removal"
 		return 1
@@ -150,10 +150,10 @@ _uninstall_banner_impl() {
 
 uninstall_banner() {
 	if ! grep -qF "$CORE_BANNER_MARKER" "$(_detect_shell_config)" 2>/dev/null; then
-		log_warn "Core-Termux Banner not installed"
+		log_warn "Jax Banner not installed"
 		return 0
 	fi
-	log_info "Uninstalling Core-Termux Banner..."
+	log_info "Uninstalling Jax Banner..."
 	loading "Uninstalling Banner" _uninstall_banner_impl
 }
 

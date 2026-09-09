@@ -36,7 +36,7 @@ install_all_ui_components() {
 			case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
 			;;
 		banner)
-			loading "Installing Core-Termux Banner" install_banner
+			loading "Installing Jax Banner" install_banner
 			case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
 			;;
 		esac
@@ -64,7 +64,7 @@ uninstall_all_ui_components() {
 			case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
 			;;
 		banner)
-			loading "Uninstalling Core-Termux Banner" uninstall_banner
+			loading "Uninstalling Jax Banner" uninstall_banner
 			case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
 			;;
 		esac
@@ -112,7 +112,7 @@ reinstall_all_ui_components() {
       case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
       ;;
     banner)
-      loading "Reinstalling Core-Termux Banner" reinstall_banner
+      loading "Reinstalling Jax Banner" reinstall_banner
       case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
       ;;
     esac

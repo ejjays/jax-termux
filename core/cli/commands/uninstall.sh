@@ -7,7 +7,7 @@ uninstall_main() {
 
   if [[ $# -eq 0 ]]; then
     echo
-    box "Core Uninstall"
+    box "Jax Uninstall"
     echo
     log_info "Usage: jax uninstall <target>"
     log_info "Usage: jax uninstall <target> --tool1 --tool2"

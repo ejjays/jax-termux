@@ -4,7 +4,7 @@ Develop locally and manage Supabase projects from your terminal.
 
 **Package:** supabase
 **Author:** ejjays
-**Repository:** https://github.com/DevCoreXOfficial/core-termux
+**Repository:** https://github.com/ejjays/jax-termux
 **Official:** https://supabase.com/docs/guides/local-development/cli/getting-started
 **Type:** Database CLI (Binary + glibc bootstrapper)
 **License:** MIT

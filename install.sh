@@ -10,7 +10,7 @@ readonly P_FAIL='\e[1;31m'
 readonly P_HL='\e[38;5;213m'
 readonly P_NC='\e[0m'
 
-REPO="https://github.com/DevCoreXOfficial/core-termux"
+REPO="https://github.com/ejjays/jax-termux"
 BRANCH="main"
 CORE_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/core-termux"
 CORE_TOOL_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/core-termux-data"
@@ -73,7 +73,7 @@ separator() {
 banner() {
   echo
   echo -e "  ${P_BORDER}┌────────────────────────────────────┐${P_NC}"
-  echo -e "  ${P_BORDER}│${P_NC}        ${P_PRIMARY}  ◈ CORE-TERMUX ◈${P_NC}           ${P_BORDER}│${P_NC}"
+  echo -e "  ${P_BORDER}│${P_NC}        ${P_PRIMARY}  ◈ JAX ◈${P_NC}           ${P_BORDER}│${P_NC}"
   echo -e "  ${P_BORDER}│${P_NC} ${P_DIM}Modular Dev Environment for Termux${P_NC} ${P_BORDER}│${P_NC}"
   echo -e "  ${P_BORDER}└────────────────────────────────────┘${P_NC}"
   echo

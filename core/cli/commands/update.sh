@@ -7,7 +7,7 @@ update_main() {
 
   if [[ $# -eq 0 ]]; then
     echo
-    box "Core Update"
+    box "Jax Update"
     echo
     log_info "Usage: jax update <target>"
     log_info "Usage: jax update <target> --tool1 --tool2"
@@ -737,7 +737,7 @@ _update_specific_tools() {
 # Actualizar Core-Termux
 update_core() {
   separator
-  box "◈ UPDATING CORE-TERMUX ◈"
+  box "◈ UPDATING JAX ◈"
   separator
   echo
 
@@ -759,7 +759,7 @@ update_core() {
   else
     log_warn "Not a git repository, cannot update"
     log_info "If you installed via curl, reinstall with:"
-    echo "  curl -fsSL https://raw.githubusercontent.com/DevCoreXOfficial/core-termux/main/install.sh | bash"
+    echo "  curl -fsSL https://raw.githubusercontent.com/ejjays/jax-termux/main/install.sh | bash"
   fi
 
   echo

@@ -7,7 +7,7 @@ list_main() {
 
   if [[ $# -eq 0 ]]; then
     echo
-    box "Core List"
+    box "Jax List"
     echo
     log_info "Usage: jax list <target>"
     echo
