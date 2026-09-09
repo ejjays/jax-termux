@@ -3,6 +3,8 @@ set -u
 
 PASS=0
 FAIL=0
+NL=$'\n'
+SUMMARY_ROWS=""
 
 gh_tag() {
 	curl -fsSL "https://api.github.com/repos/$1/releases/latest" | jq -r '.tag_name // empty'
@@ -14,12 +16,14 @@ smoke() {
 
 	if [ -z "$url" ]; then
 		echo "FAIL $name: empty download url"
+		SUMMARY_ROWS+="| $name | FAIL | empty download url |$NL"
 		FAIL=$((FAIL + 1))
 		return
 	fi
 
 	if [ "${DRY_RUN:-0}" = "1" ]; then
 		echo "$name -> $url"
+		SUMMARY_ROWS+="| $name | pass | $url |$NL"
 		PASS=$((PASS + 1))
 		return
 	fi
@@ -29,6 +33,7 @@ smoke() {
 	if ! curl -fsSL "$url" -o "$work/pkg" 2>"$work/err.log"; then
 		echo "FAIL $name: download failed"
 		cat "$work/err.log"
+		SUMMARY_ROWS+="| $name | FAIL | download failed |$NL"
 		FAIL=$((FAIL + 1))
 		rm -rf "$work"
 		return
@@ -46,17 +51,23 @@ smoke() {
 	if [ -z "$bin_path" ]; then
 		echo "FAIL $name: binary '$bin' not in package, contains:"
 		find "$work" -type f | head -10
+		SUMMARY_ROWS+="| $name | FAIL | binary '$bin' not in package |$NL"
 		FAIL=$((FAIL + 1))
 		rm -rf "$work"
 		return
 	fi
 
 	chmod +x "$bin_path"
-	if "$bin_path" --version >/dev/null 2>&1; then
-		echo "OK $name: $("$bin_path" --version 2>&1 | head -1)"
+	local detail rc
+	detail=$("$bin_path" --version 2>&1 | head -1)
+	rc=${PIPESTATUS[0]}
+	if [ "$rc" -eq 0 ]; then
+		echo "OK $name: $detail"
+		SUMMARY_ROWS+="| $name | pass | $detail |$NL"
 		PASS=$((PASS + 1))
 	else
 		echo "FAIL $name: --version failed"
+		SUMMARY_ROWS+="| $name | FAIL | --version failed |$NL"
 		FAIL=$((FAIL + 1))
 	fi
 	rm -rf "$work"
@@ -156,10 +167,21 @@ smoke ampcode "$(url_ampcode)" amp
 smoke keelcode "$(url_keelcode)" keelcode
 smoke freebuff "$(url_freebuff)" freebuff
 smoke qoder "$(url_qoder)" qodercli
-smoke antigravity "$(url_antigravity)" agy
+smoke antigravity "$(url_antigravity)" antigravity
 smoke droid "$(url_droid)" droid
 smoke supabase "$(url_supabase)" supabase
 
 echo
 echo "pass: $PASS fail: $FAIL"
+if [ -n "${GITHUB_STEP_SUMMARY:-}" ]; then
+	{
+		echo "## binaries smoke"
+		echo
+		echo "| tool | result | detail |"
+		echo "|---|---|---|"
+		printf '%s' "$SUMMARY_ROWS"
+		echo
+		echo "pass: $PASS fail: $FAIL"
+	} >>"$GITHUB_STEP_SUMMARY"
+fi
 [ "$FAIL" -eq 0 ]
