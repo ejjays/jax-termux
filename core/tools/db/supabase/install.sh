@@ -31,6 +31,7 @@ _supabase_install_deps_impl() {
 		["clang"]="clang"
 		["curl"]="curl"
 		["tar"]="tar"
+		["jq"]="jq"
 	)
 
 	local pkg_name bin_name
@@ -57,8 +58,8 @@ _download_supabase_binary_impl() {
 	local download_url
 
 	download_url=$(curl -fsSL "https://api.github.com/repos/${SUPABASE_REPO}/releases/tags/${tag}" 2>/dev/null \
-		| grep '"browser_download_url":' | grep 'linux.*arm64.*\.tar\.gz' | grep -v -e '\.apk' -e '\.deb' -e '\.rpm' | head -1 \
-		| sed -E 's/.*"([^"]+)".*/\1/')
+		| jq -r '.assets[].browser_download_url' 2>/dev/null \
+		| grep 'linux.*arm64.*\.tar\.gz' | grep -v -e '\.apk' -e '\.deb' -e '\.rpm' | head -1)
 
 	if [ -z "$download_url" ]; then
 		download_url="https://github.com/${SUPABASE_REPO}/releases/download/${tag}/${SUPABASE_ARCHIVE}"

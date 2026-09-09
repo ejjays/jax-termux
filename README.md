@@ -21,8 +21,8 @@
   <a href="https://github.com/ejjays/core-termux/actions/workflows/lint.yml">
     <img src="https://github.com/ejjays/core-termux/actions/workflows/lint.yml/badge.svg" alt="lint">
   </a>
-  <a href="https://github.com/ejjays/core-termux/actions/workflows/supabase.yml">
-    <img src="https://github.com/ejjays/core-termux/actions/workflows/supabase.yml/badge.svg" alt="supabase">
+  <a href="https://github.com/ejjays/core-termux/actions/workflows/binaries.yml">
+    <img src="https://github.com/ejjays/core-termux/actions/workflows/binaries.yml/badge.svg" alt="binaries">
   </a>
 </p>
 
