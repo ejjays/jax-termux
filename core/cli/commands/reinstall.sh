@@ -474,6 +474,10 @@ _reinstall_specific_tools() {
         reinstall_vercel
         case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
         ;;
+      firebase)
+        reinstall_firebase
+        case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
+        ;;
       markserv)
         reinstall_markserv
         case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac

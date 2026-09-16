@@ -239,6 +239,7 @@ _list_npm() {
   table_row "Live Server" "--live-server" "live-server" "$(_check_cmd "live-server")"
   table_row "Localtunnel" "--localtunnel" "lt" "$(_check_cmd "lt")"
   table_row "Vercel CLI" "--vercel" "vercel" "$(_check_cmd "vercel")"
+  table_row "Firebase CLI" "--firebase" "firebase" "$(_check_cmd "firebase")"
   table_row "Markserv" "--markserv" "markserv" "$(_check_cmd "markserv")"
   table_row "PSQL Format" "--psqlformat" "psqlformat" "$(_check_cmd "psqlformat")"
   table_row "NPM Check Updates" "--ncu" "ncu" "$(_check_cmd "ncu")"

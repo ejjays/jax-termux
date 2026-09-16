@@ -153,6 +153,7 @@ CORE_TIPS=(
 	# ── NPM Packages ─────────────────────────────────────────
 	"Tunnel localhost to the web: ${D_CYAN}jax install npm --ngrok${NC}"
 	"Deploy to Vercel from terminal: ${D_CYAN}jax install npm --vercel${NC}"
+	"Manage Firebase projects: ${D_CYAN}jax install npm --firebase${NC}"
 	"Format code with Prettier: ${D_CYAN}jax install npm --prettier${NC}"
 	"TypeScript compiler: ${D_CYAN}jax install npm --typescript${NC}"
 	"Live reload dev server: ${D_CYAN}jax install npm --live-server${NC}"

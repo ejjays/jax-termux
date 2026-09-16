@@ -11,6 +11,7 @@ NODE_PACKAGES=(
 	"live-server"
 	"localtunnel"
 	"vercel"
+	"firebase"
 	"markserv"
 	"psqlformat"
 	"ncu"
@@ -24,6 +25,7 @@ source "$(dirname "$BASH_SOURCE")/prettier/install.sh"
 source "$(dirname "$BASH_SOURCE")/live-server/install.sh"
 source "$(dirname "$BASH_SOURCE")/localtunnel/install.sh"
 source "$(dirname "$BASH_SOURCE")/vercel/install.sh"
+source "$(dirname "$BASH_SOURCE")/firebase/install.sh"
 source "$(dirname "$BASH_SOURCE")/markserv/install.sh"
 source "$(dirname "$BASH_SOURCE")/psqlformat/install.sh"
 source "$(dirname "$BASH_SOURCE")/ncu/install.sh"
@@ -58,6 +60,10 @@ install_all_npm_packages() {
 			;;
 		vercel)
 			loading "Installing Vercel CLI" install_vercel
+			case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+			;;
+		firebase)
+			loading "Installing Firebase CLI" install_firebase
 			case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
 			;;
 		markserv)
@@ -116,6 +122,10 @@ uninstall_all_npm_packages() {
 			uninstall_vercel
 			case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
 			;;
+		firebase)
+			uninstall_firebase
+			case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+			;;
 		markserv)
 			loading "Uninstalling Markserv" uninstall_markserv
 			case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
@@ -162,6 +172,9 @@ update_all_npm_packages() {
       ;;
     vercel)
       update_vercel
+      ;;
+    firebase)
+      update_firebase
       ;;
     markserv)
       update_markserv
@@ -211,6 +224,10 @@ reinstall_all_npm_packages() {
       ;;
     vercel)
       reinstall_vercel
+      case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
+      ;;
+    firebase)
+      reinstall_firebase
       case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
       ;;
     markserv)

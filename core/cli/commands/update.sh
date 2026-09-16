@@ -482,6 +482,10 @@ _update_specific_tools() {
         update_vercel
         case $? in 0) ((updated_count++));; 1) ((failed_count++));; esac
         ;;
+      firebase)
+        update_firebase
+        case $? in 0) ((updated_count++));; 1) ((failed_count++));; esac
+        ;;
       markserv)
         update_markserv
         case $? in 0) ((updated_count++));; 1) ((failed_count++));; esac
