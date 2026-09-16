@@ -435,6 +435,10 @@ _install_specific_tools() {
         install_superfile
         case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
         ;;
+      gcloud)
+        install_gcloud
+        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        ;;
       *)
         log_warn "Unknown tool: --$tool"
         ;;

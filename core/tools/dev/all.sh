@@ -27,6 +27,7 @@ TOOLS_PACKAGES=(
 	"make"
 	"udocker"
 	"superfile"
+	"gcloud"
 )
 
 source "$(dirname "$BASH_SOURCE")/gh/install.sh"
@@ -51,6 +52,7 @@ source "$(dirname "$BASH_SOURCE")/shfmt/install.sh"
 source "$(dirname "$BASH_SOURCE")/make/install.sh"
 source "$(dirname "$BASH_SOURCE")/udocker/install.sh"
 source "$(dirname "$BASH_SOURCE")/superfile/install.sh"
+source "$(dirname "$BASH_SOURCE")/gcloud/install.sh"
 
 install_all_dev() {
 	local installed_count=0
@@ -144,6 +146,10 @@ install_all_dev() {
 			;;
 		superfile)
 			loading "Installing SuperFile" install_superfile
+			case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+			;;
+		gcloud)
+			loading "Installing Google Cloud CLI" install_gcloud
 			case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
 			;;
 		esac
@@ -246,6 +252,10 @@ uninstall_all_dev() {
 			uninstall_superfile
 			case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
 			;;
+		gcloud)
+			uninstall_gcloud
+			case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+			;;
 		esac
 	done
 
@@ -320,6 +330,9 @@ update_all_dev() {
       ;;
     superfile)
       update_superfile
+      ;;
+    gcloud)
+      update_gcloud
       ;;
     esac
   done
@@ -418,6 +431,10 @@ reinstall_all_dev() {
       ;;
     superfile)
       reinstall_superfile
+      case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
+      ;;
+    gcloud)
+      reinstall_gcloud
       case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
       ;;
     esac

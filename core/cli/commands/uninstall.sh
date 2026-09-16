@@ -434,6 +434,10 @@ _uninstall_specific_tools() {
         uninstall_superfile
         case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
         ;;
+      gcloud)
+        uninstall_gcloud
+        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        ;;
       *)
         log_warn "Unknown tool: --$tool"
         ;;

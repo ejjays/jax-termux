@@ -436,6 +436,10 @@ _update_specific_tools() {
         update_superfile
         case $? in 0) ((updated_count++));; 1) ((failed_count++));; esac
         ;;
+      gcloud)
+        update_gcloud
+        case $? in 0) ((updated_count++));; 1) ((failed_count++));; esac
+        ;;
       *)
         log_warn "Unknown tool: --$tool"
         ;;

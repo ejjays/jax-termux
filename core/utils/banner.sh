@@ -149,6 +149,7 @@ CORE_TIPS=(
 	"Build automation: ${D_CYAN}jax install dev --make${NC}"
 	"Chroot alternative: ${D_CYAN}jax install dev --proot${NC}"
 	"Cloudflare Tunnel: ${D_CYAN}jax install dev --cloudflared${NC}"
+	"Google Cloud from terminal: ${D_CYAN}jax install dev --gcloud${NC}"
 
 	# ── NPM Packages ─────────────────────────────────────────
 	"Tunnel localhost to the web: ${D_CYAN}jax install npm --ngrok${NC}"

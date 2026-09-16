@@ -830,6 +830,7 @@ jax install dev
 | **Make** | `make` | Build automation tool |
 | **Udocker** | `udocker` | Run Docker containers without root |
 | **SuperFile** | `spf` | Terminal file manager with TUI, themes, and hotkeys |
+| **Google Cloud CLI** | `gcloud` | Google Cloud SDK (gcloud, gsutil, bq) |
 
 ---
 

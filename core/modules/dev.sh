@@ -41,6 +41,7 @@ install_dev() {
 	list_item "Make (build automation)"
 	list_item "Udocker (container management)"
 	list_item "SuperFile (file manager)"
+	list_item "Google Cloud CLI (gcloud, gsutil, bq)"
 	echo
 }
 
@@ -121,6 +122,7 @@ reinstall_dev() {
   list_item "Make (build automation)"
   list_item "Udocker (container management)"
   list_item "SuperFile (file manager)"
+  list_item "Google Cloud CLI (gcloud, gsutil, bq)"
   echo
 }
 
