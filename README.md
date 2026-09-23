@@ -23,7 +23,23 @@
 
 <br>
 
-**JAX** is a _modular dev environment_ that turns Termux into a complete development workstation. Through a single jax CLI, it provides a modular system that covers the full developer stack: programming languages, databases, AI agents, code editors, shell configuration, and automation — all manageable with simple, consistent commands like `jax install`, `jax update`, and `jax uninstall`.
+**JAX** is a _compatibility layer_ that makes desktop developer tools run on your phone.
+
+Most dev tools are built for desktops or laptops. They ship Linux/macOS binaries that expect glibc, `/bin/bash`, syscalls, and libraries Android simply doesn't have. On Termux they fail with cryptic errors (`bad system call`, missing interpreter, blocked network calls) or don't install at all.
+
+Jax fixes that per tool, so you don't have to:
+
+- **glibc bootstrappers** — custom launchers run upstream `linux-arm64` binaries through the glibc loader (Supabase, Claude Code, OpenCode, Qoder, and more)
+- **Tiered installs with fallbacks** — native → glibc + proot → full Ubuntu container, so a tool installs the fastest way your phone supports it
+- **Android-specific patches** — SELinux network restrictions, hardcoded `/bin` paths, native backends that misbehave on Termux, all handled in the installer
+
+```bash
+# the manual way: glibc repos, ELF patching, proot dance… (hours)
+# the jax way:
+jax install ai --qoder
+```
+
+Through a single `jax` CLI you then manage the full developer stack — programming languages, databases, AI agents, code editors, shell configuration, and automation — with simple, consistent commands like `jax install`, `jax update`, and `jax uninstall`.
 
 > [!IMPORTANT]
 > This project is designed exclusively for **Termux on Android** and is not supported on other platforms.
