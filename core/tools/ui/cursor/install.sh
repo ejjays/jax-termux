@@ -6,19 +6,51 @@ import "@/utils/version"
 LOG_FILE="$CORE_CACHE/install_ui.log"
 TERMUX_DIR="$HOME/.termux"
 
+CURSOR_COLOR="#1CF289"
+CURSOR_MARKER="# ===== Jax Cursor ====="
+CURSOR_MARKER_END="# ===== End Jax Cursor ====="
+
+_cursor_installed() {
+	local file="$TERMUX_DIR/colors.properties"
+	grep -qF "$CURSOR_MARKER" "$file" 2>/dev/null ||
+		grep -qxF "cursor=$CURSOR_COLOR" "$file" 2>/dev/null
+}
+
+_strip_cursor() {
+	local file="$1"
+	[[ -f "$file" ]] || return 0
+	local tmp="${file}.jax_tmp"
+	awk -v start="$CURSOR_MARKER" -v end="$CURSOR_MARKER_END" '
+		$0 == start { skip = 1; next }
+		$0 == end { skip = 0; next }
+		skip { next }
+		/^cursor=/ { next }
+		{ print }
+	' "$file" >"$tmp"
+	mv "$tmp" "$file"
+}
+
 _install_cursor_impl() {
 	mkdir -p "$(dirname "$LOG_FILE")" "$TERMUX_DIR"
+	local file="$TERMUX_DIR/colors.properties"
 
-	cat >"$TERMUX_DIR/colors.properties" <<'EOF'
-cursor=#00FF00
-EOF
+	_strip_cursor "$file"
 
-	log_success "Cursor color set to #00FF00 (green)"
+	{
+		if [[ -s "$file" ]]; then
+			echo ""
+		fi
+		echo "$CURSOR_MARKER"
+		echo "cursor=$CURSOR_COLOR"
+		echo "$CURSOR_MARKER_END"
+	} >>"$file"
+
+	log_success "Cursor color set to $CURSOR_COLOR (other settings preserved)"
 	return 0
 }
 
 install_cursor() {
-	if [[ -f "$TERMUX_DIR/colors.properties" ]]; then
+	if _cursor_installed; then
 		log_info "Cursor Color already configured"
 		return 0
 	fi
@@ -27,16 +59,24 @@ install_cursor() {
 }
 
 _uninstall_cursor_impl() {
-	if [[ -f "$TERMUX_DIR/colors.properties" ]]; then
-		rm "$TERMUX_DIR/colors.properties"
-		log_success "Cursor Color uninstalled"
-	else
+	local file="$TERMUX_DIR/colors.properties"
+	if [[ ! -f "$file" ]]; then
 		log_warn "Cursor Color not configured"
+		return 0
 	fi
+
+	_strip_cursor "$file"
+
+	if [[ ! -s "$file" ]]; then
+		rm -f "$file"
+	fi
+
+	log_success "Cursor Color uninstalled (other settings preserved)"
+	return 0
 }
 
 uninstall_cursor() {
-	if [[ ! -f "$TERMUX_DIR/colors.properties" ]]; then
+	if ! _cursor_installed; then
 		log_info "Cursor Color is not installed"
 		return 0
 	fi
@@ -44,12 +84,9 @@ uninstall_cursor() {
 	loading "Uninstalling Cursor Color" _uninstall_cursor_impl
 }
 
-_update_cursor_impl() {
-	install_cursor
-}
-
 update_cursor() {
-  _update_cursor_impl
+	log_info "Updating Cursor Color..."
+	loading "Updating Cursor Color" _install_cursor_impl
 }
 
 reinstall_cursor() {

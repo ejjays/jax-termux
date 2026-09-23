@@ -182,7 +182,7 @@ CORE_TIPS=(
 	"Install Meslo Nerd Font: ${D_CYAN}jax install ui --font${NC}"
 	"Configure cursor color: ${D_CYAN}jax install ui --cursor${NC}"
 	"Setup extra keys bar: ${D_CYAN}jax install ui --extra-keys${NC}"
-	"Install Core banner: ${D_CYAN}jax install ui --banner${NC}"
+	"Install Jax banner: ${D_CYAN}jax install ui --banner${NC}"
 
 	# ── Automation ───────────────────────────────────────────
 	"Run n8n automation: ${D_CYAN}jax install auto --n8n${NC}"

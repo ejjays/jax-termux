@@ -10,7 +10,7 @@ Customize Termux with Jax Banner
 
 ## Description
 
-Configure a custom banner for Termux using Core-Termux. This package allows you to set a personalized welcome message that appears when you start Termux, enhancing your terminal experience.
+Configure a custom banner for Termux using Jax. This package allows you to set a personalized welcome message that appears when you start Termux, enhancing your terminal experience.
 
 ## Dependencies
 
@@ -36,7 +36,7 @@ jax update ui --banner
 
 ## Notes
 
-- Source file: `~/.local/share/core-termux/assets/banner/devcorex.txt`
-- removes Termux welcome message: motd
+- Source file: `assets/banner/jax.txt`
+- Removes Termux welcome message: motd
 - Restart Termux to apply changes
 

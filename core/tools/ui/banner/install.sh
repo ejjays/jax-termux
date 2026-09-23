@@ -5,7 +5,8 @@ import "@/utils/version"
 
 LOG_FILE="$CORE_CACHE/install_ui.log"
 
-CORE_BANNER_MARKER="# ===== Core-Termux Banner ====="
+CORE_BANNER_MARKER="# ===== Jax Banner ====="
+CORE_BANNER_MARKER_LEGACY="# ===== Core-Termux Banner ====="
 CORE_MOTD_BACKUP="$CORE_CACHE/motd.backup"
 
 _backup_motd() {
@@ -46,6 +47,28 @@ _detect_shell_config() {
 	fi
 }
 
+_banner_installed() {
+	local shell_config="$1"
+	[[ -n "$shell_config" ]] || return 1
+	grep -qF "$CORE_BANNER_MARKER" "$shell_config" 2>/dev/null ||
+		grep -qF "$CORE_BANNER_MARKER_LEGACY" "$shell_config" 2>/dev/null
+}
+
+_find_banner_marker_line() {
+	local shell_config="$1"
+	grep -nF -e "$CORE_BANNER_MARKER" -e "$CORE_BANNER_MARKER_LEGACY" "$shell_config" 2>/dev/null |
+		head -1 | cut -d: -f1
+}
+
+_migrate_banner_marker() {
+	local shell_config="$1"
+	if grep -qF "$CORE_BANNER_MARKER_LEGACY" "$shell_config" 2>/dev/null &&
+		! grep -qF "$CORE_BANNER_MARKER" "$shell_config" 2>/dev/null; then
+		sed -i "s|$CORE_BANNER_MARKER_LEGACY|$CORE_BANNER_MARKER|" "$shell_config"
+		log_info "Migrated banner marker to Jax"
+	fi
+}
+
 _install_banner_impl() {
 	local shell_config
 	shell_config="$(_detect_shell_config)"
@@ -55,7 +78,8 @@ _install_banner_impl() {
 		return 1
 	fi
 
-	if grep -qF "$CORE_BANNER_MARKER" "$shell_config" 2>/dev/null; then
+	if _banner_installed "$shell_config"; then
+		_migrate_banner_marker "$shell_config"
 		log_info "Jax Banner already installed"
 		return 0
 	fi
@@ -73,8 +97,6 @@ _install_banner_impl() {
 	# initialization" warning, because the banner prints to stdout.
 	local p10k_marker="# Enable Powerlevel10k instant prompt."
 	if grep -qF "$p10k_marker" "$shell_config" 2>/dev/null; then
-		# Use awk with index() for fixed-string matching — no regex escaping
-		# needed and no external language dependencies beyond standard POSIX tools.
 		local tmp_config="${shell_config}.core_tmp"
 		awk \
 			-v p10k="$p10k_marker" \
@@ -86,7 +108,7 @@ _install_banner_impl() {
 				inserted = 1
 			}
 			{ print }' \
-			"$shell_config" > "$tmp_config" && mv "$tmp_config" "$shell_config"
+			"$shell_config" >"$tmp_config" && mv "$tmp_config" "$shell_config"
 	else
 		cat >>"$shell_config" <<EOF
 
@@ -104,7 +126,8 @@ EOF
 }
 
 install_banner() {
-	if grep -qF "$CORE_BANNER_MARKER" "$(_detect_shell_config)" 2>/dev/null; then
+	if _banner_installed "$(_detect_shell_config)"; then
+		_migrate_banner_marker "$(_detect_shell_config)"
 		log_info "Jax Banner already installed"
 		return 0
 	fi
@@ -122,13 +145,13 @@ _uninstall_banner_impl() {
 		return 1
 	fi
 
-	if ! grep -qF "$CORE_BANNER_MARKER" "$shell_config" 2>/dev/null; then
+	if ! _banner_installed "$shell_config"; then
 		log_warn "Jax Banner not installed"
 		return 0
 	fi
 
 	local marker_line
-	marker_line="$(grep -nF "$CORE_BANNER_MARKER" "$shell_config" | head -1 | cut -d: -f1)"
+	marker_line="$(_find_banner_marker_line "$shell_config")"
 
 	if [[ -n "$marker_line" ]]; then
 		local prev_line=$((marker_line - 1))
@@ -149,7 +172,7 @@ _uninstall_banner_impl() {
 }
 
 uninstall_banner() {
-	if ! grep -qF "$CORE_BANNER_MARKER" "$(_detect_shell_config)" 2>/dev/null; then
+	if ! _banner_installed "$(_detect_shell_config)"; then
 		log_warn "Jax Banner not installed"
 		return 0
 	fi
@@ -157,13 +180,10 @@ uninstall_banner() {
 	loading "Uninstalling Banner" _uninstall_banner_impl
 }
 
-_update_banner_impl() {
+update_banner() {
+	log_info "Updating Jax Banner..."
 	uninstall_banner
 	install_banner
-}
-
-update_banner() {
-  _update_banner_impl
 }
 
 reinstall_banner() {

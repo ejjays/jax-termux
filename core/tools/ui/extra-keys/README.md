@@ -10,7 +10,7 @@ Additional keyboard rows for Termux with navigation keys
 
 ## Description
 
-Adds two extra keyboard rows to the Termux terminal with useful keys for coding: ESC, TAB, CTRL, ALT, arrow keys, HOME, END, PGUP, PGDN. This transforms the default Termux keyboard into a more developer-friendly input experience.
+Adds two extra keyboard rows to the Termux terminal with useful keys for coding: ESC, TAB, CTRL, ALT, arrow keys, HOME, END, PGUP, PGDN. This transforms the default Termux keyboard into a more developer-friendly input experience. Other settings in `termux.properties` are preserved.
 
 ## Dependencies
 
@@ -39,5 +39,6 @@ jax update ui --extra-keys
 - Config file: `~/.termux/termux.properties`
 - Adds two extra key rows with navigation keys
 - Includes ESC, arrow keys, function keys
+- Preserves other settings in `termux.properties`
 - Restart Termux to apply changes
 

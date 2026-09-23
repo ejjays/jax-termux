@@ -49,12 +49,9 @@ uninstall_font() {
 	loading "Uninstalling Meslo Nerd Font" _uninstall_font_impl
 }
 
-_update_font_impl() {
-	install_font
-}
-
 update_font() {
-  _update_font_impl
+	log_info "Updating Meslo Nerd Font..."
+	loading "Updating Meslo Nerd Font" _install_font_impl
 }
 
 reinstall_font() {

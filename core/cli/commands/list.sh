@@ -292,8 +292,8 @@ _list_ui() {
   table_start "Component" "Install Flag" "Status"
   table_row "Meslo Nerd Font" "--font" "$(_check_file "$HOME/.termux/font.ttf")"
   table_row "Extra Keys" "--extra-keys" "$(_check_extra_keys)"
-  table_row "Cursor Color" "--cursor" "$(_check_file "$HOME/.termux/colors.properties")"
-  table_row "Startup Banner" "--banner" "$(_grep_config "$HOME/.zshrc" "# ===== Core-Termux Banner =====" "$HOME/.bashrc")"
+  table_row "Cursor Color" "--cursor" "$(_check_cursor)"
+  table_row "Startup Banner" "--banner" "$(_grep_config "$HOME/.zshrc" "Banner =====" "$HOME/.bashrc")"
   table_end
 
   echo
@@ -362,9 +362,20 @@ _check_file() {
   fi
 }
 
-# Check if extra-keys are configured by core-termux
+# Check if extra-keys are configured by jax
 _check_extra_keys() {
-  if grep -qF "terminal-cursor-blink-rate=500" "$HOME/.termux/termux.properties" 2>/dev/null; then
+  if grep -qF "# ===== Jax Extra Keys =====" "$HOME/.termux/termux.properties" 2>/dev/null ||
+    grep -qF "terminal-cursor-blink-rate=500" "$HOME/.termux/termux.properties" 2>/dev/null; then
+    echo -e "${D_GREEN}installed${NC}"
+  else
+    echo -e "${D_RED}not installed${NC}"
+  fi
+}
+
+# Check if jax cursor color is configured
+_check_cursor() {
+  if grep -qxF "cursor=#1CF289" "$HOME/.termux/colors.properties" 2>/dev/null ||
+    grep -qF "# ===== Jax Cursor =====" "$HOME/.termux/colors.properties" 2>/dev/null; then
     echo -e "${D_GREEN}installed${NC}"
   else
     echo -e "${D_RED}not installed${NC}"

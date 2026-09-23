@@ -25,10 +25,10 @@ setup_ui() {
 	log_success "Termux UI configuration completed"
 	separator
 	echo
-	list_item "Cursor: Green (#00FF00)"
+	list_item "Cursor: Soft green (#1CF289)"
 	list_item "Extra-keys: Custom layout with navigation"
 	list_item "Font: Meslo Nerd Font"
-	list_item "Banner: Core-Termux startup banner"
+	list_item "Banner: Jax startup banner"
 	echo
 	log_warn "Please restart Termux to apply all changes"
 	echo
@@ -83,33 +83,33 @@ update_ui() {
 }
 
 _update_ui_wrapper() {
-  import "@/tools/ui/all"
-  update_all_ui_components
+	import "@/tools/ui/all"
+	update_all_ui_components
 }
 
 reinstall_ui() {
-  separator
-  box "Reinstalling Termux UI Configuration"
-  separator
-  echo
+	separator
+	box "Reinstalling Termux UI Configuration"
+	separator
+	echo
 
-  mkdir -p "$(dirname "$LOG_FILE")"
+	mkdir -p "$(dirname "$LOG_FILE")"
 
-  _reinstall_ui_wrapper
-  separator
-  log_success "Termux UI configuration reinstalled"
-  separator
-  echo
-  list_item "Cursor: Green (#00FF00)"
-  list_item "Extra-keys: Custom layout with navigation"
-  list_item "Font: Meslo Nerd Font"
-  list_item "Banner: Core-Termux startup banner"
-  echo
-  log_warn "Please restart Termux to apply all changes"
-  echo
+	_reinstall_ui_wrapper
+	separator
+	log_success "Termux UI configuration reinstalled"
+	separator
+	echo
+	list_item "Cursor: Soft green (#1CF289)"
+	list_item "Extra-keys: Custom layout with navigation"
+	list_item "Font: Meslo Nerd Font"
+	list_item "Banner: Jax startup banner"
+	echo
+	log_warn "Please restart Termux to apply all changes"
+	echo
 }
 
 _reinstall_ui_wrapper() {
-  import "@/tools/ui/all"
-  reinstall_all_ui_components
+	import "@/tools/ui/all"
+	reinstall_all_ui_components
 }
