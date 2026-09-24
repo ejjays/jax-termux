@@ -69,6 +69,33 @@ _migrate_banner_marker() {
 	fi
 }
 
+_repair_banner_source() {
+	local shell_config="$1"
+	local expected="$CORE_UTILS/banner.sh"
+	[[ -n "$shell_config" && -f "$shell_config" ]] || return 1
+	[[ -f "$expected" ]] || return 1
+
+	local marker_line
+	marker_line="$(_find_banner_marker_line "$shell_config")"
+	[[ -n "$marker_line" ]] || return 1
+
+	local source_line_num=$((marker_line + 1))
+	local source_line
+	source_line="$(sed -n "${source_line_num}p" "$shell_config" 2>/dev/null)"
+
+	if [[ "$source_line" == "source \"$expected\"" ]]; then
+		return 0
+	fi
+
+	if [[ "$source_line" =~ ^(source|\.)\  ]] || [[ "$source_line" =~ banner\.sh ]]; then
+		sed -i "${source_line_num}s|.*|source \"$expected\"|" "$shell_config"
+	else
+		sed -i "${marker_line}a\\source \"$expected\"" "$shell_config"
+	fi
+	log_info "Repaired banner source path"
+	return 0
+}
+
 _install_banner_impl() {
 	local shell_config
 	shell_config="$(_detect_shell_config)"
@@ -80,6 +107,7 @@ _install_banner_impl() {
 
 	if _banner_installed "$shell_config"; then
 		_migrate_banner_marker "$shell_config"
+		_repair_banner_source "$shell_config"
 		log_info "Jax Banner already installed"
 		return 0
 	fi
@@ -128,6 +156,7 @@ EOF
 install_banner() {
 	if _banner_installed "$(_detect_shell_config)"; then
 		_migrate_banner_marker "$(_detect_shell_config)"
+		_repair_banner_source "$(_detect_shell_config)"
 		log_info "Jax Banner already installed"
 		return 0
 	fi
