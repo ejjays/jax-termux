@@ -203,11 +203,18 @@ clone_repo() {
     log_info "Developer installation detected"
     log_ok "Using local repository"
   elif [[ -d "$CORE_DATA/.git" ]]; then
+    git -C "$CORE_DATA" remote set-url origin "$REPO"
     progress_bar 3 10
-    git -C "$CORE_DATA" pull origin "$BRANCH" &>/dev/null
-    progress_bar 10 10
-    echo
-    log_ok "Repository updated"
+    if git -C "$CORE_DATA" pull origin "$BRANCH" &>/dev/null; then
+      progress_bar 10 10
+      echo
+      log_ok "Repository updated"
+    else
+      progress_bar 10 10
+      echo
+      log_fail "Failed to update repository"
+      return 1
+    fi
   else
     if [[ -d "$CORE_DATA" ]]; then
       rm -rf "$CORE_DATA"
@@ -233,13 +240,20 @@ clone_repo() {
 create_symlink() {
   log_step 4 "Creating jax command"
 
+  if [[ ! -f "$CORE_DATA/core/bin/jax" ]]; then
+    log_fail "Failed to create symlink (missing ${CORE_DATA}/core/bin/jax)"
+    return 1
+  fi
+
+  rm -f "$PREFIX/bin/core"
   rm -f "$PREFIX/bin/jax"
+  chmod +x "$CORE_DATA/core/bin/jax"
   ln -sf "$CORE_DATA/core/bin/jax" "$PREFIX/bin/jax"
 
-  if [[ -L "$PREFIX/bin/jax" ]]; then
+  if [[ -e "$PREFIX/bin/jax" ]]; then
     log_ok "Symlink created: jax → ${CORE_DATA}/core/bin/jax"
   else
-    log_fail "Failed to create symlink"
+    log_fail "Failed to create symlink (missing ${CORE_DATA}/core/bin/jax)"
     return 1
   fi
 }
