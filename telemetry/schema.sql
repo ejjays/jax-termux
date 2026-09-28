@@ -8,6 +8,9 @@ CREATE TABLE IF NOT EXISTS failures (
   error_class TEXT NOT NULL,
   jax_version TEXT NOT NULL,
   created_at INTEGER NOT NULL,
-  log_tail TEXT NOT NULL DEFAULT ''
+  log_tail TEXT NOT NULL DEFAULT '',
+  android_sdk TEXT NOT NULL DEFAULT '',
+  arch TEXT NOT NULL DEFAULT '',
+  app TEXT NOT NULL DEFAULT ''
 );
 CREATE INDEX IF NOT EXISTS idx_failures_day_tool ON failures(day, module, tool);

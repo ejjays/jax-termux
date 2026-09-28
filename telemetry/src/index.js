@@ -18,10 +18,13 @@ async function pingTelegram(env, row) {
   const token = env.TELEGRAM_BOT_TOKEN;
   const chat = env.TELEGRAM_CHAT_ID;
   if (!token || !chat) return;
+  const device = [row.android_sdk && `android ${row.android_sdk}`, row.arch, row.app]
+    .filter(Boolean)
+    .join(" ");
   const text =
     `jax failure: ${row.command} ${row.module} --${row.tool} (exit ${row.exit_code})\n` +
     `${row.error_class}\n` +
-    `jax ${row.jax_version} · ${row.day}`;
+    `jax ${row.jax_version}${device ? ` · ${device}` : ""} · ${row.day}`;
   try {
     await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: "POST",
@@ -69,11 +72,14 @@ export default {
       error_class: STR(body.error_class, 200),
       jax_version: STR(body.jax_version, 16),
       log_tail: STR(body.log_tail, 8192),
+      android_sdk: STR(body.android_sdk, 8),
+      arch: STR(body.arch, 16),
+      app: STR(body.app, 32),
     };
     try {
       await env.jax_telemetry
         .prepare(
-          "INSERT INTO failures (day, command, module, tool, exit_code, error_class, jax_version, created_at, log_tail) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+          "INSERT INTO failures (day, command, module, tool, exit_code, error_class, jax_version, created_at, log_tail, android_sdk, arch, app) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
         )
         .bind(
           row.day,
@@ -84,7 +90,10 @@ export default {
           row.error_class,
           row.jax_version,
           now,
-          row.log_tail
+          row.log_tail,
+          row.android_sdk,
+          row.arch,
+          row.app
         )
         .run();
     } catch {

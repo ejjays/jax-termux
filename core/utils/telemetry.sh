@@ -66,15 +66,30 @@ telemetry_json() {
   fi
 }
 
+# Device facts that change install behavior. All standard bug-report
+# fare: nothing model-specific, nothing identifying, no IP anywhere.
+telemetry_device() {
+  local sdk arch app
+  sdk="$(getprop ro.build.version.sdk 2>/dev/null || echo unknown)"
+  arch="$(uname -m 2>/dev/null || echo unknown)"
+  app="$(basename "$(dirname "$(dirname "$PREFIX" 2>/dev/null)" 2>/dev/null)" 2>/dev/null || echo unknown)"
+  printf '%s|%s|%s' "$sdk" "$arch" "$app"
+}
+
 telemetry_send() {
   local cmd="$1" module="$2" tool="$3" rc="$4"
-  local error_class log_tail version payload
+  local error_class log_tail version payload device
   error_class="$(telemetry_error_class)"
   log_tail="$(telemetry_log_tail)"
   version="${CORE_VERSION:-unknown}"
+  device="$(telemetry_device)"
+  local android_sdk="${device%%|*}"
+  local rest="${device#*|}"
+  local arch="${rest%%|*}"
+  local app="${rest#*|}"
   error_class="$(telemetry_json "$error_class")"
   log_tail="$(telemetry_json "$log_tail")"
-  payload="{\"v\":1,\"command\":\"$cmd\",\"module\":\"$module\",\"tool\":\"$tool\",\"exit_code\":$rc,\"error_class\":$error_class,\"jax_version\":\"${version//\"/}\",\"log_tail\":$log_tail}"
+  payload="{\"v\":2,\"command\":\"$cmd\",\"module\":\"$module\",\"tool\":\"$tool\",\"exit_code\":$rc,\"error_class\":$error_class,\"jax_version\":\"${version//\"/}\",\"log_tail\":$log_tail,\"android_sdk\":\"${android_sdk//\"/}\",\"arch\":\"${arch//\"/}\",\"app\":\"${app//\"/}\"}"
   if curl -fsSL --max-time 8 -X POST "$TELEMETRY_ENDPOINT" \
     -H "Content-Type: application/json" \
     --data "$payload" &>/dev/null; then
