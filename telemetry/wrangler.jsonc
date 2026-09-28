@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developers.cloudflare.com/workers/wrangler/configuration/",
+  "name": "jax-telemetry",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-28",
+  "d1_databases": [
+    {
+      "binding": "jax_telemetry",
+      "database_name": "jax-telemetry",
+      "database_id": "c91cff56-dae3-4b45-8852-afde74d490bc"
+    }
+  ]
+}
