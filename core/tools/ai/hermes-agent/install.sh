@@ -63,12 +63,7 @@ _hermes_install_python_pkgs_impl() {
   return 0
 }
 
-# Official Termux path: Nous publishes a signed APT repo (NOT Termux main —
-# that is why a bare `pkg install hermes-agent` finds nothing). Add their
-# repo with fingerprint check, then install from it.
-# NOTE (upstream, 2026): "Termux is currently broken... will ship soon."
-# If their repo has no working build yet, this fails fast and we fall
-# through to the GitHub fallbacks below.
+# Unpublished upstream as of writing; fails fast when absent.
 _hermes_try_apt() {
   loading "Setting up Hermes APT repo" _hermes_try_apt_impl
 }
@@ -105,8 +100,6 @@ _hermes_pip_fallback_impl() {
   return 1
 }
 
-# Upstream's installer refuses Termux, so when every packaged path fails,
-# clone the repo ourselves straight from GitHub for the pip fallback.
 _hermes_clone_repo() {
   loading "Cloning Hermes Agent repo" _hermes_clone_repo_impl
 }
@@ -169,11 +162,7 @@ _hermes_apply_patches_impl() {
     ln -s "$SYS_SITE/cryptography" "$VENV_SITE/cryptography"
   fi
 
-  # firecrawl-anydoc / httptools / watchfiles are Rust-built pins that ship
-  # source-only: neither rustup nor prebuilt wheels support Android, so
-  # they can never compile on Termux. Nothing imports them at startup
-  # (uvicorn runs without httptools/watchfiles, minus --reload), so drop
-  # the pins and let pip resolve the rest.
+  # Rust pins with no Android wheels and nothing importing them at startup.
   for dep in 'firecrawl-anydoc==' '^  "httptools>=' '^  "watchfiles>='; do
     grep -q "$dep" "$HERMES_DIR/pyproject.toml" && sed -i "/$dep/d" "$HERMES_DIR/pyproject.toml"
   done
@@ -184,8 +173,7 @@ _hermes_apply_patches_impl() {
   return 0
 }
 
-# Community Termux repo (adybag14-cyber): the only channel shipping a
-# working hermes-agent build TODAY. Fingerprint-pinned; aborts on mismatch.
+# Only channel with working builds; key pinned, mismatch aborts.
 _hermes_community_apt() {
   loading "Setting up community Termux repo" _hermes_community_apt_impl
 }

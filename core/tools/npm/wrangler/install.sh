@@ -18,9 +18,7 @@ _wrangler_dependencies() {
   yes | pkg install nodejs-lts &>>"$LOG_FILE"
 }
 
-# workerd (wrangler's runtime) rejects Termux outright: its postinstall
-# throws "Unsupported platform: android arm64 LE" and aborts the whole
-# npm install. Install with scripts off, then fix up the pieces by hand.
+# workerd postinstall aborts on android; install scriptless, fix up after.
 _install_wrangler_npm() {
   loading "Installing Wrangler CLI (scripts off)" _install_wrangler_npm_impl
 }
@@ -33,8 +31,6 @@ _install_wrangler_npm_impl() {
   return 0
 }
 
-# The workerd platform package can't be npm-installed directly (npm refuses
-# it as unsupported), so fetch the tarball and unpack it into place.
 _install_workerd_binary() {
   loading "Fetching workerd linux-arm64 binary" _install_workerd_binary_impl
 }
@@ -60,7 +56,6 @@ _install_workerd_binary_impl() {
   return 0
 }
 
-# Teach workerd's platform map about Termux (one line, two bundled files).
 _patch_workerd_platform() {
   local root
   root="$(npm root -g 2>/dev/null)" || return 1
@@ -73,8 +68,6 @@ _patch_workerd_platform() {
   return 0
 }
 
-# Point the workerd ELF at the Termux glibc loader (same playbook as the
-# Turbopack toolchain: patch-interp.py handles longer paths).
 _patch_workerd_interp() {
   local root
   root="$(npm root -g 2>/dev/null)" || return 1
@@ -83,9 +76,7 @@ _patch_workerd_interp() {
   python3 "$CORE_PATH/tools/npm/turbopack/bin/patch-interp.py" "$bin" "$GLIBC_LOADER" &>>"$LOG_FILE"
 }
 
-# npm drops a bin stub that resolves paths relative to itself, which breaks
-# outside its own tree — and its shebang targets /usr/bin/env, absent on
-# Termux. Replace it with a direct wrapper.
+# npm's bin stub resolves relative to itself; replace with a direct wrapper.
 _install_wrangler_wrapper() {
   local root
   root="$(npm root -g 2>/dev/null)" || return 1

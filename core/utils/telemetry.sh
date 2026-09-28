@@ -1,10 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-# Opt-in failure telemetry for JAX. Default off. When on, tool install /
-# update / reinstall / uninstall failures send one small report each:
-# command, module, tool, exit code, a sanitized error line, JAX version.
-# Never sent: paths, prompts, tokens, file contents, IPs (the server
-# stores none of that either). Transport failures never fail the CLI.
+# Opt-in, default off. Reports carry no identifying data by construction.
 
 import "@/utils/log"
 
@@ -36,9 +32,7 @@ telemetry_ask_once() {
   return 1
 }
 
-# Pull the last error-looking line from the freshest module install log,
-# stripped of home paths and every control character (apt/npm progress
-# bars leave carriage returns that would otherwise poison the JSON).
+# \r from progress bars would poison the JSON.
 telemetry_error_class() {
   local logfile
   logfile="$(ls -t "$HOME/.cache/core-termux"/install_*.log 2>/dev/null | head -n 1)"
@@ -50,9 +44,6 @@ telemetry_error_class() {
   echo "${line:0:200}"
 }
 
-# Full story, sanitized: last 40 useful lines of the freshest module log.
-# Home paths become ~, control codes go, secret-looking lines are dropped
-# entirely, total capped so one report stays small.
 telemetry_log_tail() {
   local logfile
   logfile="$(ls -t "$HOME/.cache/core-termux"/install_*.log 2>/dev/null | head -n 1)"
@@ -67,8 +58,6 @@ telemetry_log_tail() {
   return 0
 }
 
-# JSON-escape free text. Prefers python; without it, falls back to
-# stripping the characters that would break the payload.
 telemetry_json() {
   if command -v python &>/dev/null; then
     printf '%s' "$1" | python -c "import json,sys; print(json.dumps(sys.stdin.read()))"
@@ -97,7 +86,6 @@ telemetry_send() {
   return 0
 }
 
-# Best-effort resend of spooled reports (offline at failure time).
 telemetry_flush_spool() {
   [[ -d "$TELEMETRY_SPOOL" ]] || return 0
   local f n=0
@@ -114,11 +102,7 @@ telemetry_flush_spool() {
   return 0
 }
 
-# Shared per-tool result hook. Replaces the bare
-#   case $? in 0) ((ok++));; 1) ((fail++));; esac
-# idiom with identical counting: only exit 1 is a failure (other non-zero
-# codes mean already-installed/skipped and touch neither counter).
-# Usage: install_foo; _tool_result install ai foo $? installed_count failed_count
+# Only exit 1 fails; other non-zero means skipped and touches no counter.
 _tool_result() {
   local cmd="$1" module="$2" tool="$3" rc="$4"
   local -n _ok_ref="$5" _fail_ref="$6"

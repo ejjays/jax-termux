@@ -1,15 +1,10 @@
-// jax-telemetry: opt-in failure reports from the JAX CLI.
-// Open endpoint by design (phones hold no secrets). Accepts ONLY the
-// documented fields within strict caps; everything else is dropped.
-// No IPs, paths, prompts, tokens or file contents are ever stored.
-// v1 payload: { v, command, module, tool, exit_code, error_class,
-//               jax_version, log_tail }
+// Open endpoint: phones hold no secrets, so strict validation is the auth.
 
 const COMMANDS = new Set(["install", "update", "reinstall", "uninstall"]);
 const STR = (v, max) => (typeof v === "string" ? v.slice(0, max) : "");
 const INT = (v) => (Number.isInteger(v) ? v : 0);
 
-// best-effort per-isolate rate limit: 20 reports / IP / minute
+// per-isolate only; Cloudflare abuse protection does the real work.
 const hits = new Map();
 function limited(ip) {
   const now = Date.now();
@@ -34,7 +29,7 @@ async function pingTelegram(env, row) {
       body: JSON.stringify({ chat_id: chat, text: text.slice(0, 3500) }),
     });
   } catch {
-    // alerting must never break the report path
+    // alerting is best-effort; never break the report path
   }
 }
 
