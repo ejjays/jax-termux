@@ -95,44 +95,31 @@ _hermes_try_apt_impl() {
   command -v hermes &>/dev/null
 }
 
-# jiter (Rust JSON parser, required by the OpenAI SDK) ships source-only
-# with no Android wheels and no rustup target for Android, so it can never
-# build on Termux. The only thing anyone imports from it is from_json, and
-# hermes itself tolerates its absence — so provide a stdlib-backed shim
-# that satisfies both pip metadata and runtime imports.
-_hermes_shim_jiter() {
-  if python -c "import jiter" &>/dev/null; then
-    return 0
+# Rust-built deps (pydantic-core and friends) ship source-only with no
+# Android wheels and no rustup target, so they must compile on-device.
+# That needs the Termux Rust toolchain plus a working maturin, and pip
+# must NOT use build isolation (isolated envs re-bootstrap maturin
+# through rustup, which refuses Android — reuse the system toolchain).
+_hermes_ensure_rust() {
+  loading "Ensuring Rust toolchain and maturin" _hermes_ensure_rust_impl
+}
+
+_hermes_ensure_rust_impl() {
+  if ! command -v cargo &>/dev/null; then
+    yes | pkg install rust &>>"$LOG_FILE" || { log_error "Failed to install Rust"; return 1; }
   fi
-  local purelib
-  purelib="$(python -c "import sysconfig; print(sysconfig.get_path('purelib'))")" || return 1
-  mkdir -p "$purelib/jiter" "$purelib/jiter-0.16.0.dist-info" || return 1
-  cat >"$purelib/jiter/__init__.py" <<'EOF'
-import json as _json
-from typing import Any
+  python -m pip install --upgrade "maturin>=1,<2" setuptools wheel &>>"$LOG_FILE" || { log_error "Failed to install maturin"; return 1; }
+  return 0
+}
 
-JsonValue = Any
-
-
-def from_json(data, **kwargs):
-    if isinstance(data, (bytes, bytearray)):
-        data = bytes(data).decode("utf-8")
-    return _json.loads(data)
-
-
-def to_json(value, **kwargs):
-    return _json.dumps(value).encode("utf-8")
-
-
-__all__ = ["from_json", "to_json", "JsonValue"]
-__version__ = "0.16.0"
-EOF
-  cat >"$purelib/jiter-0.16.0.dist-info/METADATA" <<'EOF'
-Metadata-Version: 2.1
-Name: jiter
-Version: 0.16.0
-Summary: Termux stdlib shim (upstream ships no Android build)
-EOF
+_hermes_pip_fallback_impl() {
+  local HERMES_DIR="$HOME/.hermes/hermes-agent"
+  cd "$HERMES_DIR" || return 1
+  export PIP_NO_BUILD_ISOLATION=1
+  python -m pip install --ignore-requires-python -e '.[termux-all]' &>>"$LOG_FILE" && return 0
+  python -m pip install --ignore-requires-python -e '.[termux]' &>>"$LOG_FILE" && return 0
+  python -m pip install --ignore-requires-python -e '.' &>>"$LOG_FILE" && return 0
+  return 1
 }
 
 # Upstream's installer refuses Termux, so when every packaged path fails,
@@ -227,7 +214,7 @@ _install_hermes_agent() {
   # patches and pip fallback below have a repo to work with.
   _hermes_clone_repo || return 1
   _hermes_apply_patches || return 1
-  _hermes_shim_jiter || log_warn "jiter shim failed, continuing anyway"
+  _hermes_ensure_rust || return 1
   _hermes_run_installer && return 0
 
   # Still failing (Python version constraint) — force install with pip
