@@ -16,6 +16,7 @@ _hermes_install_deps_impl() {
     ["python"]="python"
     ["nodejs-lts"]="node"
     ["ripgrep"]="rg"
+    ["git"]="git"
   )
 
   local pkg_name bin_name
@@ -60,6 +61,37 @@ _hermes_install_python_pkgs_impl() {
   fi
 
   return 0
+}
+
+# Upstream's installer refuses Termux (it expects a signed APT package that
+# is not published in the current repos). When that happens the repo is
+# never cloned, so clone it ourselves straight from GitHub.
+_hermes_clone_repo() {
+  loading "Cloning Hermes Agent repo" _hermes_clone_repo_impl
+}
+
+_hermes_clone_repo_impl() {
+  local HERMES_DIR="$HOME/.hermes/hermes-agent"
+
+  if [ -f "$HERMES_DIR/pyproject.toml" ]; then
+    return 0
+  fi
+
+  mkdir -p "$HOME/.hermes" || return 1
+  if ! git clone --depth 1 --branch main https://github.com/NousResearch/hermes-agent.git "$HERMES_DIR" &>>"$LOG_FILE"; then
+    log_error "Failed to clone Hermes Agent repo"
+    return 1
+  fi
+  return 0
+}
+
+_hermes_try_apt() {
+  loading "Trying Termux package (hermes-agent)" _hermes_try_apt_impl
+}
+
+_hermes_try_apt_impl() {
+  yes | pkg install hermes-agent &>>"$LOG_FILE" || return 1
+  command -v hermes &>/dev/null
 }
 
 _hermes_run_installer() {
@@ -114,9 +146,15 @@ _hermes_apply_patches_impl() {
 _install_hermes_agent() {
   _hermes_install_deps || return 1
   _hermes_install_python_pkgs || return 1
+
+  # Official Termux path first (currently unpublished, fails fast if absent)
+  _hermes_try_apt && return 0
+
   _hermes_run_installer && return 0
 
-  # Installer failed — repo should be cloned, apply patches and retry
+  # Upstream refuses Termux without cloning — do the clone ourselves so the
+  # patches and pip fallback below have a repo to work with.
+  _hermes_clone_repo || return 1
   _hermes_apply_patches || return 1
   _hermes_run_installer && return 0
 
