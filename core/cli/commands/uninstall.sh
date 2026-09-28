@@ -2,6 +2,7 @@
 
 import "@/utils/log"
 import "@/utils/colors"
+import "@/utils/telemetry"
 
 uninstall_main() {
 
@@ -128,155 +129,155 @@ _uninstall_specific_tools() {
       case "$tool" in
       qwen-code)
         uninstall_qwen_code
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai qwen-code $? uninstalled_count failed_count
         ;;
       gemini-cli)
         uninstall_gemini_cli
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai gemini-cli $? uninstalled_count failed_count
         ;;
       claude-code)
         uninstall_claude_code
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai claude-code $? uninstalled_count failed_count
         ;;
       mistral-vibe)
         uninstall_mistral_vibe
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai mistral-vibe $? uninstalled_count failed_count
         ;;
       openclaude)
         uninstall_openclaude
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai openclaude $? uninstalled_count failed_count
         ;;
       openclaw)
         uninstall_openclaw
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai openclaw $? uninstalled_count failed_count
         ;;
       ollama)
         uninstall_ollama
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai ollama $? uninstalled_count failed_count
         ;;
       codex)
         uninstall_codex
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai codex $? uninstalled_count failed_count
         ;;
       opencode)
         uninstall_opencode
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai opencode $? uninstalled_count failed_count
         ;;
       qoder)
         uninstall_qoder
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai qoder $? uninstalled_count failed_count
         ;;
       kilocode-cli)
         uninstall_kilocode_cli
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai kilocode-cli $? uninstalled_count failed_count
         ;;
       cactus-needle)
         uninstall_cactus_needle
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai cactus-needle $? uninstalled_count failed_count
         ;;
       cactus)
         uninstall_cactus_cli
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai cactus $? uninstalled_count failed_count
         ;;
       keelcode)
         uninstall_keelcode
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai keelcode $? uninstalled_count failed_count
         ;;
       cursor-cli)
         uninstall_cursor_cli
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai cursor-cli $? uninstalled_count failed_count
         ;;
       kimchi)
         uninstall_kimchi
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai kimchi $? uninstalled_count failed_count
         ;;
       mimocode)
         uninstall_mimocode
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai mimocode $? uninstalled_count failed_count
         ;;
       engram)
         uninstall_engram
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai engram $? uninstalled_count failed_count
         ;;
       codegraph)
         uninstall_codegraph
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai codegraph $? uninstalled_count failed_count
         ;;
       pi)
         uninstall_pi
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai pi $? uninstalled_count failed_count
         ;;
       oh-my-pi)
         uninstall_oh_my_pi
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai oh-my-pi $? uninstalled_count failed_count
         ;;
       antigravity-cli)
         uninstall_antigravity_cli
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai antigravity-cli $? uninstalled_count failed_count
         ;;
       minimax-cli)
         uninstall_minimax_cli
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai minimax-cli $? uninstalled_count failed_count
         ;;
       gentle-ai)
         uninstall_gentle_ai
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai gentle-ai $? uninstalled_count failed_count
         ;;
       gga)
         uninstall_gga
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai gga $? uninstalled_count failed_count
         ;;
       hermes-agent)
         uninstall_hermes_agent
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai hermes-agent $? uninstalled_count failed_count
         ;;
       kimi-code)
         uninstall_kimi_code
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai kimi-code $? uninstalled_count failed_count
         ;;
       command-code)
         uninstall_command_code
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai command-code $? uninstalled_count failed_count
         ;;
       freebuff)
         uninstall_freebuff
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai freebuff $? uninstalled_count failed_count
         ;;
       ctx7)
         uninstall_ctx7
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai ctx7 $? uninstalled_count failed_count
         ;;
       openspec)
         uninstall_openspec
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai openspec $? uninstalled_count failed_count
         ;;
       supercode)
         uninstall_supercode
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai supercode $? uninstalled_count failed_count
         ;;
       cline)
         uninstall_cline
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai cline $? uninstalled_count failed_count
         ;;
       ampcode)
         uninstall_amp_code_cli
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai ampcode $? uninstalled_count failed_count
         ;;
       droid-factory)
         uninstall_droid_factory
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai droid-factory $? uninstalled_count failed_count
         ;;
       hugging-face)
         uninstall_hugging_face
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai hugging-face $? uninstalled_count failed_count
         ;;
       goose)
         uninstall_goose
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai goose $? uninstalled_count failed_count
         ;;
       walkie)
         uninstall_walkie
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ai walkie $? uninstalled_count failed_count
         ;;
       *)
         log_warn "Unknown AI tool: --$tool"
@@ -302,27 +303,27 @@ _uninstall_specific_tools() {
       case "$tool" in
       postgresql)
         uninstall_postgresql
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall db postgresql $? uninstalled_count failed_count
         ;;
       mariadb)
         uninstall_mariadb
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall db mariadb $? uninstalled_count failed_count
         ;;
       sqlite)
         uninstall_sqlite
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall db sqlite $? uninstalled_count failed_count
         ;;
       mongodb)
         uninstall_mongodb
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall db mongodb $? uninstalled_count failed_count
         ;;
       redis)
         uninstall_redis
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall db redis $? uninstalled_count failed_count
         ;;
       supabase)
         uninstall_supabase
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall db supabase $? uninstalled_count failed_count
         ;;
       *)
         log_warn "Unknown database: --$tool"
@@ -348,95 +349,95 @@ _uninstall_specific_tools() {
       case "$tool" in
       gh)
         uninstall_gh
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev gh $? uninstalled_count failed_count
         ;;
       wget)
         uninstall_wget
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev wget $? uninstalled_count failed_count
         ;;
       curl)
         uninstall_curl
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev curl $? uninstalled_count failed_count
         ;;
       lsd)
         uninstall_lsd
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev lsd $? uninstalled_count failed_count
         ;;
       bat)
         uninstall_bat
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev bat $? uninstalled_count failed_count
         ;;
       proot)
         uninstall_proot
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev proot $? uninstalled_count failed_count
         ;;
       ncurses)
         uninstall_ncurses
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev ncurses $? uninstalled_count failed_count
         ;;
       tmate)
         uninstall_tmate
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev tmate $? uninstalled_count failed_count
         ;;
       tmux)
         uninstall_tmux
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev tmux $? uninstalled_count failed_count
         ;;
       openssh)
         uninstall_openssh
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev openssh $? uninstalled_count failed_count
         ;;
       cloudflared)
         uninstall_cloudflared
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev cloudflared $? uninstalled_count failed_count
         ;;
       translate)
         uninstall_translate
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev translate $? uninstalled_count failed_count
         ;;
       html2text)
         uninstall_html2text
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev html2text $? uninstalled_count failed_count
         ;;
       jq)
         uninstall_jq
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev jq $? uninstalled_count failed_count
         ;;
       bc)
         uninstall_bc
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev bc $? uninstalled_count failed_count
         ;;
       tree)
         uninstall_tree
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev tree $? uninstalled_count failed_count
         ;;
       fzf)
         uninstall_fzf
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev fzf $? uninstalled_count failed_count
         ;;
       imagemagick)
         uninstall_imagemagick
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev imagemagick $? uninstalled_count failed_count
         ;;
       shfmt)
         uninstall_shfmt
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev shfmt $? uninstalled_count failed_count
         ;;
       make)
         uninstall_make
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev make $? uninstalled_count failed_count
         ;;
       udocker)
         uninstall_udocker
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev udocker $? uninstalled_count failed_count
         ;;
       superfile)
         uninstall_superfile
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev superfile $? uninstalled_count failed_count
         ;;
       gcloud)
         uninstall_gcloud
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall dev gcloud $? uninstalled_count failed_count
         ;;
       *)
         log_warn "Unknown tool: --$tool"
@@ -462,55 +463,55 @@ _uninstall_specific_tools() {
       case "$tool" in
       typescript)
         uninstall_typescript
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall npm typescript $? uninstalled_count failed_count
         ;;
       nestjs)
         uninstall_nestjs
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall npm nestjs $? uninstalled_count failed_count
         ;;
       prettier)
         uninstall_prettier
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall npm prettier $? uninstalled_count failed_count
         ;;
       live-server)
         uninstall_live_server
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall npm live-server $? uninstalled_count failed_count
         ;;
       localtunnel)
         uninstall_localtunnel
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall npm localtunnel $? uninstalled_count failed_count
         ;;
       vercel)
         uninstall_vercel
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall npm vercel $? uninstalled_count failed_count
         ;;
       wrangler)
         uninstall_wrangler
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall npm wrangler $? uninstalled_count failed_count
         ;;
       firebase)
         uninstall_firebase
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall npm firebase $? uninstalled_count failed_count
         ;;
       markserv)
         uninstall_markserv
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall npm markserv $? uninstalled_count failed_count
         ;;
       psqlformat)
         uninstall_psqlformat
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall npm psqlformat $? uninstalled_count failed_count
         ;;
       ncu)
         uninstall_ncu
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall npm ncu $? uninstalled_count failed_count
         ;;
       ngrok)
         uninstall_ngrok
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall npm ngrok $? uninstalled_count failed_count
         ;;
       turbopack)
         uninstall_turbopack
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall npm turbopack $? uninstalled_count failed_count
         ;;
       *)
         log_warn "Unknown node module: --$tool"
@@ -536,35 +537,35 @@ _uninstall_specific_tools() {
       case "$tool" in
       nodejs)
         uninstall_npmjs
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall lang nodejs $? uninstalled_count failed_count
         ;;
       python)
         uninstall_python
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall lang python $? uninstalled_count failed_count
         ;;
       perl)
         uninstall_perl
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall lang perl $? uninstalled_count failed_count
         ;;
       php)
         uninstall_php
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall lang php $? uninstalled_count failed_count
         ;;
       rust)
         uninstall_rust
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall lang rust $? uninstalled_count failed_count
         ;;
       clang)
         uninstall_clang
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall lang clang $? uninstalled_count failed_count
         ;;
       golang)
         uninstall_golang
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall lang golang $? uninstalled_count failed_count
         ;;
       bun)
         uninstall_bun
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall lang bun $? uninstalled_count failed_count
         ;;
       *)
         log_warn "Unknown language: --$tool"
@@ -590,43 +591,43 @@ _uninstall_specific_tools() {
       case "$tool" in
       powerlevel10k)
         uninstall_powerlevel10k
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall shell powerlevel10k $? uninstalled_count failed_count
         ;;
       zsh-defer)
         uninstall_zsh_defer
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall shell zsh-defer $? uninstalled_count failed_count
         ;;
       zsh-autosuggestions)
         uninstall_zsh_autosuggestions
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall shell zsh-autosuggestions $? uninstalled_count failed_count
         ;;
       zsh-syntax-highlighting)
         uninstall_zsh_syntax_highlighting
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall shell zsh-syntax-highlighting $? uninstalled_count failed_count
         ;;
       history-substring)
         uninstall_history_substring
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall shell history-substring $? uninstalled_count failed_count
         ;;
       zsh-completions)
         uninstall_zsh_completions
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall shell zsh-completions $? uninstalled_count failed_count
         ;;
       fzf-tab)
         uninstall_fzf_tab
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall shell fzf-tab $? uninstalled_count failed_count
         ;;
       you-should-use)
         uninstall_you_should_use
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall shell you-should-use $? uninstalled_count failed_count
         ;;
       zsh-autopair)
         uninstall_zsh_autopair
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall shell zsh-autopair $? uninstalled_count failed_count
         ;;
       better-npm)
         uninstall_better_npm
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall shell better-npm $? uninstalled_count failed_count
         ;;
       *)
         log_warn "Unknown plugin: --$tool"
@@ -652,11 +653,11 @@ _uninstall_specific_tools() {
       case "$tool" in
       neovim)
         uninstall_neovim
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall editor neovim $? uninstalled_count failed_count
         ;;
       nvchad)
         uninstall_nvchad
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall editor nvchad $? uninstalled_count failed_count
         ;;
       *)
         log_warn "Unknown editor component: --$tool"
@@ -682,19 +683,19 @@ _uninstall_specific_tools() {
       case "$tool" in
       font)
         uninstall_font
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ui font $? uninstalled_count failed_count
         ;;
       extra-keys)
         uninstall_extra_keys
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ui extra-keys $? uninstalled_count failed_count
         ;;
       cursor)
         uninstall_cursor
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ui cursor $? uninstalled_count failed_count
         ;;
       banner)
         uninstall_banner
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall ui banner $? uninstalled_count failed_count
         ;;
       *)
         log_warn "Unknown UI component: --$tool"
@@ -720,7 +721,7 @@ _uninstall_specific_tools() {
       case "$tool" in
       n8n)
         uninstall_n8n
-        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        _tool_result uninstall auto n8n $? uninstalled_count failed_count
         ;;
       *)
         log_warn "Unknown automation tool: --$tool"

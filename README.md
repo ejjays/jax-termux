@@ -74,6 +74,7 @@ jax
 | [`jax uninstall`](#core-uninstall) | Remove installed modules |
 | [`jax reinstall`](#core-reinstall) | Uninstall + reinstall modules |
 | [`jax voice`](#core-voice) | Speech-to-agent via microphone |
+| [`jax telemetry`](#core-telemetry) | Anonymous failure reports (opt-in) |
 | [`jax open`](#core-open) | Open documentation in browser |
 | [`jax list`](#core-list) | List available tools in modules |
 | [`jax pg`](#core-pg) | PostgreSQL database manager |
@@ -401,6 +402,20 @@ $ jax voice opencode
 
     # opencode opens with the voice-transcribed prompt
 ```
+
+---
+
+### `jax telemetry`
+
+Anonymous failure reports. Off unless you turn it on.
+
+```bash
+jax telemetry status          # Show current state
+jax telemetry on              # Opt in
+jax telemetry off             # Opt out, nothing leaves the phone
+```
+
+When on, each failed install, update, reinstall or uninstall sends one small report: the command, the tool name, the exit code, one error line and versions. Never paths, prompts, tokens or file contents. On the first failure with no saved choice, JAX asks once and remembers the answer.
 
 ---
 

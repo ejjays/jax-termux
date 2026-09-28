@@ -50,6 +50,7 @@ core_help() {
   printf "    ${D_CYAN}%-12s${D_NC} %s\n" "pg" "PostgreSQL database manager"
   printf "    ${D_CYAN}%-12s${D_NC} %s\n" "init" "Configure existing projects"
   printf "    ${D_CYAN}%-12s${D_NC} %s\n" "voice" "Speech-to-agent via microphone"
+  printf "    ${D_CYAN}%-12s${D_NC} %s\n" "telemetry" "Anonymous failure reports (opt-in)"
   echo
   separator_section "Quick Start"
   echo

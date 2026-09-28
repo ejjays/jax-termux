@@ -2,6 +2,7 @@
 
 import "@/utils/log"
 import "@/utils/colors"
+import "@/utils/telemetry"
 
 install_main() {
 
@@ -129,155 +130,155 @@ _install_specific_tools() {
       case "$tool" in
       qwen-code)
         install_qwen_code
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai qwen-code $? installed_count failed_count
         ;;
       gemini-cli)
         install_gemini_cli
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai gemini-cli $? installed_count failed_count
         ;;
       claude-code)
         install_claude_code
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai claude-code $? installed_count failed_count
         ;;
       mistral-vibe)
         install_mistral_vibe
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai mistral-vibe $? installed_count failed_count
         ;;
       openclaude)
         install_openclaude
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai openclaude $? installed_count failed_count
         ;;
       openclaw)
         install_openclaw
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai openclaw $? installed_count failed_count
         ;;
       ollama)
         install_ollama
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai ollama $? installed_count failed_count
         ;;
       codex)
         install_codex
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai codex $? installed_count failed_count
         ;;
       opencode)
         install_opencode
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai opencode $? installed_count failed_count
         ;;
       qoder)
         install_qoder
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai qoder $? installed_count failed_count
         ;;
       kilocode-cli)
         install_kilocode_cli
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai kilocode-cli $? installed_count failed_count
         ;;
       cactus-needle)
         install_cactus_needle
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai cactus-needle $? installed_count failed_count
         ;;
       cactus)
         install_cactus_cli
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai cactus $? installed_count failed_count
         ;;
       keelcode)
         install_keelcode
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai keelcode $? installed_count failed_count
         ;;
       cursor-cli)
         install_cursor_cli
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai cursor-cli $? installed_count failed_count
         ;;
       kimchi)
         install_kimchi
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai kimchi $? installed_count failed_count
         ;;
       mimocode)
         install_mimocode
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai mimocode $? installed_count failed_count
         ;;
       engram)
         install_engram
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai engram $? installed_count failed_count
         ;;
       codegraph)
         install_codegraph
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai codegraph $? installed_count failed_count
         ;;
       pi)
         install_pi
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai pi $? installed_count failed_count
         ;;
       oh-my-pi)
         install_oh_my_pi
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai oh-my-pi $? installed_count failed_count
         ;;
       antigravity-cli)
         install_antigravity_cli
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai antigravity-cli $? installed_count failed_count
         ;;
       minimax-cli)
         install_minimax_cli
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai minimax-cli $? installed_count failed_count
         ;;
       gentle-ai)
         install_gentle_ai
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai gentle-ai $? installed_count failed_count
         ;;
       gga)
         install_gga
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai gga $? installed_count failed_count
         ;;
       hermes-agent)
         install_hermes_agent
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai hermes-agent $? installed_count failed_count
         ;;
       kimi-code)
         install_kimi_code
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai kimi-code $? installed_count failed_count
         ;;
       command-code)
         install_command_code
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai command-code $? installed_count failed_count
         ;;
       freebuff)
         install_freebuff
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai freebuff $? installed_count failed_count
         ;;
       ctx7)
         install_ctx7
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai ctx7 $? installed_count failed_count
         ;;
       openspec)
         install_openspec
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai openspec $? installed_count failed_count
         ;;
       supercode)
         install_supercode
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai supercode $? installed_count failed_count
         ;;
       cline)
         install_cline
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai cline $? installed_count failed_count
         ;;
       ampcode)
         install_amp_code_cli
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai ampcode $? installed_count failed_count
         ;;
       droid-factory)
         install_droid_factory
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai droid-factory $? installed_count failed_count
         ;;
       hugging-face)
         install_hugging_face
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai hugging-face $? installed_count failed_count
         ;;
       goose)
         install_goose
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai goose $? installed_count failed_count
         ;;
       walkie)
         install_walkie
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ai walkie $? installed_count failed_count
         ;;
       *)
         log_warn "Unknown AI tool: --$tool"
@@ -303,27 +304,27 @@ _install_specific_tools() {
       case "$tool" in
       postgresql)
         install_postgresql
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install db postgresql $? installed_count failed_count
         ;;
       mariadb)
         install_mariadb
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install db mariadb $? installed_count failed_count
         ;;
       sqlite)
         install_sqlite
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install db sqlite $? installed_count failed_count
         ;;
       mongodb)
         install_mongodb
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install db mongodb $? installed_count failed_count
         ;;
       redis)
         install_redis
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install db redis $? installed_count failed_count
         ;;
       supabase)
         install_supabase
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install db supabase $? installed_count failed_count
         ;;
       *)
         log_warn "Unknown database: --$tool"
@@ -349,95 +350,95 @@ _install_specific_tools() {
       case "$tool" in
       gh)
         install_gh
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev gh $? installed_count failed_count
         ;;
       wget)
         install_wget
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev wget $? installed_count failed_count
         ;;
       curl)
         install_curl
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev curl $? installed_count failed_count
         ;;
       lsd)
         install_lsd
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev lsd $? installed_count failed_count
         ;;
       bat)
         install_bat
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev bat $? installed_count failed_count
         ;;
       proot)
         install_proot
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev proot $? installed_count failed_count
         ;;
       ncurses)
         install_ncurses
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev ncurses $? installed_count failed_count
         ;;
       tmate)
         install_tmate
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev tmate $? installed_count failed_count
         ;;
       tmux)
         install_tmux
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev tmux $? installed_count failed_count
         ;;
       openssh)
         install_openssh
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev openssh $? installed_count failed_count
         ;;
       cloudflared)
         install_cloudflared
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev cloudflared $? installed_count failed_count
         ;;
       translate)
         install_translate
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev translate $? installed_count failed_count
         ;;
       html2text)
         install_html2text
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev html2text $? installed_count failed_count
         ;;
       jq)
         install_jq
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev jq $? installed_count failed_count
         ;;
       bc)
         install_bc
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev bc $? installed_count failed_count
         ;;
       tree)
         install_tree
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev tree $? installed_count failed_count
         ;;
       fzf)
         install_fzf
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev fzf $? installed_count failed_count
         ;;
       imagemagick)
         install_imagemagick
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev imagemagick $? installed_count failed_count
         ;;
       shfmt)
         install_shfmt
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev shfmt $? installed_count failed_count
         ;;
       make)
         install_make
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev make $? installed_count failed_count
         ;;
       udocker)
         install_udocker
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev udocker $? installed_count failed_count
         ;;
       superfile)
         install_superfile
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev superfile $? installed_count failed_count
         ;;
       gcloud)
         install_gcloud
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install dev gcloud $? installed_count failed_count
         ;;
       *)
         log_warn "Unknown tool: --$tool"
@@ -463,55 +464,55 @@ _install_specific_tools() {
       case "$tool" in
       typescript)
         install_typescript
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install npm typescript $? installed_count failed_count
         ;;
       nestjs)
         install_nestjs
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install npm nestjs $? installed_count failed_count
         ;;
       prettier)
         install_prettier
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install npm prettier $? installed_count failed_count
         ;;
       live-server)
         install_live_server
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install npm live-server $? installed_count failed_count
         ;;
       localtunnel)
         install_localtunnel
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install npm localtunnel $? installed_count failed_count
         ;;
       vercel)
         install_vercel
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install npm vercel $? installed_count failed_count
         ;;
       wrangler)
         install_wrangler
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install npm wrangler $? installed_count failed_count
         ;;
       firebase)
         install_firebase
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install npm firebase $? installed_count failed_count
         ;;
       markserv)
         install_markserv
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install npm markserv $? installed_count failed_count
         ;;
       psqlformat)
         install_psqlformat
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install npm psqlformat $? installed_count failed_count
         ;;
       ncu)
         install_ncu
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install npm ncu $? installed_count failed_count
         ;;
       ngrok)
         install_ngrok
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install npm ngrok $? installed_count failed_count
         ;;
       turbopack)
         install_turbopack
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install npm turbopack $? installed_count failed_count
         ;;
       *)
         log_warn "Unknown node module: --$tool"
@@ -537,35 +538,35 @@ _install_specific_tools() {
       case "$tool" in
       nodejs)
         install_npmjs
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install lang nodejs $? installed_count failed_count
         ;;
       python)
         install_python
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install lang python $? installed_count failed_count
         ;;
       perl)
         install_perl
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install lang perl $? installed_count failed_count
         ;;
       php)
         install_php
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install lang php $? installed_count failed_count
         ;;
       rust)
         install_rust
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install lang rust $? installed_count failed_count
         ;;
       clang)
         install_clang
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install lang clang $? installed_count failed_count
         ;;
       golang)
         install_golang
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install lang golang $? installed_count failed_count
         ;;
       bun)
         install_bun
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install lang bun $? installed_count failed_count
         ;;
       *)
         log_warn "Unknown language: --$tool"
@@ -591,43 +592,43 @@ _install_specific_tools() {
       case "$tool" in
       powerlevel10k)
         install_powerlevel10k
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install shell powerlevel10k $? installed_count failed_count
         ;;
       zsh-defer)
         install_zsh_defer
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install shell zsh-defer $? installed_count failed_count
         ;;
       zsh-autosuggestions)
         install_zsh_autosuggestions
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install shell zsh-autosuggestions $? installed_count failed_count
         ;;
       zsh-syntax-highlighting)
         install_zsh_syntax_highlighting
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install shell zsh-syntax-highlighting $? installed_count failed_count
         ;;
       history-substring)
         install_history_substring
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install shell history-substring $? installed_count failed_count
         ;;
       zsh-completions)
         install_zsh_completions
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install shell zsh-completions $? installed_count failed_count
         ;;
       fzf-tab)
         install_fzf_tab
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install shell fzf-tab $? installed_count failed_count
         ;;
       you-should-use)
         install_you_should_use
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install shell you-should-use $? installed_count failed_count
         ;;
       zsh-autopair)
         install_zsh_autopair
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install shell zsh-autopair $? installed_count failed_count
         ;;
       better-npm)
         install_better_npm
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install shell better-npm $? installed_count failed_count
         ;;
       *)
         log_warn "Unknown plugin: --$tool"
@@ -653,11 +654,11 @@ _install_specific_tools() {
       case "$tool" in
       neovim)
         install_neovim
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install editor neovim $? installed_count failed_count
         ;;
       nvchad)
         install_nvchad
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install editor nvchad $? installed_count failed_count
         ;;
       *)
         log_warn "Unknown editor component: --$tool"
@@ -683,19 +684,19 @@ _install_specific_tools() {
       case "$tool" in
       font)
         install_font
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ui font $? installed_count failed_count
         ;;
       extra-keys)
         install_extra_keys
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ui extra-keys $? installed_count failed_count
         ;;
       cursor)
         install_cursor
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ui cursor $? installed_count failed_count
         ;;
       banner)
         install_banner
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install ui banner $? installed_count failed_count
         ;;
       *)
         log_warn "Unknown UI component: --$tool"
@@ -721,7 +722,7 @@ _install_specific_tools() {
       case "$tool" in
       n8n)
         install_n8n
-        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        _tool_result install auto n8n $? installed_count failed_count
         ;;
       *)
         log_warn "Unknown automation tool: --$tool"
