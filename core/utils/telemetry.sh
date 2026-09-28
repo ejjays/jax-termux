@@ -10,6 +10,7 @@ import "@/utils/log"
 
 TELEMETRY_ENDPOINT="https://jax-telemetry.christsonalloso021.workers.dev/report"
 TELEMETRY_CONFIG="$HOME/.config/core-termux/telemetry"
+TELEMETRY_SPOOL="$HOME/.cache/core-termux/telemetry/pending"
 _TELEMETRY_ASKED=0
 
 telemetry_is_on() {
@@ -49,18 +50,68 @@ telemetry_error_class() {
   echo "${line:0:200}"
 }
 
+# Full story, sanitized: last 40 useful lines of the freshest module log.
+# Home paths become ~, control codes go, secret-looking lines are dropped
+# entirely, total capped so one report stays small.
+telemetry_log_tail() {
+  local logfile
+  logfile="$(ls -t "$HOME/.cache/core-termux"/install_*.log 2>/dev/null | head -n 1)"
+  [[ -n "$logfile" ]] || return 0
+  grep -a -v '^[[:space:]]*$' "$logfile" 2>/dev/null \
+    | grep -a -v -i "token\|secret\|password\|passwd\|api[_-]key\|authorization\|bearer\|cookie\|private[_-]key\|session" \
+    | tail -n 40 \
+    | sed -r 's/\x1b\[[0-9;]*m//g' \
+    | sed "s|$HOME|~|g" \
+    | tr -d '\000-\011\013-\037' \
+    | head -c 8192
+  return 0
+}
+
+# JSON-escape free text. Prefers python; without it, falls back to
+# stripping the characters that would break the payload.
+telemetry_json() {
+  if command -v python &>/dev/null; then
+    printf '%s' "$1" | python -c "import json,sys; print(json.dumps(sys.stdin.read()))"
+  else
+    printf '"%s"' "$(printf '%s' "$1" | tr -d '"\\\n\r')"
+  fi
+}
+
 telemetry_send() {
   local cmd="$1" module="$2" tool="$3" rc="$4"
-  local error_class
+  local error_class log_tail version payload
   error_class="$(telemetry_error_class)"
-  local version="${CORE_VERSION:-unknown}"
-  local payload
-  payload="$(printf '{"command":"%s","module":"%s","tool":"%s","exit_code":%d,"error_class":"%s","jax_version":"%s"}' \
-    "$cmd" "$module" "$tool" "$rc" \
-    "${error_class//\"/}" "${version//\"/}")"
-  curl -fsSL --max-time 8 -X POST "$TELEMETRY_ENDPOINT" \
+  log_tail="$(telemetry_log_tail)"
+  version="${CORE_VERSION:-unknown}"
+  error_class="$(telemetry_json "$error_class")"
+  log_tail="$(telemetry_json "$log_tail")"
+  payload="{\"v\":1,\"command\":\"$cmd\",\"module\":\"$module\",\"tool\":\"$tool\",\"exit_code\":$rc,\"error_class\":$error_class,\"jax_version\":\"${version//\"/}\",\"log_tail\":$log_tail}"
+  if curl -fsSL --max-time 8 -X POST "$TELEMETRY_ENDPOINT" \
     -H "Content-Type: application/json" \
-    --data "$payload" &>/dev/null || true
+    --data "$payload" &>/dev/null; then
+    telemetry_flush_spool
+  else
+    mkdir -p "$TELEMETRY_SPOOL" 2>/dev/null || return 0
+    printf '%s' "$payload" >"$TELEMETRY_SPOOL/$(date +%s)-$RANDOM.json" 2>/dev/null || true
+  fi
+  return 0
+}
+
+# Best-effort resend of spooled reports (offline at failure time).
+telemetry_flush_spool() {
+  [[ -d "$TELEMETRY_SPOOL" ]] || return 0
+  local f n=0
+  for f in "$TELEMETRY_SPOOL"/*.json; do
+    [[ -f "$f" ]] || break
+    ((n++))
+    [[ $n -gt 5 ]] && break
+    if curl -fsSL --max-time 8 -X POST "$TELEMETRY_ENDPOINT" \
+      -H "Content-Type: application/json" \
+      --data @"$f" &>/dev/null; then
+      rm -f "$f"
+    fi
+  done
+  return 0
 }
 
 # Shared per-tool result hook. Replaces the bare
