@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 
 import "@/utils/log"
 
@@ -11,6 +11,7 @@ NODE_PACKAGES=(
 	"live-server"
 	"localtunnel"
 	"vercel"
+	"wrangler"
 	"firebase"
 	"markserv"
 	"psqlformat"
@@ -25,6 +26,7 @@ source "$(dirname "$BASH_SOURCE")/prettier/install.sh"
 source "$(dirname "$BASH_SOURCE")/live-server/install.sh"
 source "$(dirname "$BASH_SOURCE")/localtunnel/install.sh"
 source "$(dirname "$BASH_SOURCE")/vercel/install.sh"
+source "$(dirname "$BASH_SOURCE")/wrangler/install.sh"
 source "$(dirname "$BASH_SOURCE")/firebase/install.sh"
 source "$(dirname "$BASH_SOURCE")/markserv/install.sh"
 source "$(dirname "$BASH_SOURCE")/psqlformat/install.sh"
@@ -60,6 +62,10 @@ install_all_npm_packages() {
 			;;
 		vercel)
 			loading "Installing Vercel CLI" install_vercel
+			case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+			;;
+		wrangler)
+			loading "Installing Wrangler CLI" install_wrangler
 			case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
 			;;
 		firebase)
@@ -122,6 +128,10 @@ uninstall_all_npm_packages() {
 			uninstall_vercel
 			case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
 			;;
+		wrangler)
+			uninstall_wrangler
+			case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+			;;
 		firebase)
 			uninstall_firebase
 			case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
@@ -173,6 +183,9 @@ update_all_npm_packages() {
     vercel)
       update_vercel
       ;;
+    wrangler)
+      update_wrangler
+      ;;
     firebase)
       update_firebase
       ;;
@@ -222,10 +235,14 @@ reinstall_all_npm_packages() {
       loading "Reinstalling Localtunnel" reinstall_localtunnel
       case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
       ;;
-    vercel)
-      reinstall_vercel
-      case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
-      ;;
+		vercel)
+			reinstall_vercel
+			case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
+			;;
+		wrangler)
+			reinstall_wrangler
+			case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
+			;;
     firebase)
       reinstall_firebase
       case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac

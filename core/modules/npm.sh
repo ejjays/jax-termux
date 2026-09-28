@@ -24,6 +24,7 @@ install_npm() {
 	list_item "Live Server"
 	list_item "Localtunnel"
 	list_item "Vercel CLI"
+	list_item "Wrangler CLI"
 	list_item "Firebase CLI"
 	list_item "Markserv"
 	list_item "PSQL Format"

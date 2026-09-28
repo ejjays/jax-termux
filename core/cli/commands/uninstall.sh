@@ -484,6 +484,10 @@ _uninstall_specific_tools() {
         uninstall_vercel
         case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
         ;;
+      wrangler)
+        uninstall_wrangler
+        case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+        ;;
       firebase)
         uninstall_firebase
         case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac

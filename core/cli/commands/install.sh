@@ -485,6 +485,10 @@ _install_specific_tools() {
         install_vercel
         case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
         ;;
+      wrangler)
+        install_wrangler
+        case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+        ;;
       firebase)
         install_firebase
         case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
