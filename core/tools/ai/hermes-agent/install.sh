@@ -184,11 +184,50 @@ _hermes_apply_patches_impl() {
   return 0
 }
 
+# Community Termux repo (adybag14-cyber): the only channel shipping a
+# working hermes-agent build TODAY. Fingerprint-pinned; aborts on mismatch.
+_hermes_community_apt() {
+  loading "Setting up community Termux repo" _hermes_community_apt_impl
+}
+
+_hermes_community_apt_impl() {
+  local keyring="$PREFIX/etc/apt/keyrings/adybag-termux.gpg"
+  local listfile="$PREFIX/etc/apt/sources.list.d/adybag-termux.list"
+  local expected="EAD24A2124EFA7393A78B7B14699F966313F7A6B"
+  local key_url="https://raw.githubusercontent.com/adybag14-cyber/termux-python/main/apt/repo-signing-key.asc"
+  local repo_url="${ADYBAG_TERMUX_REPO_URL:-http://144.21.61.111/termux}"
+
+  command -v curl &>/dev/null || yes | pkg install curl &>>"$LOG_FILE" || return 1
+  command -v gpg &>/dev/null || yes | pkg install gnupg &>>"$LOG_FILE" || return 1
+
+  mkdir -p "$PREFIX/etc/apt/keyrings" || return 1
+  local tmp
+  tmp="$(mktemp "${TMPDIR:-$PREFIX/tmp}/adybag-repo-key.XXXXXX")" || return 1
+  curl -fL --retry 3 --retry-all-errors "$key_url" -o "$tmp" &>>"$LOG_FILE" || { rm -f "$tmp"; return 1; }
+  local actual
+  actual="$(gpg --batch --with-colons --show-keys "$tmp" 2>/dev/null | awk -F: '$1=="fpr" {print $10; exit}')"
+  if [ "$actual" != "$expected" ]; then
+    log_error "Community repo key fingerprint mismatch: $actual"
+    rm -f "$tmp"
+    return 1
+  fi
+  gpg --batch --yes --dearmor --output "$tmp.gpg" "$tmp" &>>"$LOG_FILE" || { rm -f "$tmp" "$tmp.gpg"; return 1; }
+  install -m 0644 "$tmp.gpg" "$keyring" || { rm -f "$tmp" "$tmp.gpg"; return 1; }
+  rm -f "$tmp" "$tmp.gpg"
+  printf 'deb [signed-by=%s] %s stable main\n' "$keyring" "$repo_url" >"$listfile" || return 1
+  apt -o Acquire::Retries=5 -o Acquire::http::Timeout=30 update &>>"$LOG_FILE" || return 1
+  yes | pkg install hermes-agent &>>"$LOG_FILE" || return 1
+  command -v hermes &>/dev/null
+}
+
 _install_hermes_agent() {
   _hermes_install_deps || return 1
   _hermes_install_python_pkgs || return 1
 
-  # Official Termux path first (currently unpublished, fails fast if absent)
+  # Working TODAY: community repo with real Termux builds.
+  _hermes_community_apt && return 0
+
+  # Official Termux path (currently unpublished, fails fast if absent)
   _hermes_try_apt && return 0
 
   _hermes_run_installer && return 0
