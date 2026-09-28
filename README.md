@@ -27,7 +27,7 @@
 
 Most dev tools are built for desktops or laptops. They ship Linux/macOS binaries that expect glibc, `/bin/bash`, syscalls, and libraries Android simply doesn't have. On Termux they fail with cryptic errors (`bad system call`, missing interpreter, blocked network calls) or don't install at all.
 
-Jax fixes that per tool, so you don't have to:
+Jax fixes that per tool, so you don't have to. All of it can be done by hand — and people do. It just costs hours per tool and breaks on every update:
 
 - **glibc bootstrappers** — custom launchers run upstream `linux-arm64` binaries through the glibc loader (Supabase, Claude Code, OpenCode, Qoder, and more)
 - **Tiered installs with fallbacks** — native → glibc + proot → full Ubuntu container, so a tool installs the fastest way your phone supports it
