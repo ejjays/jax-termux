@@ -866,6 +866,7 @@ jax install npm
 | **Live Server** | `live-server` | Development server with live reload |
 | **Localtunnel** | `lt` | Expose localhost to the internet |
 | **Vercel CLI** | `vercel` | Vercel deployment CLI |
+| **Wrangler CLI** | `wrangler` | Cloudflare Workers and Pages deployment CLI |
 | **Firebase CLI** | `firebase` | Firebase Hosting, Functions, Firestore, Auth management |
 | **Markserv** | `markserv` | Markdown live-preview server |
 | **PSQL Format** | `psqlformat` | PostgreSQL query formatter |
