@@ -159,6 +159,14 @@ _hermes_apply_patches_impl() {
     ln -s "$SYS_SITE/cryptography" "$VENV_SITE/cryptography"
   fi
 
+  # firecrawl-anydoc is a Rust-built doc-OCR helper pinned in core deps.
+  # It ships source-only, and neither rustup nor prebuilt wheels support
+  # Android — so it can never compile on Termux. Nothing imports it at
+  # startup, so drop the pin and let pip resolve the rest.
+  if grep -q 'firecrawl-anydoc==' "$HERMES_DIR/pyproject.toml"; then
+    sed -i '/firecrawl-anydoc==/d' "$HERMES_DIR/pyproject.toml"
+  fi
+
   # Fix main.py: PROJECT_ROOT may not resolve in editable installs
   sed -i 's|print(f"Install directory: {PROJECT_ROOT}")|print(f"Install directory: {os.path.dirname(os.path.dirname(os.path.abspath(__file__)))}")|' "$HERMES_DIR/hermes_cli/main.py"
 
