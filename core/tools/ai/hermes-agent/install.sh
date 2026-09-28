@@ -131,9 +131,9 @@ _hermes_pip_fallback() {
 _hermes_pip_fallback_impl() {
   local HERMES_DIR="$HOME/.hermes/hermes-agent"
   cd "$HERMES_DIR" || return 1
-  python -m pip install --ignore-requires-python -e '.[termux-all]' -c constraints-termux.txt &>>"$LOG_FILE" && return 0
-  python -m pip install --ignore-requires-python -e '.[termux]' -c constraints-termux.txt &>>"$LOG_FILE" && return 0
-  python -m pip install --ignore-requires-python -e '.' -c constraints-termux.txt &>>"$LOG_FILE" && return 0
+  python -m pip install --ignore-requires-python -e '.[termux-all]' &>>"$LOG_FILE" && return 0
+  python -m pip install --ignore-requires-python -e '.[termux]' &>>"$LOG_FILE" && return 0
+  python -m pip install --ignore-requires-python -e '.' &>>"$LOG_FILE" && return 0
   return 1
 }
 
