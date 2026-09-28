@@ -95,23 +95,6 @@ _hermes_try_apt_impl() {
   command -v hermes &>/dev/null
 }
 
-# Rust-built deps (pydantic-core and friends) ship source-only with no
-# Android wheels and no rustup target, so they must compile on-device.
-# That needs the Termux Rust toolchain plus a working maturin, and pip
-# must NOT use build isolation (isolated envs re-bootstrap maturin
-# through rustup, which refuses Android — reuse the system toolchain).
-_hermes_ensure_rust() {
-  loading "Ensuring Rust toolchain and maturin" _hermes_ensure_rust_impl
-}
-
-_hermes_ensure_rust_impl() {
-  if ! command -v cargo &>/dev/null; then
-    yes | pkg install rust &>>"$LOG_FILE" || { log_error "Failed to install Rust"; return 1; }
-  fi
-  python -m pip install --upgrade "maturin>=1,<2" setuptools wheel &>>"$LOG_FILE" || { log_error "Failed to install maturin"; return 1; }
-  return 0
-}
-
 _hermes_pip_fallback_impl() {
   local HERMES_DIR="$HOME/.hermes/hermes-agent"
   cd "$HERMES_DIR" || return 1
@@ -214,7 +197,6 @@ _install_hermes_agent() {
   # patches and pip fallback below have a repo to work with.
   _hermes_clone_repo || return 1
   _hermes_apply_patches || return 1
-  _hermes_ensure_rust || return 1
   _hermes_run_installer && return 0
 
   # Still failing (Python version constraint) — force install with pip
