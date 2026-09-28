@@ -63,9 +63,40 @@ _hermes_install_python_pkgs_impl() {
   return 0
 }
 
-# Upstream's installer refuses Termux (it expects a signed APT package that
-# is not published in the current repos). When that happens the repo is
-# never cloned, so clone it ourselves straight from GitHub.
+# Official Termux path: Nous publishes a signed APT repo (NOT Termux main —
+# that is why a bare `pkg install hermes-agent` finds nothing). Add their
+# repo with fingerprint check, then install from it.
+# NOTE (upstream, 2026): "Termux is currently broken... will ship soon."
+# If their repo has no working build yet, this fails fast and we fall
+# through to the GitHub fallbacks below.
+_hermes_try_apt() {
+  loading "Setting up Hermes APT repo" _hermes_try_apt_impl
+}
+
+_hermes_try_apt_impl() {
+  local keyring="$PREFIX/etc/apt/keyrings/hermes-agent.asc"
+  local listfile="$PREFIX/etc/apt/sources.list.d/hermes-agent.list"
+  local expected="C572B5FDD1A29CCFA9A912B6840B0848E139156D"
+
+  command -v curl &>/dev/null || yes | pkg install curl &>>"$LOG_FILE" || return 1
+  command -v gpg &>/dev/null || yes | pkg install gnupg &>>"$LOG_FILE" || return 1
+
+  mkdir -p "$PREFIX/etc/apt/keyrings" || return 1
+  curl -fsSL https://hermes-assets.nousresearch.com/releases/termux/stable/key.asc -o "$keyring" &>>"$LOG_FILE" || return 1
+  if ! gpg --show-keys --with-fingerprint "$keyring" 2>/dev/null | tr -d ' \n' | grep -q "$expected"; then
+    log_error "Hermes APT key fingerprint mismatch — refusing to add repo"
+    rm -f "$keyring"
+    return 1
+  fi
+
+  printf '%s\n' "deb [signed-by=$keyring] https://hermes-assets.nousresearch.com/releases/termux/stable hermes-stable main" >"$listfile" || return 1
+  pkg update &>>"$LOG_FILE" || return 1
+  yes | pkg install hermes-agent &>>"$LOG_FILE" || return 1
+  command -v hermes &>/dev/null
+}
+
+# Upstream's installer refuses Termux, so when every packaged path fails,
+# clone the repo ourselves straight from GitHub for the pip fallback.
 _hermes_clone_repo() {
   loading "Cloning Hermes Agent repo" _hermes_clone_repo_impl
 }
@@ -83,15 +114,6 @@ _hermes_clone_repo_impl() {
     return 1
   fi
   return 0
-}
-
-_hermes_try_apt() {
-  loading "Trying Termux package (hermes-agent)" _hermes_try_apt_impl
-}
-
-_hermes_try_apt_impl() {
-  yes | pkg install hermes-agent &>>"$LOG_FILE" || return 1
-  command -v hermes &>/dev/null
 }
 
 _hermes_run_installer() {
