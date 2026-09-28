@@ -64,14 +64,15 @@ telemetry_send() {
 
 # Shared per-tool result hook. Replaces the bare
 #   case $? in 0) ((ok++));; 1) ((fail++));; esac
-# idiom: keeps the counters identical, plus fires a report on failure.
+# idiom with identical counting: only exit 1 is a failure (other non-zero
+# codes mean already-installed/skipped and touch neither counter).
 # Usage: install_foo; _tool_result install ai foo $? installed_count failed_count
 _tool_result() {
   local cmd="$1" module="$2" tool="$3" rc="$4"
   local -n _ok_ref="$5" _fail_ref="$6"
   if [[ "$rc" -eq 0 ]]; then
     ((_ok_ref++))
-  else
+  elif [[ "$rc" -eq 1 ]]; then
     ((_fail_ref++))
     if telemetry_is_on || telemetry_ask_once; then
       telemetry_send "$cmd" "$module" "$tool" "$rc"
