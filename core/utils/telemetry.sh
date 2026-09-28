@@ -36,7 +36,8 @@ telemetry_ask_once() {
 }
 
 # Pull the last error-looking line from the freshest module install log,
-# stripped of home paths, control codes and anything over 200 chars.
+# stripped of home paths and every control character (apt/npm progress
+# bars leave carriage returns that would otherwise poison the JSON).
 telemetry_error_class() {
   local logfile
   logfile="$(ls -t "$HOME/.cache/core-termux"/install_*.log 2>/dev/null | head -n 1)"
@@ -44,7 +45,7 @@ telemetry_error_class() {
   local line
   line="$(grep -a -i -m 1 "error\|failed\|✖\|cannot\|not found" "$logfile" 2>/dev/null | tail -n 1)"
   [[ -n "$line" ]] || { echo "unknown"; return; }
-  line="$(echo "$line" | sed -r 's/\x1b\[[0-9;]*m//g' | sed "s|$HOME|~|g" | tr -d '\000-\010\013\014\016-\037')"
+  line="$(echo "$line" | sed -r 's/\x1b\[[0-9;]*m//g' | sed "s|$HOME|~|g" | tr -d '[:cntrl:]')"
   echo "${line:0:200}"
 }
 
