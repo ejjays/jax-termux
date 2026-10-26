@@ -32,6 +32,7 @@ install_ai() {
   list_item "Ollama ${GRAY}(${D_GREEN}ollama${GRAY})"
   list_item "Codex ${GRAY}(${D_GREEN}codex${GRAY})"
   list_item "OpenCode ${GRAY}(${D_GREEN}opencode${GRAY})"
+  list_item "OpenCode V2 ${GRAY}(${D_GREEN}opencode2${GRAY})"
   list_item "Qoder ${GRAY}(${D_GREEN}qoder${GRAY})"
   list_item "Kilo Code CLI ${GRAY}(${D_GREEN}kilo${GRAY})"
   list_item "Cactus Needle ${GRAY}(${D_GREEN}needle${GRAY})"
@@ -69,7 +70,7 @@ _install_ai_tools_wrapper() {
 }
 
 uninstall_ai() {
-  if ! command -v opencode &>/dev/null && ! command -v freebuff &>/dev/null; then
+  if ! command -v opencode &>/dev/null && ! command -v opencode2 &>/dev/null && ! command -v freebuff &>/dev/null; then
     log_info "AI Tools are not installed"
     return 0
   fi
@@ -128,6 +129,7 @@ reinstall_ai() {
   list_item "Ollama"
   list_item "Codex"
   list_item "OpenCode"
+  list_item "OpenCode V2"
   list_item "Qoder"
   list_item "Kilo Code CLI"
   list_item "Cactus Needle"

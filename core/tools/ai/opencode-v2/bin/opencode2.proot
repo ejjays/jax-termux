@@ -1,0 +1,21 @@
+#!/data/data/com.termux/files/usr/bin/bash
+# opencode2 wrapper - termux-glibc loader + proot syscall emulation
+
+unset LD_PRELOAD
+
+GLIBC_LOADER="/data/data/com.termux/files/usr/glibc/lib/ld-linux-aarch64.so.1"
+GLIBC_LIB="/data/data/com.termux/files/usr/glibc/lib"
+TOOL_DATA_DIR="__DATA_DIR__"
+
+if [ ! -f "$GLIBC_LOADER" ] || [ ! -f "$TOOL_DATA_DIR/opencode2" ]; then
+  echo "Error: termux-glibc or opencode2 binary not found" >&2
+  echo "Run: jax reinstall ai --opencode-v2" >&2
+  exit 1
+fi
+
+# proot with host rootfs for syscall translation
+exec proot -r / \
+  -b /dev:/dev -b /proc:/proc -b /sys:/sys \
+  -b "$GLIBC_LIB:/lib" \
+  -b "$PREFIX/bin:/bin" \
+  "$TOOL_DATA_DIR/opencode2" "$@"

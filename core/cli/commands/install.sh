@@ -164,6 +164,10 @@ _install_specific_tools() {
         install_opencode
         _tool_result install ai opencode $? installed_count failed_count
         ;;
+      opencode-v2)
+        install_opencode_v2
+        _tool_result install ai opencode-v2 $? installed_count failed_count
+        ;;
       qoder)
         install_qoder
         _tool_result install ai qoder $? installed_count failed_count

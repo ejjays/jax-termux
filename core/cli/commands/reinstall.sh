@@ -157,6 +157,10 @@ _reinstall_specific_tools() {
         reinstall_opencode
         _tool_result reinstall ai opencode $? reinstalled_count failed_count
         ;;
+      opencode-v2)
+        reinstall_opencode_v2
+        _tool_result reinstall ai opencode-v2 $? reinstalled_count failed_count
+        ;;
       qoder)
         reinstall_qoder
         _tool_result reinstall ai qoder $? reinstalled_count failed_count

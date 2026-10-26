@@ -165,6 +165,10 @@ _update_specific_tools() {
         update_opencode
         _tool_result update ai opencode $? updated_count failed_count
         ;;
+      opencode-v2)
+        update_opencode_v2
+        _tool_result update ai opencode-v2 $? updated_count failed_count
+        ;;
       qoder)
         update_qoder
         _tool_result update ai qoder $? updated_count failed_count

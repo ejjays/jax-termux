@@ -163,6 +163,10 @@ _uninstall_specific_tools() {
         uninstall_opencode
         _tool_result uninstall ai opencode $? uninstalled_count failed_count
         ;;
+      opencode-v2)
+        uninstall_opencode_v2
+        _tool_result uninstall ai opencode-v2 $? uninstalled_count failed_count
+        ;;
       qoder)
         uninstall_qoder
         _tool_result uninstall ai qoder $? uninstalled_count failed_count

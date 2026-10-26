@@ -103,6 +103,12 @@ url_opencode() {
 	[ -n "$tag" ] && echo "https://github.com/anomalyco/opencode/releases/download/$tag/opencode-linux-arm64.tar.gz"
 }
 
+url_opencode_v2() {
+	local ver
+	ver=$(curl -fsSL "https://registry.npmjs.org/@opencode/cli/latest" | jq -r '.version')
+	[ -n "$ver" ] && [ "$ver" != "null" ] && echo "https://registry.npmjs.org/@opencode/cli-linux-arm64/-/cli-linux-arm64-$ver.tgz"
+}
+
 url_goose() {
 	local tag
 	tag=$(curl -fsSL "https://api.github.com/repos/aaif-goose/goose/releases/latest" | jq -r '.tag_name')
@@ -161,6 +167,7 @@ smoke kilocode "$(url_kilocode)" kilo
 smoke kimchi "$(url_kimchi)" kimchi
 smoke mimocode "$(url_mimocode)" mimo
 smoke opencode "$(url_opencode)" opencode
+smoke opencode-v2 "$(url_opencode_v2)" opencode
 smoke goose "$(url_goose)" goose
 smoke oh-my-pi "$(url_omp)" omp
 smoke ampcode "$(url_ampcode)" amp
