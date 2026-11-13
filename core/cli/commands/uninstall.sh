@@ -283,6 +283,10 @@ _uninstall_specific_tools() {
         uninstall_walkie
         _tool_result uninstall ai walkie $? uninstalled_count failed_count
         ;;
+      omniroute)
+        uninstall_omniroute
+        _tool_result uninstall ai omniroute $? uninstalled_count failed_count
+        ;;
       *)
         log_warn "Unknown AI tool: --$tool"
         ;;

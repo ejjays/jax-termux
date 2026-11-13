@@ -284,6 +284,10 @@ _install_specific_tools() {
         install_walkie
         _tool_result install ai walkie $? installed_count failed_count
         ;;
+      omniroute)
+        install_omniroute
+        _tool_result install ai omniroute $? installed_count failed_count
+        ;;
       *)
         log_warn "Unknown AI tool: --$tool"
         ;;

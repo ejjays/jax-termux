@@ -285,6 +285,10 @@ _update_specific_tools() {
         update_walkie
         _tool_result update ai walkie $? updated_count failed_count
         ;;
+      omniroute)
+        update_omniroute
+        _tool_result update ai omniroute $? updated_count failed_count
+        ;;
       *)
         log_warn "Unknown AI tool: --$tool"
         ;;

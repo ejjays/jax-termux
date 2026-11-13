@@ -277,6 +277,10 @@ _reinstall_specific_tools() {
         reinstall_walkie
         _tool_result reinstall ai walkie $? reinstalled_count failed_count
         ;;
+      omniroute)
+        reinstall_omniroute
+        _tool_result reinstall ai omniroute $? reinstalled_count failed_count
+        ;;
       *)
         log_warn "Unknown AI tool: --$tool"
         ;;

@@ -44,6 +44,7 @@ AI_TOOLS=(
   "ampcode"
   "hugging-face"
   "walkie"
+  "omniroute"
 )
 
 source "$(dirname "$BASH_SOURCE")/qwen-code/install.sh"
@@ -85,6 +86,7 @@ source "$(dirname "$BASH_SOURCE")/cline/install.sh"
 source "$(dirname "$BASH_SOURCE")/ampcode/install.sh"
 source "$(dirname "$BASH_SOURCE")/hugging-face/install.sh"
 source "$(dirname "$BASH_SOURCE")/walkie/install.sh"
+source "$(dirname "$BASH_SOURCE")/omniroute/install.sh"
 
 install_all_ai_tools() {
   local installed_count=0
@@ -246,6 +248,10 @@ install_all_ai_tools() {
       ;;
     walkie)
       loading "Installing Walkie" install_walkie
+      case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
+      ;;
+    omniroute)
+      loading "Installing OmniRoute" install_omniroute
       case $? in 0) ((installed_count++));; 1) ((failed_count++));; esac
       ;;
     esac
@@ -416,6 +422,10 @@ uninstall_all_ai_tools() {
       uninstall_walkie
       case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
       ;;
+    omniroute)
+      uninstall_omniroute
+      case $? in 0) ((uninstalled_count++));; 1) ((failed_count++));; esac
+      ;;
     esac
   done
 
@@ -541,6 +551,9 @@ update_all_ai_tools() {
       ;;
     walkie)
       update_walkie
+      ;;
+    omniroute)
+      update_omniroute
       ;;
     esac
   done
@@ -707,6 +720,10 @@ reinstall_all_ai_tools() {
       ;;
     walkie)
       reinstall_walkie
+      case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
+      ;;
+    omniroute)
+      reinstall_omniroute
       case $? in 0) ((reinstalled_count++));; 1) ((failed_count++));; esac
       ;;
     esac
