@@ -91,6 +91,13 @@ if [ -f "\$DB" ] && _check_db "\$DB"; then
   ls -t "\$BACKUP_DIR"/*.bak 2>/dev/null | tail -n +6 | xargs -r rm -f
 fi
 
+# Prefer OpenCode V2 when installed (jax-termux ships it as opencode2)
+if command -v opencode2 >/dev/null 2>&1; then
+  export CLI_OPENCODE_BIN=opencode2
+elif command -v opencode >/dev/null 2>&1; then
+  export CLI_OPENCODE_BIN=opencode
+fi
+
 exec node "$real_bin" "\$@"
 WRAPPER
 
@@ -106,6 +113,11 @@ install_omniroute() {
     _install_omniroute_npm || return 1
   else
     log_info "OmniRoute is already installed"
+  fi
+
+  # persist preferred opencode binary for omniroute CLI tools
+  if command -v opencode2 >/dev/null 2>&1; then
+    grep -q '^CLI_OPENCODE_BIN=' "$HOME/.omniroute/.env" 2>/dev/null || echo 'CLI_OPENCODE_BIN=opencode2' >> "$HOME/.omniroute/.env"
   fi
 
   # always (re)apply the DB-guarding wrapper
